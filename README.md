@@ -4,7 +4,7 @@ EnglishBench is a local C# / WPF application for English reading, vocabulary edi
 
 ## Run
 
-On Windows with the .NET 8 Windows Desktop Runtime, launch `artifacts/app/EnglishBench.exe`. The root `Start-EnglishBench.cmd` supplies the machine-specific library `C:\MyDocs\magazines`. Use the folder-selection button for another library, or pass `--library` on the command line.
+On Windows with the .NET 10 Windows Desktop Runtime (10.0.11 or a later compatible patch), launch `artifacts/app/EnglishBench.exe`. The root `Start-EnglishBench.cmd` supplies the machine-specific library `C:\MyDocs\magazines`. Use the folder-selection button for another library, or pass `--library` on the command line.
 
 Startup loads only a collapsed library tree. It does not restore a passage or vocabulary. Routine successful actions are quiet; warnings and errors appear for six seconds, and the empty status row takes no space.
 

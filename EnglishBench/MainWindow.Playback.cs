@@ -2,8 +2,6 @@ using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Threading;
 using EnglishBench.Infrastructure;
-using EnglishBench.Rendering;
-using EnglishBench.Services;
 
 namespace EnglishBench;
 
@@ -13,8 +11,20 @@ public partial class MainWindow
     private readonly DispatcherTimer progressTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(100) };
     private bool updatingProgress;
     private bool draggingProgress;
+    private void InitializePlayback()
+    {
+        ViewModel.PlaybackChanged += RefreshPlayback;
+        progressTimer.Tick += ProgressTimerTick;
+    }
 
-    private void PlayerOpened(long request) => UpdateProgress();
+    private void ClosePlayback()
+    {
+        progressTimer.Stop();
+        ViewModel.PlaybackChanged -= RefreshPlayback;
+        progressTimer.Tick -= ProgressTimerTick;
+        ViewModel.Stop();
+        player.Dispose();
+    }
 
     private void ProgressTimerTick(object? sender, EventArgs e) => UpdateProgress();
 
@@ -22,8 +32,8 @@ public partial class MainWindow
     {
         foreach (var reader in readers) reader.SetPlayingSegment(ViewModel.PlayingSid);
         ReadAllButton.IsEnabled = ViewModel.Article != null;
-        StopButton.IsEnabled = ViewModel.PlaybackState != PlaybackState.Stopped;
-        bool pause = ViewModel.Owner == "passage" && ViewModel.PlaybackState == PlaybackState.Playing;
+        StopButton.IsEnabled = ViewModel.Playback.IsArticleActive;
+        bool pause = ViewModel.Playback.IsArticlePlaying;
         if (!ReadAllButton.IsEnabled) ReadAllImage.Source = UiIcons.DisabledPlay;
         else if (pause) ReadAllImage.Source = UiIcons.Pause;
         else ReadAllImage.Source = UiIcons.Play;
@@ -32,7 +42,7 @@ public partial class MainWindow
         {
             ReadAllButton.ToolTip = "暂停文章音频";
         }
-        else if (ViewModel.Owner == "passage" && ViewModel.PlaybackState == PlaybackState.Paused)
+        else if (ViewModel.Playback.IsArticlePaused)
         {
             ReadAllButton.ToolTip = "继续文章音频";
         }
@@ -41,7 +51,7 @@ public partial class MainWindow
             ReadAllButton.ToolTip = "播放文章音频";
         }
         System.Windows.Automation.AutomationProperties.SetName(ReadAllButton, (string)ReadAllButton.ToolTip);
-        if (ViewModel.PlaybackState == PlaybackState.Stopped)
+        if (!ViewModel.Playback.IsArticleActive)
         {
             progressTimer.Stop();
             draggingProgress = false;
@@ -55,19 +65,20 @@ public partial class MainWindow
 
     private void ArticleAudioClicked(object sender, RoutedEventArgs e) => ViewModel.ToggleArticleAudio();
 
-    private void StopClicked(object sender, RoutedEventArgs e) => ViewModel.Stop();
+    private void StopClicked(object sender, RoutedEventArgs e) => ViewModel.StopArticleAudio();
 
     private void UpdateProgress()
     {
-        bool active = ViewModel.PlaybackState != PlaybackState.Stopped;
+        var playback = ViewModel.Playback;
+        bool active = playback.IsArticleActive;
         PlaybackProgress.Visibility = active ? Visibility.Visible : Visibility.Collapsed;
-        PlaybackProgress.IsEnabled = active && player.IsOpen && player.Duration.TotalSeconds > 0;
+        PlaybackProgress.IsEnabled = playback.CanSeekArticle;
         if (draggingProgress && active) return;
         updatingProgress = true;
         try
         {
-            PlaybackProgress.Maximum = PlaybackProgress.IsEnabled ? player.Duration.TotalSeconds : 1;
-            PlaybackProgress.Value = PlaybackProgress.IsEnabled ? Math.Clamp(player.Position.TotalSeconds, 0, PlaybackProgress.Maximum) : 0;
+            PlaybackProgress.Maximum = PlaybackProgress.IsEnabled ? playback.ArticleDuration : 1;
+            PlaybackProgress.Value = Math.Clamp(playback.ArticlePosition, 0, PlaybackProgress.Maximum);
         }
         finally
         {
@@ -77,11 +88,10 @@ public partial class MainWindow
 
     private void ProgressChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
-        if (updatingProgress || !player.IsOpen || ViewModel.PlaybackState == PlaybackState.Stopped) return;
-        player.Position = TimeSpan.FromSeconds(Math.Clamp(e.NewValue, 0, player.Duration.TotalSeconds));
+        if (!updatingProgress) ViewModel.Playback.SeekArticle(e.NewValue);
     }
 
-    private void ProgressDragStarted(object sender, DragStartedEventArgs e) => draggingProgress = true;
+    private void ProgressDragStarted(object sender, DragStartedEventArgs e) => draggingProgress = ViewModel.Playback.CanSeekArticle;
 
     private void ProgressDragCompleted(object sender, DragCompletedEventArgs e)
     {

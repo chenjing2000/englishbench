@@ -2,7 +2,6 @@ using System.ComponentModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Threading;
 using EnglishBench.Infrastructure;
 
 namespace EnglishBench;
@@ -11,7 +10,6 @@ public partial class MainWindow
 {
     private readonly ReaderSettings settings;
     private readonly bool persistSettings;
-    private readonly DispatcherTimer statusTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(6) };
 
     private void InitializeWindowSettings()
     {
@@ -44,17 +42,6 @@ public partial class MainWindow
         RefreshSettingsChecks();
     }
 
-    private void ViewModelPropertyChanged(object? sender, PropertyChangedEventArgs e)
-    {
-        if (e.PropertyName == nameof(ViewModel.Status)) RestartStatusTimer();
-    }
-
-    private void StatusTimerTick(object? sender, EventArgs e)
-    {
-        statusTimer.Stop();
-        ViewModel.Status = "";
-    }
-
     private void WindowClosing(object? sender, CancelEventArgs e)
     {
         if (!persistSettings) return;
@@ -64,13 +51,8 @@ public partial class MainWindow
         settings.RightWidth = RightColumn.ActualWidth;
     }
 
-    private void WindowClosed(object? sender, EventArgs e)
+    private void SaveSettings(double volume)
     {
-        double volume = player.Volume;
-        progressTimer.Stop();
-        statusTimer.Stop();
-        ViewModel.Stop();
-        player.Dispose();
         if (!persistSettings) return;
 
         settings.Volume = volume;
@@ -95,12 +77,6 @@ public partial class MainWindow
             ViewModel.Accent = (string)item.Tag;
             RefreshSettingsChecks();
         }
-    }
-
-    private void RestartStatusTimer()
-    {
-        statusTimer.Stop();
-        if (!string.IsNullOrEmpty(ViewModel.Status)) statusTimer.Start();
     }
 
     private void SettingsClicked(object sender, RoutedEventArgs e)

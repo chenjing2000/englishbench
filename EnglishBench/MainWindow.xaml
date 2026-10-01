@@ -136,9 +136,9 @@
       <Border x:Name="PassageToolbar" Grid.Row="1" Height="48" Margin="0,8,0,0" Background="{Binding Background, RelativeSource={RelativeSource AncestorType=Window}}">
         <Grid x:Name="PassageControls">
           <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-          <Slider x:Name="PlaybackProgress" Visibility="Collapsed" Minimum="0" Maximum="1" IsEnabled="False" Margin="8,0,10,0" VerticalAlignment="Center" IsMoveToPointEnabled="True" ToolTip="拖动调整当前音频的播放位置" ValueChanged="ProgressChanged" Thumb.DragStarted="ProgressDragStarted" Thumb.DragCompleted="ProgressDragCompleted"/>
+          <Slider x:Name="PlaybackProgress" Visibility="Collapsed" Minimum="0" Maximum="1" SmallChange="0.3" FocusVisualStyle="{x:Null}" IsEnabled="False" Margin="8,0,10,0" VerticalAlignment="Center" IsMoveToPointEnabled="True" ToolTip="拖动调整当前音频的播放位置" ValueChanged="ProgressChanged" Thumb.DragStarted="ProgressDragStarted" Thumb.DragCompleted="ProgressDragCompleted"/>
           <Button Grid.Column="1" x:Name="ReadAllButton" Style="{StaticResource FooterButton}" Width="32" Height="32" Padding="1" ToolTip="播放文章音频" AutomationProperties.Name="播放文章音频" Click="ArticleAudioClicked"><Image x:Name="ReadAllImage" Source="{x:Static icons:UiIcons.Play}" Width="26" Height="26"/></Button>
-          <Button Grid.Column="2" x:Name="StopButton" Style="{StaticResource FooterButton}" Width="32" Height="32" Padding="1" ToolTip="停止全部音频" AutomationProperties.Name="停止全部音频" Click="StopClicked"><Image x:Name="StopImage" Source="{x:Static icons:UiIcons.Stop}" Width="26" Height="26"/></Button>
+          <Button Grid.Column="2" x:Name="StopButton" Style="{StaticResource FooterButton}" Width="32" Height="32" Padding="1" ToolTip="停止正文音频" AutomationProperties.Name="停止正文音频" Click="StopClicked"><Image x:Name="StopImage" Source="{x:Static icons:UiIcons.Stop}" Width="26" Height="26"/></Button>
         </Grid>
       </Border>
     </Grid>

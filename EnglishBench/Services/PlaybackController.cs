@@ -10,25 +10,45 @@ public sealed class PlaybackController
     public PlaybackController(IAudioPlayer player)
     {
         this.player = player;
+        player.Opened += OnOpened;
         player.Ended += OnEnded;
         player.Failed += OnFailed;
     }
     public PlaybackState State { get; private set; }
     public string Owner { get; private set; } = "";
     public string? CurrentSid { get; private set; }
+    public bool IsOpen => player.IsOpen;
+    public TimeSpan Duration => player.Duration;
+    public TimeSpan Position => player.Position;
     public event Action? Changed;
     public event Action<string>? Message;
     public void Toggle(IReadOnlyList<AudioItem> items, string owner)
     {
-        if (Owner == owner && State == PlaybackState.Playing) Pause();
-        else if (Owner == owner && State == PlaybackState.Paused) Resume();
-        else Play(items, owner);
+        if (!ToggleCurrent(owner)) Play(items, owner);
+    }
+
+    public bool ToggleCurrent(string owner)
+    {
+        if (Owner != owner || State == PlaybackState.Stopped) return false;
+        if (State == PlaybackState.Playing) Pause();
+        else Resume();
+        return true;
+    }
+
+    public void Seek(double seconds)
+    {
+        if (State == PlaybackState.Stopped || !IsOpen || Duration <= TimeSpan.Zero) return;
+        player.Position = TimeSpan.FromSeconds(Math.Clamp(seconds, 0, Duration.TotalSeconds));
     }
 
     public void Play(IReadOnlyList<AudioItem> items, string owner)
     {
         Stop();
-        if (items.Count == 0) { Message?.Invoke("没有可播放的音频文件。"); return; }
+        if (items.Count == 0)
+        {
+            Message?.Invoke("没有可播放的音频文件。");
+            return;
+        }
         foreach (var item in items)
         {
             try
@@ -55,9 +75,20 @@ public sealed class PlaybackController
         CurrentSid = item.Sid;
         State = PlaybackState.Playing;
         long token = ++request;
-        try { player.Play(item.Path, token); Changed?.Invoke(); }
+        try
+        {
+            player.Play(item.Path, token);
+            Changed?.Invoke();
+        }
         catch (Exception error) when (error is IOException or InvalidOperationException or UnauthorizedAccessException)
-        { OnFailed(token, error.Message); }
+        {
+            OnFailed(token, error.Message);
+        }
+    }
+
+    private void OnOpened(long token)
+    {
+        if (token == request && State != PlaybackState.Stopped) Changed?.Invoke();
     }
 
     private void OnEnded(long token)

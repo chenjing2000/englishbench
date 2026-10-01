@@ -8,7 +8,7 @@ The design favors explicit responsibilities, concrete services, and small functi
 
 ## Framework and execution
 
-The application uses C# and WPF, targeting `net8.0-windows`. WPF XAML defines the window, templates, and bindings. Native `RichTextBox`, `FlowDocument`, and `TextPointer` APIs implement passage rendering and selection. A WPF `Adorner` hosts the selection-add button in the same visual tree as the passage. WPF media playback supplies MP3 decoding and progress.
+The application uses C# and WPF, targeting `net10.0-windows` with runtime version `10.0.11` or a later compatible patch. The build SDK is selected by `global.json`, currently `10.0.400`. WPF XAML defines the window, templates, and bindings. Native `RichTextBox`, `FlowDocument`, and `TextPointer` APIs implement passage rendering and selection. A WPF `Adorner` hosts the selection-add button in the same visual tree as the passage. WPF media playback supplies MP3 decoding and progress.
 
 JSON handling uses `System.Text.Json`; files remain the storage layer. The Python application is an archived migration reference, not a runtime dependency. The WPF reader does not use an embedded browser to render the passage.
 
@@ -18,12 +18,16 @@ JSON handling uses `System.Text.Json`; files remain the storage layer. The Pytho
 | --- | --- |
 | `App.xaml` / `App.xaml.cs` | Shared brushes and button styles; startup, command-line library selection, and main-window creation |
 | `MainWindow.xaml` | Three-pane layout, controls, templates, bindings, and conditional status-row visibility |
-| `MainWindow.xaml.cs` | Construct the state model and media player; connect window, state, timer, and playback events |
+| `MainWindow.xaml.cs` | Construct the state model and media player; initialize modules and coordinate shutdown |
 | `MainWindow.Library.cs` | Folder selection, tree selection, library restoration, and passage-control assembly |
 | `MainWindow.Vocabulary.cs` | Import confirmation, list selection, highlighting, and move/delete UI actions |
-| `MainWindow.Playback.cs` | Play/pause/stop controls, enabled states, progress updates, and seeking |
-| `MainWindow.Settings.cs` | Startup size, column widths, font/accent menus, six-second status expiry, persistence, and cleanup |
-| `ViewModels/MainViewModel.cs` | Active library/article state; vocabulary operations; command coordination; warning/error status |
+| `MainWindow.Playback.cs` | Playback controls and icons, progress timer, drag interaction, and media cleanup |
+| `MainWindow.Settings.cs` | Startup size, column widths, font/accent menus, and preference persistence |
+| `MainWindow.Status.cs` | Conditional warning/error status and six-second expiry |
+| `ViewModels/MainViewModel.cs` | Shared state, notifications, and operation errors |
+| `ViewModels/MainViewModel.Library.cs` | Prepare and commit library/article changes; resolve account-display context |
+| `ViewModels/MainViewModel.Vocabulary.cs` | Prepare word commands and coordinate vocabulary edits and commits |
+| `ViewModels/MainViewModel.Playback.cs` | Forward reader commands with the current article and accent |
 | `ViewModels/VocabularyEntryViewModel.cs` | A word's display fields, available pronunciation actions, and move/delete commands |
 | `Models/` | Passage segments, SIDs, selection ranges, vocabulary entries, navigation nodes, and loaded snapshots |
 | `Services/LibraryRepository.cs` | Discover marked book directories and recursively build the directory tree without parsing content |
@@ -33,7 +37,8 @@ JSON handling uses `System.Text.Json`; files remain the storage layer. The Pytho
 | `Services/ReaderWorkspace.cs` | Commit prepared library/article state and replace vocabulary after successful persistence |
 | `Services/VocabularyMatcher.cs` | Find non-overlapping literal vocabulary matches with explicit English-word boundaries |
 | `Services/AudioResources.cs` | Resolve sentence/word audio and select the first sibling MP3 for whole-article playback |
-| `Services/PlaybackController.cs` / `IAudioPlayer.cs` | Playback state, target ownership, pause/resume, completion, and stale-event rejection; player boundary |
+| `Services/ReaderPlayback.cs` | Select audio targets, enforce article-only controls/progress, cancel pronunciation, and report audio errors |
+| `Services/PlaybackController.cs` / `IAudioPlayer.cs` | Playback state, pause/resume, completion, progress access, and stale-event rejection; player boundary |
 | `Rendering/ParagraphReader.cs` | Build paragraph documents; maintain SID-to-text ranges, selections, styles, and playback requests |
 | `Rendering/SelectionAddAdorner.cs` | Position and show/hide the native circle-plus selection action |
 | `Infrastructure/JsonFiles.cs` | JSON helpers, SHA256 fingerprints, and temporary-file replacement |
@@ -42,7 +47,7 @@ JSON handling uses `System.Text.Json`; files remain the storage layer. The Pytho
 | `Infrastructure/UiIcons.cs` | Load embedded icons and create vector drawings, including disabled variants |
 | `Infrastructure/WpfAudioPlayer.cs` / `RelayCommand.cs` | Native media adapter and small WPF command implementation |
 
-The window's partial files form one class; they separate readable responsibilities without creating additional forwarding layers. Services do not reference the main window.
+The window and main view model each use partial files to group responsibilities while sharing their existing state. `ReaderPlayback` is a concrete service with no window or view-model dependency. `PlaybackController` operates through `IAudioPlayer`, which includes media-open events and progress. The window reads article progress and sends seek requests through `ReaderPlayback`; native media objects remain behind the player boundary. Repositories own file validation and persistence, the workspace owns committed content, and renderers own text/selection display. No additional service interfaces or generic frameworks are introduced.
 
 ## Important data flows
 
@@ -73,11 +78,11 @@ Paragraph documents are rebuilt when the case-insensitive vocabulary set changes
 ### Playback
 
 ```text
-UI request -> audio resource lookup -> PlaybackController -> WpfAudioPlayer
-Media event -> request-token check -> state update -> UI/progress update
+UI request -> ReaderPlayback -> audio resource lookup -> PlaybackController -> IAudioPlayer
+Media event -> request-token check -> ReaderPlayback state/progress -> UI update
 ```
 
-The bottom play/pause action owns only the selected sibling MP3; stop is global. Sentence and word requests have separate owners. Only one target plays at a time. Old completion/failure callbacks cannot advance or stop a newer target. Progress is shown for active playback and can seek within the current file.
+The bottom play/pause and stop actions own only the selected sibling MP3. Stop is enabled only while that file is playing or paused; it does not interrupt sentence or word playback. Sentence and word requests have separate owners. Only one target plays at a time. Old completion/failure callbacks cannot advance or stop a newer target. The bottom progress bar is shown and accepts seeking only for the sibling MP3 while playing or paused. Switching to a sentence or word hides and resets the bar, clears its drag state, and stops its refresh timer.
 
 ### Status and lifecycle
 

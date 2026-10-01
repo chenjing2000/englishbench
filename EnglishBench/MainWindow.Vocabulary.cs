@@ -2,7 +2,6 @@ using EnglishBench.Infrastructure;
 using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Win32;
-using EnglishBench.Rendering;
 using EnglishBench.ViewModels;
 
 namespace EnglishBench;
@@ -11,9 +10,10 @@ public partial class MainWindow
 {
     private void RefreshVocabularyHighlights()
     {
+        var words = ViewModel.Words.Select(w => w.Word).ToArray();
         foreach (var reader in readers)
         {
-            reader.SetVocabulary(ViewModel.Words.Select(w => w.Word), ViewModel.HighlightsVisible);
+            reader.SetVocabulary(words, ViewModel.HighlightsVisible);
         }
         HighlightButton.IsEnabled = ViewModel.Words.Count > 0;
         if (HighlightButton.IsEnabled)

@@ -65,15 +65,15 @@ public partial class MainWindow
             RefreshPlayback();
             return;
         }
-        for (int index = 0; index < article.Paragraphs.Count; index++)
+        var words = ViewModel.Words.Select(w => w.Word).ToArray();
+        foreach (var paragraph in article.Paragraphs)
         {
-            var reader = new ParagraphReader(article.Paragraphs[index], ViewModel.Words.Select(w => w.Word))
+            var reader = new ParagraphReader(paragraph, words, ViewModel.HighlightsVisible)
             {
                 FontSize = settings.FontSize,
                 FontFamily = new FontFamily("Segoe UI"),
                 Margin = new Thickness(0, 3, 0, 15)
             };
-            reader.SetVocabulary(ViewModel.Words.Select(w => w.Word), ViewModel.HighlightsVisible);
             reader.SelectionRequested += ViewModel.AddSelection;
             reader.SegmentPlaybackRequested += ViewModel.PlaySegment;
             readers.Add(reader);

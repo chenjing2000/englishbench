@@ -1,0 +1,13 @@
+using EnglishBench.Models;
+
+namespace EnglishBench.ViewModels;
+
+public sealed partial class MainViewModel
+{
+    public bool CanPlaySegment(string sid) => playback.CanPlaySegment(Article, sid, Accent);
+    public void PlaySegment(string sid) => playback.PlaySegment(Article, sid, Accent);
+    public void ToggleArticleAudio() => playback.ToggleArticle(Article);
+    public void PlayWord(VocabularyEntry entry, string wordAccent) => playback.PlayWord(Article, entry, wordAccent);
+    public void StopArticleAudio() => playback.StopArticle();
+    public void Stop() => playback.Stop();
+}

@@ -18,7 +18,7 @@ public sealed class ParagraphReader : RichTextBox
     private readonly List<VisualRun> visualRuns = new List<VisualRun>();
     private sealed record VisualRun(string Sid, int Offset, Run Run, bool Vocabulary);
     private string[] words;
-    private bool highlightsVisible = true;
+    private bool highlightsVisible;
     private string? playingSid;
     private string? focusedWord;
     private bool formatting;
@@ -29,9 +29,10 @@ public sealed class ParagraphReader : RichTextBox
     public event Action<string>? SegmentPlaybackRequested;
     public event Action<string?>? HoverChanged;
 
-    public ParagraphReader(IEnumerable<Segment> segments, IEnumerable<string> words)
+    public ParagraphReader(IEnumerable<Segment> segments, IEnumerable<string> words, bool highlightsVisible = true)
     {
         this.words = words.ToArray();
+        this.highlightsVisible = highlightsVisible;
         IsReadOnly = true;
         IsReadOnlyCaretVisible = false;
         BorderThickness = new Thickness(0);

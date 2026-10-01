@@ -100,7 +100,7 @@ internal static class ReaderControlsChecks
                 window.Close(); WpfTestHelpers.Pump();
             }
         });
-        Program.Run("native segment and vocabulary playback show seekable progress; stop resets it", () =>
+        Program.Run("segment and vocabulary playback never show or respond to bottom progress", () =>
         {
             var window = CreateWindow();
             try
@@ -115,13 +115,19 @@ internal static class ReaderControlsChecks
                 ((MenuItem)((MenuItem)settingsButton.ContextMenu.Items[0]).Items[0]).RaiseEvent(new RoutedEventArgs(MenuItem.ClickEvent));
                 var reader = window.Readers[0];
                 Program.Check(reader.RequestSegmentPlayback(reader.PositionAt(reader.Ranges[0], 0)));
-                WpfTestHelpers.Wait(() => slider.IsEnabled && slider.Maximum > 1);
-                Program.Check(slider.Visibility == Visibility.Visible);
+                WpfTestHelpers.Wait(() => player.IsOpen && player.Duration.TotalSeconds > 1);
+                Program.Check(slider.Visibility == Visibility.Collapsed && !slider.IsEnabled && slider.Value == 0);
+                var stopButton = (Button)window.FindName("StopButton");
+                Program.Check(!stopButton.IsEnabled);
+                stopButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                Program.Check(window.ViewModel.PlaybackState == PlaybackState.Playing && window.ViewModel.Owner.StartsWith("segment:"));
                 player.Pause();
+                double segmentPosition = player.Position.TotalSeconds;
                 slider.RaiseEvent(new DragStartedEventArgs(0, 0) { RoutedEvent = Thumb.DragStartedEvent });
-                slider.Value = slider.Maximum / 2; WpfTestHelpers.Pump(40);
+                slider.RaiseEvent(new RoutedPropertyChangedEventArgs<double>(0, player.Duration.TotalSeconds / 2, Slider.ValueChangedEvent));
+                WpfTestHelpers.Pump(40);
                 slider.RaiseEvent(new DragCompletedEventArgs(0, 0, false) { RoutedEvent = Thumb.DragCompletedEvent });
-                Program.Check(Math.Abs(player.Position.TotalSeconds - slider.Maximum / 2) < 0.2);
+                Program.Check(Math.Abs(player.Position.TotalSeconds - segmentPosition) < 0.2);
                 window.UpdateLayout();
                 var bitmap = new System.Windows.Media.Imaging.RenderTargetBitmap((int)window.ActualWidth, (int)window.ActualHeight, 96, 96, System.Windows.Media.PixelFormats.Pbgra32);
                 bitmap.Render(window);
@@ -131,8 +137,16 @@ internal static class ReaderControlsChecks
                 window.ViewModel.Stop();
                 Program.Check(slider.Visibility == Visibility.Collapsed && slider.Value == 0);
                 window.ViewModel.PlayWord(window.ViewModel.Words[0].Entry, "uk");
-                WpfTestHelpers.Wait(() => slider.IsEnabled);
-                Program.Check(slider.Visibility == Visibility.Visible);
+                WpfTestHelpers.Wait(() => player.IsOpen);
+                Program.Check(slider.Visibility == Visibility.Collapsed && !slider.IsEnabled && slider.Value == 0);
+                Program.Check(!stopButton.IsEnabled);
+                stopButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                Program.Check(window.ViewModel.PlaybackState == PlaybackState.Playing && window.ViewModel.Owner.StartsWith("word:"));
+                player.Pause();
+                double wordPosition = player.Position.TotalSeconds;
+                slider.RaiseEvent(new RoutedPropertyChangedEventArgs<double>(0, player.Duration.TotalSeconds / 2, Slider.ValueChangedEvent));
+                WpfTestHelpers.Pump(40);
+                Program.Check(Math.Abs(player.Position.TotalSeconds - wordPosition) < 0.2);
                 window.ViewModel.Stop();
             }
             finally
@@ -140,7 +154,7 @@ internal static class ReaderControlsChecks
                 window.Close(); WpfTestHelpers.Pump();
             }
         });
-        Program.Run("bottom play uses the first sibling MP3, pauses only that target and global stop clears audio", () =>
+        Program.Run("bottom play and stop control only the first sibling MP3", () =>
         {
             var window = CreateWindow();
             string root = Path.GetFullPath(Path.Combine("artifacts", "controls-tests", Guid.NewGuid().ToString("N")));
@@ -169,7 +183,7 @@ internal static class ReaderControlsChecks
                 var player = (WpfAudioPlayer)typeof(EnglishBench.MainWindow).GetField("player", BindingFlags.NonPublic | BindingFlags.Instance)!.GetValue(window)!;
                 player.Volume = 0;
                 window.ViewModel.PlayWord(fixtureWord, "uk");
-                WpfTestHelpers.Wait(() => slider.IsEnabled);
+                WpfTestHelpers.Wait(() => player.IsOpen);
                 playButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                 WpfTestHelpers.Wait(() => slider.IsEnabled);
                 Program.Check(window.ViewModel.Owner == "passage" && window.ViewModel.PlayingSid is null);
@@ -178,14 +192,39 @@ internal static class ReaderControlsChecks
                 Program.Check(WpfTestHelpers.IsIcon(((Image)playButton.Content).Source, UiIcons.Pause));
                 playButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                 Program.Check(window.ViewModel.PlaybackState == PlaybackState.Paused);
+                Program.Check(((Button)window.FindName("StopButton")).IsEnabled);
+                ((Button)window.FindName("StopButton")).RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                Program.Check(window.ViewModel.PlaybackState == PlaybackState.Stopped && slider.Visibility == Visibility.Collapsed);
+                playButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                WpfTestHelpers.Wait(() => slider.IsEnabled);
+                playButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                 slider.Value = slider.Maximum / 2; WpfTestHelpers.Pump(100);
                 Program.Check(window.ViewModel.PlaybackState == PlaybackState.Paused && Math.Abs(player.Position.TotalSeconds - slider.Maximum / 2) < 0.2);
+                Program.Check(slider.Focusable && slider.FocusVisualStyle == null);
+                double position = slider.Value;
+                Slider.DecreaseSmall.Execute(null, slider);
+                Program.Check(Math.Abs(slider.Value - (position - 0.3)) < 0.001);
+                WpfTestHelpers.Pump(40);
+                Program.Check(Math.Abs(player.Position.TotalSeconds - slider.Value) < 0.2);
+                Slider.IncreaseSmall.Execute(null, slider);
+                Program.Check(Math.Abs(slider.Value - position) < 0.001);
+                slider.Value = 0.1;
+                Slider.DecreaseSmall.Execute(null, slider);
+                Program.Check(slider.Value == 0);
+                slider.Value = position;
                 window.ViewModel.Accent = "us";
                 Program.Check(window.ViewModel.PlaybackState == PlaybackState.Paused);
                 playButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                 Program.Check(window.ViewModel.PlaybackState == PlaybackState.Playing && media.Source.LocalPath == Path.Combine(root, "a-first.MP3"));
                 ((Button)window.FindName("StopButton")).RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                 Program.Check(window.ViewModel.PlaybackState == PlaybackState.Stopped && slider.Visibility == Visibility.Collapsed);
+                playButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                WpfTestHelpers.Wait(() => slider.IsEnabled);
+                slider.RaiseEvent(new DragStartedEventArgs(0, 0) { RoutedEvent = Thumb.DragStartedEvent });
+                window.ViewModel.PlayWord(fixtureWord, "uk");
+                WpfTestHelpers.Wait(() => player.IsOpen);
+                Program.Check(slider.Visibility == Visibility.Collapsed && !slider.IsEnabled && slider.Value == 0);
+                slider.RaiseEvent(new DragCompletedEventArgs(0, 0, false) { RoutedEvent = Thumb.DragCompletedEvent });
                 playButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                 WpfTestHelpers.Wait(() => slider.IsEnabled);
                 slider.Value = slider.Maximum - 0.1;
@@ -197,13 +236,13 @@ internal static class ReaderControlsChecks
                 Program.Check(window.ViewModel.PlaybackState == PlaybackState.Stopped &&
                     window.ViewModel.Status.Contains("同级目录") && !player.IsOpen);
                 window.ViewModel.PlayWord(window.ViewModel.Words[0].Entry, "uk");
-                WpfTestHelpers.Wait(() => slider.IsEnabled);
+                WpfTestHelpers.Wait(() => player.IsOpen);
                 playButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                 Program.Check(window.ViewModel.PlaybackState == PlaybackState.Playing && window.ViewModel.Owner.StartsWith("word:") && window.ViewModel.Status.Contains("MP3"));
                 window.ViewModel.PlayWord(window.ViewModel.Words[0].Entry, "uk");
-                WpfTestHelpers.Wait(() => slider.IsEnabled);
+                WpfTestHelpers.Wait(() => player.IsOpen);
                 ((Button)window.FindName("StopButton")).RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                Program.Check(window.ViewModel.PlaybackState == PlaybackState.Stopped && slider.Visibility == Visibility.Collapsed);
+                Program.Check(window.ViewModel.PlaybackState == PlaybackState.Playing && window.ViewModel.Owner.StartsWith("word:") && slider.Visibility == Visibility.Collapsed);
             }
             finally
             {

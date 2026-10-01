@@ -22,15 +22,19 @@ public partial class MainWindow : Window
 
         ViewModel.ArticleChanged += RenderArticle;
         ViewModel.VocabularyChanged += RefreshVocabularyHighlights;
-        ViewModel.PlaybackChanged += RefreshPlayback;
-        ViewModel.PropertyChanged += ViewModelPropertyChanged;
-        statusTimer.Tick += StatusTimerTick;
-        player.Opened += PlayerOpened;
-        progressTimer.Tick += ProgressTimerTick;
+        InitializePlayback();
+        InitializeStatus();
         Closing += WindowClosing;
         Closed += WindowClosed;
 
-        RestartStatusTimer();
         RenderArticle();
+    }
+
+    private void WindowClosed(object? sender, EventArgs e)
+    {
+        double volume = player.Volume;
+        CloseStatus();
+        ClosePlayback();
+        SaveSettings(volume);
     }
 }

@@ -8,7 +8,7 @@ namespace EnglishBench.Infrastructure;
 public static class JsonFiles
 {
     public static readonly JsonSerializerOptions Options = new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping };
-    public static string Fingerprint(string path) => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(path)));
+    public static string Fingerprint(string path) => Fingerprint(File.ReadAllBytes(path));
     public static string Fingerprint(byte[] content) => Convert.ToHexString(SHA256.HashData(content));
     public static string WriteAtomic(string path, object data, Action? beforeCommit = null)
     {
