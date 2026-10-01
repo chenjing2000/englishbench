@@ -1,0 +1,36 @@
+# .NET build outputs
+**/bin/
+**/obj/
+
+# Published application, test outputs, screenshots, and temporary validation
+/artifacts/
+
+# Machine-specific application settings
+reader-settings.json
+
+# IDE and local tool files
+.vs/
+.idea/
+/.codex/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.rsuser
+
+# Temporary files and logs
+*.tmp
+*.log
+*.bak
+*.swp
+*~
+
+# Windows and macOS filesystem metadata
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Local Python migration archive; not needed to build or run EnglishBench
+/reference/*.zip
+
+# Keep source, docs, embedded icons, and regression fixtures (including MP3s).

@@ -1,0 +1,1470 @@
+[
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\When America walks away.json",
+    "Hash": "6952E8DBF279773EACF22A2543668DB1F1E2CD02D8B304B10D6518206BA79ACE"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\When America walks away.vocabulary.json",
+    "Hash": "F2A2138E687891C7007A022F5EB9A9F79E36C28FE0A4C42CCDF5FEB949113081"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s001_uk.mp3",
+    "Hash": "E938EE57DAF1FF069C5438421B6121FEF59EC6AA0CD8C40C1E05A906BC4CB256"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s001_us.mp3",
+    "Hash": "936A4B30F742C14BD905D44C0CC28542DC512BD99C535E41CED40D1219BF829D"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s002_uk.mp3",
+    "Hash": "6969EE33C069D4E9352EF5D14A74694869D5892B91CAC77DF6483A536D05F6CC"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s002_us.mp3",
+    "Hash": "4719FEDBD95886FCFC36C66E9266AF2D1172DE7BCC41EAB4879E518B413BF9B0"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s003_uk.mp3",
+    "Hash": "489DCAF49CA9DB410D319285FEEDC9719A226400E124E22E26ECDC969BFD2407"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s003_us.mp3",
+    "Hash": "572E23790F58F1CC57AB10866AD36835338596AABC01093A70FE1534F128E36F"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s004_uk.mp3",
+    "Hash": "AD6E1C02554833375C791A971599BDC741A6571A738B5B8FEF93203481D5C0F6"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s004_us.mp3",
+    "Hash": "95876003A6D2818985A3ADC10CC9AF584FF93339C99385701EA1DF59EF484864"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s005_uk.mp3",
+    "Hash": "AE286EF9E5231C98F0D7BD741CDE854E7959B9AD8655812C95F363799C420009"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s005_us.mp3",
+    "Hash": "D9A66436E847A2F55DBA4CACFAEF00FAC729971F74EC724DD0D1AC5C2967C58D"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s006_uk.mp3",
+    "Hash": "544B727DD1DBFC59BD6DB185E63FF2D35E538F77E455DD1EBC695925638BD6A2"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s006_us.mp3",
+    "Hash": "DA9A21A42414344BCDE6E6456307BB0FB8379A5E73F3ED531487575D49DDC2C2"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s007_uk.mp3",
+    "Hash": "FC5F8FA97A672B9544C0700EBEDBD6C9EC6A826DAD3580E2BC79529602526CC8"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s007_us.mp3",
+    "Hash": "D8E276760ED9344D91BA52D1A3295D666C888A5FF7233BCD902FF42536ED2D1D"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s008_uk.mp3",
+    "Hash": "A1E9A41BE21A0355CB39EAB8D4D304A774776583C306F632DB24AD9243B83666"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s008_us.mp3",
+    "Hash": "D10BA9D86CB9C3D428F670D91778FBBA6008347747D11AA622765A100DD3C0A1"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s009_uk.mp3",
+    "Hash": "D642C515EA252C9D291DF53635296008B4C2B1855387FBD0DBDC7ED70E966482"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s009_us.mp3",
+    "Hash": "42F34697B9AB31FB50EC5A29E5FCB8404C178176BB6B3918011AB691BD5E3E73"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s010_uk.mp3",
+    "Hash": "B53950D619F57C93B58B5672EA35655FC4E5B39D843C9E883C766A089F76BCA2"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s010_us.mp3",
+    "Hash": "DA28E5000C560271709699B281827A3F59ABC9B21AFA0E5875749DB55BA390D9"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s012_uk.mp3",
+    "Hash": "AD212BDB2B9149B50D75729F2E6903104FDA118A92EF3F602ADF74A8E849F4F5"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s012_us.mp3",
+    "Hash": "13A1D9C2A95623FAD9987E44CF6340D1E5E3AEC86139168451ECF333C977E759"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s013_uk.mp3",
+    "Hash": "1F50076078541B358008A98C7BE90183EF773991A4016F86C37AE1222F1A1710"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s013_us.mp3",
+    "Hash": "2F487E5DFC68BC60FFEE33BD2C6A14C06F2364BA2380F5628EF121B950425D92"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s014_uk.mp3",
+    "Hash": "63687A543A85AB2DEC633D664080594C90442350ED885932D03606EA9A8A72D2"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s014_us.mp3",
+    "Hash": "018A88B2493C8E44394C5BBD4C6C3476F0A6285B167AD023D6A81EAC8B603D81"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s015_uk.mp3",
+    "Hash": "2DDC990582A21BEF60B2487CF71F216E9211F3D87F2AA2FFC3DB7AE996DFFF77"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s015_us.mp3",
+    "Hash": "47F9731FEFF326914970C3AB8CE8B5FBD60AEDB37A3DD605BF6691FD091C3D04"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s016_uk.mp3",
+    "Hash": "508F4680F0C9F765BA79EC9D506E05066B7DCF2654C9F6C19BFECADE9B0F0697"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s016_us.mp3",
+    "Hash": "6B140439FA5F0F994CABA0250AC95800ED0E7728868DD1C8AD59AEABC3CABED3"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s017_uk.mp3",
+    "Hash": "5C29BFC3A0AEEB4A82E4BE6D49FAB986D7AF9E1BDA879109BEBF67532C0829A9"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s017_us.mp3",
+    "Hash": "B9B7338059EDE2A04D18029FA7CE5F7C3742A9BE2C02549CD6A133A1FED5BB46"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s018_uk.mp3",
+    "Hash": "5F7452B2DFFC80AB30F9CBF0F3CBE242D2225D444BC55EADEDC6F52A68BA1AE8"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s018_us.mp3",
+    "Hash": "73CC57A6E62DBF191D814048F36B0F6DCC448C16533EA326714B7B6A3F6749EE"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s019_uk.mp3",
+    "Hash": "5E5AB611D46711921B08C6911CC242F1DD380438DA7973B815BCE1D26E9933DE"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s019_us.mp3",
+    "Hash": "16D946CB48AD1DDAE64E79DEEBE92298F8A568294DACCBDEF63C9DB5BE5EFA18"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s020_uk.mp3",
+    "Hash": "552444B7DA463225E2B1FEC266D7F665295B4B6B1CC2ABD4576F3360C3B573E9"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s020_us.mp3",
+    "Hash": "ECEBCEF48148D9991C5607375F0C5C6D3EB500153CC8A57F10B07B751998925E"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s021_uk.mp3",
+    "Hash": "CA9185AE906D10EF3F5068B5ECACEB24EFA109916AFD6CEC7DA15B226F1A189B"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s021_us.mp3",
+    "Hash": "D33D48A06398978EB94B49D95E71C048E64017108DB4FC169400AEB1DBC777F1"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s022_uk.mp3",
+    "Hash": "DED65052A1D5475ECD105BBED795B6CCCCA414B83711034D7FCD670D24028418"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s022_us.mp3",
+    "Hash": "52BBBCC25103696C79F680D17A3AA835D14C08A6F385DD5F05B8F0DA4DC358D8"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s023_uk.mp3",
+    "Hash": "0A7896C8173FC41C8E080EA7E2E68F62B050DC097968DEF62E8C5C4D0ADF8348"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s023_us.mp3",
+    "Hash": "E526273BE969F3324F40AAD8CAE4CCC1DEC536F0162F95A5B484C7E58C40DC94"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s024_uk.mp3",
+    "Hash": "8F8314C16DF529FFDEA0CA6D85217BE087340E275230113C0FE73CAC7A5E4709"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s024_us.mp3",
+    "Hash": "71BB6DD1F597ADB98BE314D75B20BBDE3C6AC28D5AEA7211C1BD86C05452DE40"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s025_uk.mp3",
+    "Hash": "66F42599608C23287C3B3B1C4F82245628B647DFCBABAB982BD0F0CF888DE79A"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s025_us.mp3",
+    "Hash": "34FA45E4D5E67FA47F56F1E5AD98782B14C4E40257C246CADC386EAF23612D24"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s026_uk.mp3",
+    "Hash": "C264541F82DAB3D574773372089E1CEF12810A09B47DB31EC6FDD5E6E1D331DC"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s026_us.mp3",
+    "Hash": "7C504C18085A3FD4E961901C9A5EFEF60CE95217E972C147A0524DCA661F6D42"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s027_uk.mp3",
+    "Hash": "6D09334930E0BB819155C57F435F59B5E1D3B26FC5F4565873D891DC5697FA67"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s027_us.mp3",
+    "Hash": "36BE1495D44107DFFBD486C6E316965FB1BBA162B4896C00877BE082534DA2ED"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s028_uk.mp3",
+    "Hash": "BC513A3E717878B345DF13BAA48BCBB9DC2559A1BE34BD2E61796D168BA41CF6"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s028_us.mp3",
+    "Hash": "C42375BED74C1A1BC60F27CEEA0C78C51F960B68E3110E8700439E00A03A67BF"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s029_uk.mp3",
+    "Hash": "0075A45945E50243FCAD5A9F2AC6660DF65C9AD079F800737AF7AC2BB0CF0E66"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s029_us.mp3",
+    "Hash": "C76250E11660AACB1A01242C7EE7387BB798D56551FEE76542937AEE1CFE04D5"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s030_uk.mp3",
+    "Hash": "58B3448CF34E004768E8DAC9EBB5DADCE2BB3FB9818E374C0654CD9B1AE154CD"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s030_us.mp3",
+    "Hash": "808A5ACCF52E3C7FA4F5CC2500B2AA9C81CFAB257524B1184E5A2E58FA8990DC"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s031_uk.mp3",
+    "Hash": "66800BC381280AABA761F234C5FB9728D3DE4F6DFE558EFD1DEA21E8E1A6C212"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s031_us.mp3",
+    "Hash": "BBD22654BBA77B24A845938C9A5176462D7DBC9228D3C45AD697564EC06BD14C"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s032_uk.mp3",
+    "Hash": "75244C8AE397157BA1BC248E576D6322CC16DA3909F878619D77EA5C33D86889"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s032_us.mp3",
+    "Hash": "3090FD6655C4105F62D5AB7DB90E602C949737BE0859992B6CFB5964C8CCBFAD"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s033_uk.mp3",
+    "Hash": "4A3133C2EDDA7328FE9F7463613ABBB8767EA894B1226FCE4EBBD7783CCEC26D"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s033_us.mp3",
+    "Hash": "3DC2942C80168E7FD8513C5F065F2A031A549769FA7EB99E83763918376E9DA9"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s034_uk.mp3",
+    "Hash": "F16D3AF3DF31857B8FB93F50A1A7337C0B9B7BEBC5FD39A1D6DAEC93FEB15205"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s034_us.mp3",
+    "Hash": "A427940C73F47A61843B8DAF34291CD96ED67D8F081E40D09C268D5F2D01DC69"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s035_uk.mp3",
+    "Hash": "C29CA1DABC5E2BB10DEE8139C51E909BF5F60C97F360A397EA8F6354C23D6FFC"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s035_us.mp3",
+    "Hash": "FE80215DED0570F5C36AB247FD1977E6E52FF8627AE6DC6F82AE3077EA10AE7D"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s036_uk.mp3",
+    "Hash": "04836EF31DD11FBCA5760EC082B2BFD34D27F5DB867FD20D54B380B6C78F2689"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s036_us.mp3",
+    "Hash": "B23980D2AE44182566A22FF465F2373996CAC5AFA9AB0430D50A7D75900DFB49"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s037_uk.mp3",
+    "Hash": "BB07F6D4FF032403DF3CCD195936810510BC187FEC99BCF54DBB982EB03F36FD"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s037_us.mp3",
+    "Hash": "2016C352328995958AAE9C8434CCB06852C30A32F24A4E366A3D3CBD3216EABF"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s038_uk.mp3",
+    "Hash": "D49CE2FD68797D772F7AB5778A189C542BA70B33B09F4A02A28C235D37482DFD"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s038_us.mp3",
+    "Hash": "61DF8E2FC198A6C772548A2D4D288EE42912FDE6B6274840B7A556BB57483B86"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s039_uk.mp3",
+    "Hash": "EA7AFEAA36D654F189407831A6DCC825A0714E89EC83E5CE05DAF781882D73D8"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s039_us.mp3",
+    "Hash": "6D02132E2C4928EC60065C892BD2DE84AE429816E5209064B7889B30D607CFC8"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s040_uk.mp3",
+    "Hash": "EA037900C93686BDD027D55ACE8E266F842EEDF3E8A5D7314041248A273E7CF9"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s040_us.mp3",
+    "Hash": "40A8E3ED96FF20603F80D49D4194769E15E88B1CB9CF22070D753CB9FD5DCBA5"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s041_uk.mp3",
+    "Hash": "0144E47A5D28308EF8E5CAC0BD975235894EB2AFC22923EAD66F70A46845919F"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s041_us.mp3",
+    "Hash": "3384C5C6DDE30FBEFEC703B670DF1950E3F0F7291982994EB0A9810F932B8DFD"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s042_uk.mp3",
+    "Hash": "A04014B4D78643E4A3D7BD454AD3DAF1FE454651E1406F3545895103DA2369F9"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s042_us.mp3",
+    "Hash": "8D995623F39238435D850CB3071B6BDB8C9C79A747BB5BACD9F972E04C35B966"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s043_uk.mp3",
+    "Hash": "A0A40989E2F54B5042B8606B4FB8E25DB69B6C3A630214B329FED56F3827E10D"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s043_us.mp3",
+    "Hash": "B0C57A3DD3D1A925ED6AB0FEF911D51801E70FAB47CDFFE31A7778F092CD88B4"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s044_uk.mp3",
+    "Hash": "C47CED056F3F4D6719A07427C142A1578381E5311DEC16E27B8F59B1031873C3"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s044_us.mp3",
+    "Hash": "B0E55B4FFB74DDA01C610E42C220D16E27FDDF709612C7AF21B46FEEA08ACAF0"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s045_uk.mp3",
+    "Hash": "3138B69586EA80F02E3C826AACD49BFA7FD595584111140B8AB0D2FA9AA2B5EA"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s045_us.mp3",
+    "Hash": "93AA99A8FCFCB893D76169A2434F44CFB78AC0E50AEB5F7562DD96C2E778FAB9"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s046_uk.mp3",
+    "Hash": "C4C47A1A130DDDBDE32A9778BAD9580117EF779BCADC887B1C7D16E92B63E94A"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s046_us.mp3",
+    "Hash": "ADD3A773157A1F7AA2055E7D847273B7C166B8D064BC7627E804B8559D9C9371"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s047_uk.mp3",
+    "Hash": "4E37A2CAA511F134C437AF6D169CD410BA2D38F479B81EA692D71B9A8B0E4547"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s047_us.mp3",
+    "Hash": "3206D3E3FC85CDE129365BD17E0E08E24E44F7C7EC02F8F545BD746D8F49FD9D"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s048_uk.mp3",
+    "Hash": "C0D420AFBCCE8EFD44A366946D4B99967B7E11808ED4194E8432605A9C3D6CC5"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s048_us.mp3",
+    "Hash": "5D3AB975385FBF7871A4DBAE3EB432CA8239E90FDF0A9746A5BA787C15E5D8FC"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s049_uk.mp3",
+    "Hash": "76F447E3D571739DBA40AC097B79198EA6475319D038E41154AE33265F1CE885"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s049_us.mp3",
+    "Hash": "E0AB1247B73B8437577908077381C4A7B6E3AD12AF1C14EE3F1A3D72DC99E788"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s050_uk.mp3",
+    "Hash": "A05AC611BC54F6994E4496B724432C93A4989E360D1C573491A827ED8054740B"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s050_us.mp3",
+    "Hash": "A734B772CFBBE0EE01E3001265CCAB8EAC6CF586741F87C8D047210B399F2486"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s051_uk.mp3",
+    "Hash": "66324F444663B35FEF79EEFE1F15CB0EFAE6575D132DC7E45DF2372EAE189C2A"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s051_us.mp3",
+    "Hash": "D5895E6D2EA7EA28F9AAEDDB238E99C6D6FACC4CCBBCBF298A034CF5ACB15AF7"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s052_uk.mp3",
+    "Hash": "20FAD184D703B45E5763ECAFBD3B3FD10C9B5C995609FDCE723670A5A0FABB5B"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s052_us.mp3",
+    "Hash": "EEBD6B13237AC84356C952F7A4FF4A23BE1A3C1E27C1F9ADAD059D4C5957E581"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s053_uk.mp3",
+    "Hash": "23749D85C6CA4DBDA5E7D9CA9BE3061C38E0A2F3897BB3DC8EB15BCB0A2524C8"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s053_us.mp3",
+    "Hash": "F7E9F2A4E184DF9CE377CB9A6A2EC04ABA1C65813548A99AE4EDE761081A672D"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s054_uk.mp3",
+    "Hash": "672346519DCC59CDB2D5DED429A3A80E6844391C67FDF32A4022814D343D3561"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s054_us.mp3",
+    "Hash": "534711F9B7D4C66536BE82CE4BF230C01E3DA6E22A3C361877FAC52D29E050BF"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s055_uk.mp3",
+    "Hash": "9B91DA8F2C6088EB39F8A068E0D69F090C1A5702D5258FAEC2930969569A4CFF"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s055_us.mp3",
+    "Hash": "4C7F3ABA6A38A9C6F25D1B0984BD7A907A1186CCAB6A68ED9D25F282A3C3E2AA"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s056_uk.mp3",
+    "Hash": "F7EAEE13700341EE593868C4F6F6A12034CB48C1D71269EBF563B4115C1348EC"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s056_us.mp3",
+    "Hash": "4ED4513360D1605666FBDA3E4D6C701E5AFC968502CC454F85023F72189BEFC0"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s057_uk.mp3",
+    "Hash": "F911A0207F88A4BB64CEFB526E82B279853F57DDD92C30F6BA34AD22DB600E10"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s057_us.mp3",
+    "Hash": "8E710D17057ED36A491257271D33A733A8EB11F5BD1FB62C71742CE41BDA543D"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s058_uk.mp3",
+    "Hash": "B924332D75CDC10F3CB6F697EA6649342AAC40E3A852386777B2490CD9637BA0"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s058_us.mp3",
+    "Hash": "2DDA3CC486A814AAF0EC7041AAE98420C14FF75FD4CC038349BF797832C908C4"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s059_uk.mp3",
+    "Hash": "322601F08178831E01CA505C1BD8F906FBFAC425F4ADE2CE88670A4233B62687"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s059_us.mp3",
+    "Hash": "6D59124E70D4055FFE47992521F54F75AF52E89210AD99769CED0210127012D9"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s060_uk.mp3",
+    "Hash": "5DDB2555164157C426F74C27DC1918960C259CFD547C372E9E3923C4B3F5773C"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s060_us.mp3",
+    "Hash": "20D4AC9536852F595A3624E59716C9AE44345581952D38734317405FB3999904"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s061_uk.mp3",
+    "Hash": "BEED1238FEFA676C2C99230B0B1A1BDD261157DFB290BBC886B87583BECE1D5D"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s061_us.mp3",
+    "Hash": "917970456DCAC7CCE29DB84E053A544C179932C13279CFCB7249EAD0B13510C7"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s062_uk.mp3",
+    "Hash": "6A0C683F0B5B4354A01962B130E3B1FBB0DD51150CE4B2AA7F2356AF9261CB32"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio\\s062_us.mp3",
+    "Hash": "FE58243E9E954962BF483EA9D42C98C34A0CE26A787ACD97C730E8F2EC1CE53D"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\abuse_of_human_rights_uk.mp3",
+    "Hash": "94B875A7016E9E36179E97EA827BC6225AA6941F03E4CB95342BA40D20CCB229"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\abuse_of_human_rights_us.mp3",
+    "Hash": "DF4B6464159AF0EDE2D93C8E5CA10AEB8A770E214B0B249DF17B114365C733D6"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\afar_uk.mp3",
+    "Hash": "CFDB5294D2956598AE4BB28D4AAA7C4072FD8E426157FB92890E81E10650A59D"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\afar_us.mp3",
+    "Hash": "E9FCCB0A5C1EE24C6F60F74A0695A061961AD61B40D970DB7F20B09EDC89F01B"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\agenda_uk.mp3",
+    "Hash": "DC4E6892D44B408B45430FF66D40DE88A823809CC789EB1D8D4ED375A0DEE46D"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\agenda_us.mp3",
+    "Hash": "A752389D6C0ABFE6D5EA1484E8FB14A41874A613B053C5F5BC10BFAACC27262A"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\aircraft-carrier_uk.mp3",
+    "Hash": "92EB24608AC998091B6EA79B57CCE58895E31FC095D408FDB39BEA91186FA369"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\aircraft-carrier_us.mp3",
+    "Hash": "2E7E4F511DB8359681243D8A5F5D2DBCC3DBED74669155F2AE7111F014589108"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\anaesthetise_uk.mp3",
+    "Hash": "72B7A838CADE29B098FE50DE00EAC1B1CFB0AE0C11910C696A33D7C09BF0C6DA"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\anaesthetise_us.mp3",
+    "Hash": "FE00DB4170FB8D5920359D2DFEC085AA7E18A6FB4DC48A318F91CD35F947E4E9"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\annihilation_uk.mp3",
+    "Hash": "7C5C62C2D6B4EC38602342D8C5E16D1700298C0BFFBFD92D3CD67018489A89CA"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\annihilation_us.mp3",
+    "Hash": "9357DF494A09770DC8047FF9CF764106AC3084D4D88C77E6246663E44F62953D"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\architect_uk.mp3",
+    "Hash": "78A73150E1EB4F6900CE763B25D8238F93DD25DB235BFFFC31A246D71DD2F448"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\architect_us.mp3",
+    "Hash": "EFAC99624A46E44B5FF3DECB6CA24CD8F5AADD50F899479FAC96393E81E89473"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\arsenal_uk.mp3",
+    "Hash": "91C28DC16847AAE2411269821FC6ED0D411037553E5C0565BEB47D009E6CE8ED"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\arsenal_us.mp3",
+    "Hash": "5589AA44B7A97E761AF1A5FE9D177EBEE6C6E092CAE8AEA3EF7E4267A5A69B20"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\as_is_likely_uk.mp3",
+    "Hash": "AE320F5133AE6025EDF8379ECBEEBF713D9A1771D66A0C7589EB9765D946E84F"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\as_is_likely_us.mp3",
+    "Hash": "3BB5DACD1696804995CFAD415F185B2874CFF0389167926FD5D7451151EB6639"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\be_at_loggerheads_uk.mp3",
+    "Hash": "D0AC39441C6780FE785DD2B18C302666062D7EBC52F8914920F358A91A6AF590"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\be_at_loggerheads_us.mp3",
+    "Hash": "6B460AAFDEB3608A4B63E0522CDF5946E079181CE33317AA07344970A644D4E1"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\be_focused_on_uk.mp3",
+    "Hash": "DC292079EA5DB54981E5663C823B4E91566FC416693883F64693103E022A30DF"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\be_focused_on_us.mp3",
+    "Hash": "9BD2CD892668E0F0393A0496119B26155BE5A38DD92398E975DBF619BFF324E2"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\be_imposed_from_afar_uk.mp3",
+    "Hash": "5FD44B97CA8667CE2CC68AFDC1CD648F5A99C162979048980B49368484846B67"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\be_imposed_from_afar_us.mp3",
+    "Hash": "E3B3C8584BD9C784D4943BCEE63846A937EE1A0B958CC0A33FDCCAE3EF862A20"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\be_in_no_position_to_uk.mp3",
+    "Hash": "A205E992CFF344C919A5F644E5AFDA7510BE8C4EA173BCBC940B742B25A15C5C"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\be_in_no_position_to_us.mp3",
+    "Hash": "0D430F6BBB04DEFAD6A56FC0C2672093CD0ED775B44BC3B69CD49CDF7C3DA4EB"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\be_obliged_to_uk.mp3",
+    "Hash": "2683641F7E3AF9078D3476C3550A65E50270B3100A02C8315E5779F1C2943EDE"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\be_obliged_to_us.mp3",
+    "Hash": "483891F2CE4F3D26DA039A4F158050DE741FBB49C677165107C095995F19091F"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\be_stuck_in_uk.mp3",
+    "Hash": "ADD116A2DC791CD6A0201CB736E5822256407C953B130CE0FBC435AC8137D0FE"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\be_stuck_in_us.mp3",
+    "Hash": "BFCE1AE47330CAD29969F2110678F4B67E1D1DDFE056DFD987A0BF62C788EBDF"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\beacon_uk.mp3",
+    "Hash": "1A4DFA3F5D74492A0D6DB5D5CFBFEE959B695FAFF8F4457D9EDEAF57265DDB12"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\beacon_us.mp3",
+    "Hash": "15DCF80329C70D1024EBFC9F9CC14378D52EC416D2318CC17D8E4C9F4E725C6D"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\behind_one's_back_uk.mp3",
+    "Hash": "5743ECF774286125A24E4C358F416A2A2CA5ADF345C7EF94C4273EDB63DBDC9A"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\behind_one's_back_us.mp3",
+    "Hash": "29400592888767EF898C0ADD759F20DC72E455044185FED1E2DD29FCD5E63BCB"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\beneficiary_uk.mp3",
+    "Hash": "D5244A8FA39B5C22B8F285A00C7EB5E831C6F232B5DBCB172653B10744DAC100"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\beneficiary_us.mp3",
+    "Hash": "F1BF297F856EF2DD08DA58F5F5AE4F2EBC92F213B72EA31EF0B4C0CDF534C0F1"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\brotherhood_uk.mp3",
+    "Hash": "603631FE0890436E05382B4BC9313D428B256A29375DDB07696C21CAFB75E5F7"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\brotherhood_us.mp3",
+    "Hash": "0C5E3559180F3DC3BC4337C1EAB86443F358FB2E00F74A64E6D77B856768074C"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\bully_uk.mp3",
+    "Hash": "36829B5136A93E5ECE5AF31DDB3C002CCFDE89FA8E9F57225940D47FA5BF5046"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\bully_us.mp3",
+    "Hash": "E1F1A160CA616397F1D4C7B0C54A12100A927EECC574ABCFC85DBC25805CDCFC"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\by_contrast_uk.mp3",
+    "Hash": "6A6B6C549A569A2C047A2FCB13B1C211F0D7485DB6F2B0C42B929606818BFF2C"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\by_contrast_us.mp3",
+    "Hash": "E66E64B2998CDEAA63FE81DBC1C6F07949947E2E373DE8DB006EFE7E436D01C1"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\champion_uk.mp3",
+    "Hash": "B92BBCE9060C080D0190CCAFB8E95CDA846BCDE51B80AF2E1BAC06093F9C20F9"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\champion_us.mp3",
+    "Hash": "3622A19809E813AB77A5D3485F14CB137075B9FEB5955011809B8CD4B5A7F596"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\colossal_uk.mp3",
+    "Hash": "090B75B5E2529D0A70C366D9B4F5AFFE4F3F3F5834E5408F670316E65322CAD0"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\colossal_us.mp3",
+    "Hash": "BEB58F292A6287ECCE126C7263B7811E22471FCE77DB87370EAE230DD2DA53AF"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\counter_uk.mp3",
+    "Hash": "655BA2BC422DE1956271CB7CEFEC0438C844CEA2639EABCAA9D3E0477758770A"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\counter_us.mp3",
+    "Hash": "4993DF4FCFD29825DCA6D6212E31D8A7B0D680B8896E51A7C323ADD2202D61E8"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\covert_uk.mp3",
+    "Hash": "683EC28D9182213022355899AB0596C24BBB347215C9235321A29160D11D223C"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\covert_us.mp3",
+    "Hash": "02DA50497A60C97648605A524860ECA5C40ACE6D1F21DB18519523B067173AA6"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\crush_uk.mp3",
+    "Hash": "41057B4400FE5B70B81C9791ED622AC9ED2BCAF5578EF105B8081F87E2225BCE"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\crush_us.mp3",
+    "Hash": "4DCBD5F7F5C359E338B1A5344ACD4536486CD98B7E90C07BD78CB7FD2F5B9F09"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\cut_one's_commitments_uk.mp3",
+    "Hash": "5A55F3A6FF9DE53DA6D48635557A7422FF9066AD5D19807BA535E90F84DBC032"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\cut_one's_commitments_us.mp3",
+    "Hash": "EA8DF7AC13CA4A16B706A56FBE2689CC250CDE99530C001CD0F89A1F34D35B83"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\departing_uk.mp3",
+    "Hash": "2EEA1C29452795C3CF570831AA22DF1BE745581D55309B3537D7165111A1B79B"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\departing_us.mp3",
+    "Hash": "4782660795AA0B614E1A9BFE9EE43E3F6A456BB4BE78111ED00A9DD2635AFD97"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\depend_on_uk.mp3",
+    "Hash": "C75A2DEA3EC6A3E26F12D1853EFD3A8F9837DC4E774494D112A37DA6921C50B4"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\depend_on_us.mp3",
+    "Hash": "D5D5948C6BB00FC3DEF397A62C09685B24F88435FBDFEB3B3466FAB713232B01"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\devote_one's_energy_to_uk.mp3",
+    "Hash": "EE5B66F408C3E7A0D0B383D2DBB5435BED25E5C5FEF3F251643D1B9EFB669B83"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\devote_one's_energy_to_us.mp3",
+    "Hash": "595DE5B1BA0A6C155AD4EF687B96F23EAA3E2AB044FFFA3B51250CAF952D9BFB"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\dictator_uk.mp3",
+    "Hash": "4319A2B69A540CFC90CA846DA0E934A7BA3F4CC0C8555D1604B44C7356899DBE"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\dictator_us.mp3",
+    "Hash": "6A87EB82C3F64630F7AE83B9C8571B9F86D0A7B59B9EB49BB874CC6E7769796C"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\diego_garcia_uk.mp3",
+    "Hash": "6E8C3F03E74E6536DE53E40A71DFAFC90420CEA2C141E4A975C9B2BD430742A0"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\diego_garcia_us.mp3",
+    "Hash": "6709B5EAFEF87B18CA6677DF46845284A1FF262A6CD3DD388D9EF4A086777672"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\dismember_uk.mp3",
+    "Hash": "402EFAD7CA53F3B1D7F553932F399C5E5A867085D986B4391EC4DFAD11E648E0"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\dismember_us.mp3",
+    "Hash": "57845981047D2B443DEAEA95618AFFD4A62290351EE4F423A4E8702EE2A28274"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\drone_uk.mp3",
+    "Hash": "532590D96217A738859487B813EFD099991E662316D229CDC743441C617E9BBF"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\drone_us.mp3",
+    "Hash": "39173A4785E5F4B85A87866836B752CBD345054BECDF006136871F2D4391D4ED"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\emerge_from_the_ashes_of_uk.mp3",
+    "Hash": "F952AC12AFBA7C84931482551E941C2D01FF98CAD4B609D4DD632505A53955A6"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\emerge_from_the_ashes_of_us.mp3",
+    "Hash": "4A0D25320FBAEA06DD60D998B6D2C99359C4F1FB11597C5D81F3E22E8CBB168F"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\emirates_uk.mp3",
+    "Hash": "A19F44CC17D3517B5FD3B693436B3C092DF0CA6143F59D07045D64F570C0F442"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\emirates_us.mp3",
+    "Hash": "9B9134F219724FC9562C9AE7E84B971FAA22B88D7AD3DA78C85C2C7E3AC3D06E"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\even_as_uk.mp3",
+    "Hash": "BFCE3DE32FC17CF9E8B58425B579B23A37CDAA9692F1C8762B9F055A002C5E6F"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\even_as_us.mp3",
+    "Hash": "088EC295DC529175EA17C6C8C0E2BED16E5DD2A4CFBAAA70497605B5223A3DCD"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\extract_rents_uk.mp3",
+    "Hash": "BD39D3A46BFE401C21873AC2915E745FB817920F5163FFAA2A5D612DDC6C7A98"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\extract_rents_us.mp3",
+    "Hash": "80A4A7E0E0106920DFE87FC91D6BBC6D3DA33BC8D4AB2BA3E9D20CEC2E69A935"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\fall_under_the_spell_of_uk.mp3",
+    "Hash": "88ADF7562F69DA0CFB4B5D1AC57F8ABD361064A1E98FCFC8A1466D83D1E9C9BF"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\fall_under_the_spell_of_us.mp3",
+    "Hash": "EE03F4F9E190D2B455E263D9C28592F690209C1FF5F7D46489AB688A2E1BDA45"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\fanaticism_uk.mp3",
+    "Hash": "1E7A82882A1EC14AA4E94DF4B4A8A004A2A747CCA04349A6D2D977563E54B6DD"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\fanaticism_us.mp3",
+    "Hash": "594A80839290AFAAEBB35AE77D3831993778DF56F908D6795F37218971DC625D"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\fill_the_vacuum_uk.mp3",
+    "Hash": "9F46D3824776201AC2EDE15ECCC43F277083329C857FD757246E157113BA71F0"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\fill_the_vacuum_us.mp3",
+    "Hash": "D8F337F06B995DB0765503E5C7A048474926F2C9C25B87BE5A1205EB474A926D"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\firm_uk.mp3",
+    "Hash": "72C360B4CFBB06052593BB8A3D68B7730B29A2EB35899BDD0B769C4D08C512CB"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\firm_us.mp3",
+    "Hash": "6D3EA56D3D536CB2E7825D94B89C79EAF922BF44686E28B16F0B6735A3726827"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\for_the_first_time_uk.mp3",
+    "Hash": "98E7E27F1FFD3E99F2E6B889BD4B3C3A39D1614928742610AC9C118573853D06"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\for_the_first_time_us.mp3",
+    "Hash": "2D2C66E11C77F2AC65C50EDC0819DBECC5B0690200EE32FF97547747C53BA2D5"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\forge_close_ties_with_uk.mp3",
+    "Hash": "4663F4F6C740D99FF0FA961B9345BED3CEDF0741EC8FED648D31194C6D22C312"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\forge_close_ties_with_us.mp3",
+    "Hash": "6C1E303DFB13BA156CBF705F8181A54DC9BDD3B07493897CCFF3D81382FFBC9F"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\forge_uk.mp3",
+    "Hash": "73554AB8FBA4C8B835DC739D54D9260D668F9C349789E23F6C8944F164B352C8"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\forge_us.mp3",
+    "Hash": "CABE31948ACAF225AD669F44B88A72A43CFF0038854698D82BC605FE2E2BB3A0"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\frustrated_uk.mp3",
+    "Hash": "2ED3D41D0D554B2292FB4D4C47D171B9EDC1C3E8613F40B0A5396B8963689CEC"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\frustrated_us.mp3",
+    "Hash": "26D56F29E92F0293166C6D1126D6BE16E48422FE2045C613FA17EEA72ACB38AB"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\hatred_uk.mp3",
+    "Hash": "F3DCB92DF73BFDABA9AEA91A93AEAB5AC412256B57C7854DFDC1894906CAC409"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\hatred_us.mp3",
+    "Hash": "F008BB4AA2227B26D0956E89396AA18E5C0F13800D9A2E83BABE4458F5C31870"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\heap_uk.mp3",
+    "Hash": "9EC034BD896DA12A78D3D124CA3C51796F91DF1C1644878CA182168B863B7183"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\heap_us.mp3",
+    "Hash": "187177755623658BF2364670D475400D6C915AFC23C4CDE63E591828A852047F"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\heft_uk.mp3",
+    "Hash": "B57F746BE1C5CF9CEBF98D5AB4DDE9FCFA3D7056702BDFBAA81EBC510C8BF1A3"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\heft_us.mp3",
+    "Hash": "A0F3D585BFAE5A83EAE4CEE382F3941EAC21C205C42257C6367F19DEE2A23F1C"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\hegemon_uk.mp3",
+    "Hash": "905934783E1CEB33FE72C34F3932E722DC2102086530649547C028CF5EF31C64"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\hegemon_us.mp3",
+    "Hash": "56A1B98E36736DFEEB700AFC43FDF39DD05B48FB817AE6B29CC7F3CF97C9CC18"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\hegemony_uk.mp3",
+    "Hash": "0FA25F46F25CCE0B8A9F63F49015ECE4015F2BC1A860FA17BE73D359AFC9BC72"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\hegemony_us.mp3",
+    "Hash": "0F5019F177C55458A1955CF7014212261786295702874FB1E228E7B62AB42EE4"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\help_oneself_to_uk.mp3",
+    "Hash": "D921AFD42EE1ECD11D7FC55449F7F46D39E31B122423CEABC1E28ED491ECDA89"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\help_oneself_to_us.mp3",
+    "Hash": "89EF23A16F23145D8E6FEEFC6F4D18F22CCAE95DE2254F5C212273879CA76654"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\herald_uk.mp3",
+    "Hash": "C7B7435ACFEFD720E2CD22DFC43502ABEA0781F07591809D1B1526EA7995C4BC"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\herald_us.mp3",
+    "Hash": "060F3D816B0BA66E576BFD40B445836CA979F944A798A12FF6119BF33DF166D7"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\hostility_uk.mp3",
+    "Hash": "50F382C7307FE525E9BA8516B4C560B4FF98E70585C0D2C027A4201E1B859DEB"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\hostility_us.mp3",
+    "Hash": "B225EBE15F1E300615A073751E3E8B9F44392C90EA3719865CA1D3474F34CF65"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\ideological_uk.mp3",
+    "Hash": "6AB5F903A4CECC2EF92CB510F8B7AF54CD55F6EC8F6160B26CDC3033398392D3"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\ideological_us.mp3",
+    "Hash": "CC9EB0E9B1AAC1D3C8FA7F20958D5F065F827408CAE9DD4B509C92E2A28488FD"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\ideology_uk.mp3",
+    "Hash": "BB69DF04258F9101D2689FB6F41587123618EC57CCFD0DDD9F8BC17284FE8D64"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\ideology_us.mp3",
+    "Hash": "0CE94B0CB9A8455AE266235CB32DB4F32A18948518C961E1D4787BFBDFE36843"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\imperial_uk.mp3",
+    "Hash": "727B35561E3C985A4F3FD381B25F6F5F4CF9BF44A0BB7AF95E9174BD29B16A9B"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\imperial_us.mp3",
+    "Hash": "33FD7B595BC28F53E6B26254D6186DBD740E8274691BBC3318A6F31DF30DD62A"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\impose_one's_designs_uk.mp3",
+    "Hash": "6D7DC7B0E85C3EDD771F91DBB90B96669BC159F26277FF288C5A721A039E56E4"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\impose_one's_designs_us.mp3",
+    "Hash": "4237AB47DFBA2F1692C53BE8170C4695613026CBB855249F2A0AAE3491213282"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\in_the_sense_that_uk.mp3",
+    "Hash": "2E0E8A87CAABC48D8798038D65D270DFEBCDCD2A4D7803CF6E2A93200DD734A5"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\in_the_sense_that_us.mp3",
+    "Hash": "5D127E6434B6569A50B6D26BE115A9D876A62E26107EC03584A70E49558D957F"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\insurgent_uk.mp3",
+    "Hash": "7A791D8C0E2230C1697E5605972DBCD632B6C3A74A0F8A754503453243677DBC"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\insurgent_us.mp3",
+    "Hash": "11A01EB9421FD186EA41F245C179A1027864FE591FA3C31C42785F6037515A2B"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\jihadist_uk.mp3",
+    "Hash": "AED6FE546A0664E3BBC5DA6192F01B133135C5761015D55EB743C4EE810CF660"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\jihadist_us.mp3",
+    "Hash": "1E581070CF0C9AECFC011859C7C116CE24C82D710A3EA4118705F4A4BE658E05"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\leave_a_legacy_of_uk.mp3",
+    "Hash": "17C21EDF0938440DF46689A1DBA231038BA862ACAE584D693F743E06D22206E4"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\leave_a_legacy_of_us.mp3",
+    "Hash": "BBC4049C2D1185495363A845B5BBFFF5D55260961D9A53FE4B8B05CC8EF024DD"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\legacy_uk.mp3",
+    "Hash": "0A3A43C7365A98EEE814938CF4243BC64F12C1C98E9EB90F298AF9F1C8EF6686"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\legacy_us.mp3",
+    "Hash": "BF2A781E9A571C55D9853067A07C8727AE6D4BA721C2059E3C02CE0877C18A23"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\loggerheads_uk.mp3",
+    "Hash": "8BF51E3339C52B2F607AC2BE1DC873DC3DFF2B5AA89422D6CF0A4819DDF851BF"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\loggerheads_us.mp3",
+    "Hash": "9F65D01EE7ECC36CE7FE10B3DA1210D73255A969547D6490E1C480BBC4AF8484"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\looming_uk.mp3",
+    "Hash": "80E5F1BC12E8A647A9B36F8FDC93D00C902D79F945B3956C76ABC18D9188EEC4"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\looming_us.mp3",
+    "Hash": "2875880262AEE30E4842B0CDC54A0A0B032EEA43C9E4A5EF788C23514C528669"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\malign_uk.mp3",
+    "Hash": "E12E97532FE218E3816DB48BCD67882C85E05CDAAD84DD8E64AD37CFEE3CFF8E"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\malign_us.mp3",
+    "Hash": "C8107BB5A3836B2830A88C0D5265EA78474AC20C00C31F664CDDABD6B9A68F60"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\massacre_uk.mp3",
+    "Hash": "B0F294DE7F8681D17071251C79CA9AFC5BFE34A4BAE2E4CC308E501F76D262FE"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\massacre_us.mp3",
+    "Hash": "C17136281F64F85CF9BC2CC7A78334077AF2C2CCC767AC75CA73F603FDBA3DCB"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\may_well_uk.mp3",
+    "Hash": "A35034D200E0B71F486B46E2C27A2D90B68CD718AB8BD253B109FD4FE6F2DEFC"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\may_well_us.mp3",
+    "Hash": "2495111A8A21093D3014BF27C698F09A6691A7411E4CBD47173E1C743B366B25"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\militia_uk.mp3",
+    "Hash": "10D9FD907011268B2BCB9F5E31B2C387E8638E810AC1549D8214F14F8423E843"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\militia_us.mp3",
+    "Hash": "38BF7724A55336F0A4062E92D56FA2B599252D8B23C35BF7518BDB8AF707C758"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\monarchy_uk.mp3",
+    "Hash": "46F3707E3B46D8DFE390B311EE62B833CCEA95DB5EA8279FE0469B83B1D0736D"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\monarchy_us.mp3",
+    "Hash": "B8EA6A2D176C237DF90F7E4B69B818CBDCE40F9064D9B63A829957BF9AF547C9"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\monotheistic_uk.mp3",
+    "Hash": "828921C6EF4E27EF5B613D8A00D31F99BF9CBC2956AE754F0E6056A25CBE6B6D"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\monotheistic_us.mp3",
+    "Hash": "DE6CD31387278D4356EF5F44A38463658B58B2749600AD5BC774E99E0F2E65EE"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\nationalist_uk.mp3",
+    "Hash": "75EED785132E20231D12F7682E646E035319CBB1E1E087E20172412F1093E0EF"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\nationalist_us.mp3",
+    "Hash": "0FC0338DEEEF08E9AD3D3B0841E34EA9F4CB88C103F875AAAA0CD75043BF5CA2"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\occasionally_uk.mp3",
+    "Hash": "F4C6FAA8A9AC3F9A9E2F7A737BCC241A40FD81257A7DB70B107A2CB65D590F72"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\occasionally_us.mp3",
+    "Hash": "70DAF9C94DAB69E99F68704A983DC8230D3FF6657C8FF77C5CEF1E3AB2BD369F"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\orgy_uk.mp3",
+    "Hash": "D74EEFD38E616D851F55BE6BC416C16A7DD2AE5F64CDC4F668178DF43D076547"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\orgy_us.mp3",
+    "Hash": "612B2A7676800043AE9AD0BA84AB384A8EE4088A04521C52D589C43DFD522107"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\ottoman_uk.mp3",
+    "Hash": "3EF051DC0BBC2192D4BEA9280A23BA14503174BD673C80286F60D7929DEAFA24"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\ottoman_us.mp3",
+    "Hash": "C7BC560629C2965E2BD3F8C0B4831AA103D8E4558F66CAB607997DB2B136625E"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\outright_uk.mp3",
+    "Hash": "0AADD7FAA38905AA4D5388A0007C0376D38B8FB7D08882CA96F7C8BB32C07397"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\outright_us.mp3",
+    "Hash": "32337F6056866B97AC0B9E7676427EB2A4DF4999D260D79C9C8988BA26F259C4"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\overarching_uk.mp3",
+    "Hash": "672A12C89EF7C94299CC39DC7C70A369FC667B5EC06880F69B8CD6F55D6DFBE6"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\overarching_us.mp3",
+    "Hash": "BDC21C678345D305614A7413DD4B8A6620EFB8B2776F8008350006E0301E1E63"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\parting_gift_uk.mp3",
+    "Hash": "24D361D048CBCCFE7C74A764A8C243A5F3592E3CD3F541A8794FB1D9239CDE9C"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\parting_gift_us.mp3",
+    "Hash": "8B70A92F112FB930357BC3FA8646473F7F17F8C1B420DBBF68A0D39FE13811F6"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\pragmatic_uk.mp3",
+    "Hash": "9EE42730851B7E36A8A1C858B1E18A634A4B8A1975E79E99AF76C1AAC11CC42B"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\pragmatic_us.mp3",
+    "Hash": "D250320C0D8C56C993CC13A9A0802D49866168E60543958E6524A8A17EEB3D61"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\privilege_uk.mp3",
+    "Hash": "52253178D6E677B2804545D8F57D32E7B7ED54BC3C2756F70B51AA90551667A3"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\privilege_us.mp3",
+    "Hash": "F03EC95DD3D0AA9224498E81164520498E0776E23E7B0A46978CAB5B0BB0F429"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\pull_back_from_uk.mp3",
+    "Hash": "054E5C81F8F7D297547ED406FAB1E652B43F6C5CFCC51DD16A8D40A6A20347AE"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\pull_back_from_us.mp3",
+    "Hash": "BBDBE73CDA65719B9B04BC79F61FD2B6CF7D34433B8DA003F81A6BC1192BA5B7"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\pull_out_of_uk.mp3",
+    "Hash": "25A075224E75547BA609F4A4230F09A7C081167CDF27396F396EE770120CBF66"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\pull_out_of_us.mp3",
+    "Hash": "E34E9ECDC6147DB4D81E94456932CA32A192FAF29197A2743249D6B347FE043D"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\pursue_one's_interests_uk.mp3",
+    "Hash": "E6D40A91305D4CD778DE7C6F6F13514CE6FDF5FD1A9BF0296801E8DC5F907DE2"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\pursue_one's_interests_us.mp3",
+    "Hash": "1B94ADB67C4D8F9CA8C4F462622FC2B8708BC45655BA90389114697AF977BD50"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\pursue_uk.mp3",
+    "Hash": "8DEF962D3464665838FFB956A31AF501D2A0043802422232EF75F5F81DB616A1"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\pursue_us.mp3",
+    "Hash": "C459482BDF5B6ADFDF2172838550E6C2D24F7A5DBD61EE7F1185A000FC794EC3"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\radiate_uk.mp3",
+    "Hash": "B12692D8A3C253F900837C0EB172BDF4E7787829CC8DCE92553008CCAD8244E1"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\radiate_us.mp3",
+    "Hash": "058F5397164B0BFEA6B2F02BF89FE40F1BE487C21FDE42FB8AADD158E558FF11"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\realignment_uk.mp3",
+    "Hash": "58D53A73FA98FBCE09481F3EFD25481C3025D0268017744FED8B5E00534AB7BD"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\realignment_us.mp3",
+    "Hash": "67D8C0CC8DC137763104F1B784AEC700F7B5E9738F6EC75ECCE3FCAFBDC13709"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\receive_russian_backing_uk.mp3",
+    "Hash": "4977FB49E3730C555AFEE57BF1CD7795F1A8A9573BEE14011D1E5308019DDD22"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\receive_russian_backing_us.mp3",
+    "Hash": "A0C55944A4460FD4EB679E32D2C414142A9CA295B2A6A695B2341EACFE488EC3"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\regional_uk.mp3",
+    "Hash": "D577308B6B61CDF603FE7A74C86E47548E9030BD2990D87329EA6DCB27071D6B"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\regional_us.mp3",
+    "Hash": "2171383D269C328BD1803D49AE691B498FAF01453EC784084F4C3AA5DBC91769"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\religion_uk.mp3",
+    "Hash": "91F60F8CA35144BD56329F282E83BAC7F59223FA7404E678D77C2DF4B34E8786"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\religion_us.mp3",
+    "Hash": "5EB73D50B7B0EB26AD9F2665A587CEE90E983856540C86ABBF28FF5DE50F3CD0"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\relinquish_uk.mp3",
+    "Hash": "99A70EB2DF76600FDDC460BBAD676DF181715A4225FE7A7AC947DFBDF2A28BC8"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\relinquish_us.mp3",
+    "Hash": "549A969B40F92BEEE06E9AF1F6E49CF95314AB3911A79685DFB5890EA0900D58"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\retrenchment_uk.mp3",
+    "Hash": "6FAA0F8D0DE805314F68F4BE1AFD9D5C85FDA9AC067A48C5708EB12ACDA41B58"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\retrenchment_us.mp3",
+    "Hash": "0C06B1427CAE318DADA8C7A8A5A11E0B42CC040E68F9AD15D51997ECCDD3D55A"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\rival_uk.mp3",
+    "Hash": "059AD1D0351395189CBC21C37451AF2D387C62D969D79E1171D4EDE0E3A3E4BF"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\rival_us.mp3",
+    "Hash": "24598FA294FD8387B19F8509B7E956E913EA004C31803BF53087AFE06BE08E47"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\rivalry_uk.mp3",
+    "Hash": "FC813D1993F88DDEFDBAC400147C74B25DE64F03C0CEFE147A8CDDC9CBE4F3C6"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\rivalry_us.mp3",
+    "Hash": "B2B7EE9CC72136166F36DE8D610CA3E12BC533EAA6C41830A1C1215C5D0538B5"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\route_uk.mp3",
+    "Hash": "F3F858DF47651BE28FFA435EC68962498705FC76BDFF9831524D0BE87764C2FC"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\route_us.mp3",
+    "Hash": "870634CA688B21846BE1B07AEC7FA33B92373D8DFC52CF00E31706ABFED8CBD1"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\ruinous_uk.mp3",
+    "Hash": "99A70265C3ECD0B801035531F10F10F0D425C6C88D1F0072601B8ED11C391983"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\ruinous_us.mp3",
+    "Hash": "49A1B3BED9D7BAAF32AAD0CC7327F6D3CA052A9336EFCEB21A9F72C4169189C0"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\run_one's_course_uk.mp3",
+    "Hash": "6EABA27197AC4C2460DBF805D5B68CFDA7B2E9D46F862C63EA94BE2326FE410D"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\run_one's_course_us.mp3",
+    "Hash": "52DF1C64BC694F0D5FE55545B45F05B8D1AFAFF9EB049A003E85EBA2980D0689"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\sadistic_uk.mp3",
+    "Hash": "07192B076747B23EE240ABB6094C002340E67570E29EC88A52A65D701D4055FF"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\sadistic_us.mp3",
+    "Hash": "911A0CB4279937187C168D7C4C0F86D9547DE5BA27B96726007D14867730A96D"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\score-settling_uk.mp3",
+    "Hash": "838363567BD048F5656F854B4BD0B2AF58177E0FB5077A16B7660D03740EE1D2"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\score-settling_us.mp3",
+    "Hash": "D204FA4B11B03CA24BC715957D79DD0965D4653FB1FACFF55AEED36CF2F4A994"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\securocrat_uk.mp3",
+    "Hash": "DB3C38E66CA2FB4E739C077CE36195281C79F91891798D78DB74F3F192FA51C1"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\securocrat_us.mp3",
+    "Hash": "6EC066D917DDEE3DD76DD1E8D362816DF86D997F3CCAEC052331D4C53D36BA4A"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\seek_to_uk.mp3",
+    "Hash": "302C7FB299B197C530358ACC328C3D8771966180599366EAB364BB3C110AE5B3"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\seek_to_us.mp3",
+    "Hash": "D75F9FEBEC471FCF9A7C7ACD1D4DD01C00162A86D22959060FC75B300A1AA9DF"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\soviet-inspired_uk.mp3",
+    "Hash": "0629676D16793C218DADFB65E460165A2AE5A2A6012C8A17654D42B1A188801E"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\soviet-inspired_us.mp3",
+    "Hash": "A4A2E5FE82182682CBA89344423EC90256BC74E75EF40C1DF22F580A1D8B23AC"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\sparta_uk.mp3",
+    "Hash": "4B551CE227DB35A56B0B38D1E47A072CBE8801C6D32046BDE8F4F65ED9EFE48E"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\sparta_us.mp3",
+    "Hash": "B1B932311ACE9FA3A3D08ADA9A7C1080E413BA6FBB52801C017523885D15883B"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\staggering_uk.mp3",
+    "Hash": "CC13D86397A1BA886001FD9C3EF4127F45791A6E8AB9BFB5E01FE2F91D18F603"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\staggering_us.mp3",
+    "Hash": "A32060A9198249FB21DE2542C36CF33B50B4402EDE76326B55829060B5829FF5"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\stand_out_uk.mp3",
+    "Hash": "58F26983D37726D9EED0E2C2947B25739A79D0ABAE46DEC48231DA68991AFAA2"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\stand_out_us.mp3",
+    "Hash": "E1FBC76B6177E5ADC894FFB1885BC2FF52B60ECEA2056BCCDACAE701916727A0"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\step_in_uk.mp3",
+    "Hash": "1CF1AE93781189018E220BB6FCE3D5E2E5D60B031EFA839EFF2C844A7F1359B8"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\step_in_us.mp3",
+    "Hash": "BF79691A615DC252B728FBFE08E0EABAF77479155818A4D830E9349F0C390C61"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\suck_one's_forces_out_of_asia_uk.mp3",
+    "Hash": "E72F68803C0B513BED78C1DB2C7B45339E3F22D698D58347FF668E43A08A478A"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\suck_one's_forces_out_of_asia_us.mp3",
+    "Hash": "84691C5251F2BE0FE763A7967A25C7DA732A46BBA7CD3CD10B85E8F257B35891"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\take_control_of_uk.mp3",
+    "Hash": "585F37EA801F832653F4FB64ADE49A7A850AB4DC2A239D207EC25882C93E0F16"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\take_control_of_us.mp3",
+    "Hash": "7EDB5782A16263E2B7D66B95E17B85852078F93B9C243C58CCC622A6C64CCF5B"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\teeter_uk.mp3",
+    "Hash": "8C06771419695AD80302B21420D262070C3186108B36752F6EBFEE7BE482E0DA"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\teeter_us.mp3",
+    "Hash": "59E0791CA0F2B8D14FE2E77A3158BB015EC06CDB30B0116D5B0C3607A5333B01"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\to_what_end_uk.mp3",
+    "Hash": "7AF98104985866E0E3F58C0DA5F9FD7D3954E943514A8AAC6D8B8CE9B911D6E5"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\to_what_end_us.mp3",
+    "Hash": "236D8A00C2AE2044ED2813C8E6C8809EDC58E345AFEA448EA1D3737FAA1FB7DB"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\trillion_uk.mp3",
+    "Hash": "2BD182CA3C99658715E040525A17923F9D07C9B77BD03C68F679D242B5BE0356"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\trillion_us.mp3",
+    "Hash": "CA99C3909FBA4D0E3A15E660635D2D70D698B8C5979AAE6C218D129B14A36157"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\uae_uk.mp3",
+    "Hash": "4947946BC2A58E23A8B65438F764D99A312DE070525EE8A0061BF18408C86680"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\uae_us.mp3",
+    "Hash": "EB12025A8CC1C059B889AFA75E97D84ED412F53175930D31F42BA328722DA697"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\umpteenth_uk.mp3",
+    "Hash": "D338F311B55921A05FAA6CC7D19715C39643840A1DC8400CAA23DE365A2D3D72"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\umpteenth_us.mp3",
+    "Hash": "F2E518289350AC0DFD28351416FB1E13757DDEC17315898AF1103C8A1A230382"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\under_the_abraham_accords_uk.mp3",
+    "Hash": "AB1D8C2B1AC722AE7A25978458C515F9B5E9293A68C66613207B093A0BF4F213"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\under_the_abraham_accords_us.mp3",
+    "Hash": "99292F48CC29C2999C841F55C83B3D1E2DAEEA70B496731C65E80D61D62A7E88"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\unintended_uk.mp3",
+    "Hash": "E84F31F454F12140365B486E14FCCCBA39CB4562459A777A56881D597750D01F"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\unintended_us.mp3",
+    "Hash": "C36C5053242BF40BEE687DBA16E163C3DDD169CD72EFC8E5B0B325A279547672"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\unmistakable_uk.mp3",
+    "Hash": "E1F4F37DCCD48203F2E3808DC8BCD1D6153BDA1D51FAF1E8C0FBBD05E39C7E70"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\unmistakable_us.mp3",
+    "Hash": "8F386888D813B26F2A19C70ACEC2AA1E2F4BF1FD0CB99C72881A545AA4597CEB"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\vessel_uk.mp3",
+    "Hash": "32EA0634A0777F3DD93E808285BDAF7E299EDC3554F45447A8953B7E01FA9B39"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\vessel_us.mp3",
+    "Hash": "30ED23B51542660BE46245D8A2FAFA0C2A1F8E18DF525EA3B72F34F17A2B91F5"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\vulnerable_uk.mp3",
+    "Hash": "AF8937C9E9982F230682FB6D431FB7165A94DBE8C08E8F1E6322F6D47B882E73"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\vulnerable_us.mp3",
+    "Hash": "EDD68CABE0B01D31AC139F5FF37F6A76EAE847D52D74828950ADE0C5E13BD54D"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\wary_uk.mp3",
+    "Hash": "1F041B42E485D210C1C33D4F1C1E13D235A2FC91BE9FF5FBA58DEA5EE4A057BE"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\wary_us.mp3",
+    "Hash": "27E3B83B530D3A7895E94514A8952A8D4AA2528D39B0820D20FBF428A83644AD"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\work_together_uk.mp3",
+    "Hash": "530007A790C4033E43635A6FE390ED40AF1B6F1D1BEE12E361DDCD9E160B1D03"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\work_together_us.mp3",
+    "Hash": "2681F17B4CB52FC8762B8ED822E8B58CFF2134C88A0E2B3798EFFC1CE52948EE"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\yearn_for_uk.mp3",
+    "Hash": "2F68A7216A6A9DA17EFFECFB72FAC1324E2E30CB660E306DFFDC38D2F46C816B"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\yearn_for_us.mp3",
+    "Hash": "9710E5579901A82AF6549FCCBC93BEF2DA90FEF53518A59BA08CB5393455C94B"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\yearn_uk.mp3",
+    "Hash": "CEE0C0D3900054FEBB852DFB4EDDF3ED5571A4E573AFE65C61932868FE79D350"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\audio_vocabulary\\yearn_us.mp3",
+    "Hash": "C213212FF57DCEDD56209B1763FC116E782C3A16D73BBE889A29584717077B86"
+  },
+  {
+    "Path": "C:\\MyDocs\\magazines\\The Economist\\2026-09-26\\When America walks away\\cache\\When America walks away.studybench.log",
+    "Hash": "8D244CF434991ECA12C439B1F773EB2C75F521FC4DE7868D37F201DF0E8D43DC"
+  }
+]

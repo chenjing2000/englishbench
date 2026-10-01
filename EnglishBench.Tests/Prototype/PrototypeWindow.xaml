@@ -1,0 +1,70 @@
+<Window x:Class="EnglishBench.PrototypeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="EnglishBench WPF · v0.13.25 Central Reader Prototype"
+        Width="1160" Height="800" MinWidth="860" MinHeight="600"
+        Background="#F3F5F7" FontFamily="Segoe UI" FontSize="14">
+  <Grid Margin="22">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/><RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/><RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+    <DockPanel Margin="0,0,0,14">
+      <StackPanel DockPanel.Dock="Left">
+        <TextBlock Text="EnglishBench" FontSize="28" FontWeight="SemiBold" Foreground="{StaticResource AccentBrush}"/>
+        <TextBlock Text="WPF 中央阅读区原型 · v0.13.25" Foreground="#64748B" Margin="0,5,0,0"/>
+      </StackPanel>
+      <TextBlock Text="Phase 1" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#64748B"/>
+    </DockPanel>
+    <Border Grid.Row="1" Background="White" CornerRadius="6" Padding="10" Margin="0,0,0,14">
+      <StackPanel>
+        <WrapPanel>
+          <ComboBox x:Name="AccentSelector" Width="118" Margin="3" VerticalContentAlignment="Center" SelectionChanged="AccentChanged">
+            <ComboBoxItem Content="British / UK" Tag="uk" IsSelected="True"/>
+            <ComboBoxItem Content="American / US" Tag="us"/>
+          </ComboBox>
+          <Button Content="▶ Read All" Click="ReadAllClicked"/>
+          <Button Content="Pause" Click="PauseClicked"/>
+          <Button Content="Resume" Click="ResumeClicked"/>
+          <Button Content="■ Stop" Click="StopClicked"/>
+          <Button Content="选择音频目录" Click="AudioFolderClicked" ToolTip="目录应包含 audio_segments/s001_uk.mp3 等已有文件"/>
+          <Button Content="播放已有 MP3…" Click="LocalFileClicked"/>
+          <TextBlock Text="Volume" VerticalAlignment="Center" Margin="8,0,5,0"/>
+          <Slider x:Name="VolumeSlider" Minimum="0" Maximum="1" Value="0.65" Width="85" VerticalAlignment="Center" ValueChanged="VolumeChanged"/>
+        </WrapPanel>
+        <TextBlock Text="{Binding AudioRoot}" Foreground="#64748B" FontSize="12" Margin="5,6,5,0" TextTrimming="CharacterEllipsis"/>
+      </StackPanel>
+    </Border>
+    <Grid Grid.Row="2">
+      <Grid.ColumnDefinitions><ColumnDefinition Width="*" MinWidth="480"/><ColumnDefinition Width="7"/><ColumnDefinition Width="240" MinWidth="200"/></Grid.ColumnDefinitions>
+      <Border Background="White" CornerRadius="6" Padding="22,16">
+        <ScrollViewer x:Name="PassageScroll" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+          <StackPanel x:Name="ParagraphHost">
+            <TextBlock Text="Character and public life" FontSize="25" FontWeight="SemiBold" Margin="0,0,0,8"/>
+            <TextBlock Text="左键选择词组后点 +；右键播放所指 Segment。末段重复文字用于核对 SID。" TextWrapping="Wrap" Foreground="#64748B" Margin="0,0,0,14"/>
+          </StackPanel>
+        </ScrollViewer>
+      </Border>
+      <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Center" Background="#E0E5EB"/>
+      <Border Grid.Column="2" Background="White" CornerRadius="6" Padding="16">
+        <DockPanel>
+          <StackPanel DockPanel.Dock="Top">
+            <TextBlock Text="Vocabulary" FontSize="21" FontWeight="SemiBold" Margin="0,0,0,12"/>
+            <CheckBox Content="显示正文词组高亮" IsChecked="{Binding HighlightsVisible}" Margin="0,0,0,12"/>
+          </StackPanel>
+          <TextBlock DockPanel.Dock="Bottom" Text="原型词表只保存在内存。&#xA;正式导入、编辑与持久化在后续阶段接入。" TextWrapping="Wrap" Foreground="#64748B" FontSize="12" Margin="0,12,0,0"/>
+          <ListBox x:Name="VocabularyList" ItemsSource="{Binding Words}" BorderThickness="0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox.ItemTemplate>
+              <DataTemplate><TextBlock Text="{Binding}" TextWrapping="Wrap" Margin="3,9" FontSize="16"/></DataTemplate>
+            </ListBox.ItemTemplate>
+          </ListBox>
+        </DockPanel>
+      </Border>
+    </Grid>
+    <StackPanel Grid.Row="3" Margin="0,12,0,0">
+      <TextBlock Text="{Binding PlaybackDescription}" Foreground="#64748B" FontSize="12"/>
+      <TextBlock Text="{Binding Status}" TextWrapping="Wrap" Margin="0,4,0,0"/>
+    </StackPanel>
+  </Grid>
+</Window>
+
