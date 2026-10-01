@@ -203,7 +203,7 @@ internal static class ReaderControlsChecks
                 Program.Check(slider.Focusable && slider.FocusVisualStyle == null);
                 double position = slider.Value;
                 Slider.DecreaseSmall.Execute(null, slider);
-                Program.Check(Math.Abs(slider.Value - (position - 0.3)) < 0.001);
+                Program.Check(Math.Abs(slider.Value - (position - 0.5)) < 0.001);
                 WpfTestHelpers.Pump(40);
                 Program.Check(Math.Abs(player.Position.TotalSeconds - slider.Value) < 0.2);
                 Slider.IncreaseSmall.Execute(null, slider);

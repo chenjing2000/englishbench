@@ -26,7 +26,7 @@ Select the parent directory of marked book directories. Startup and folder selec
 6. Use the import button beside the highlight toggle to replace the active vocabulary with a selected structured JSON file after confirmation.
 7. Open the bottom-left settings circle for the shared body/vocabulary font size and sentence-playback accent.
 
-The bottom play/pause and stop buttons control only the first MP3 directly beside the passage. Stop is disabled during sentence or word playback and does not interrupt either. Right-click text for sentence playback; use the word's pronunciation buttons for word playback. The bottom progress bar appears only while the sibling MP3 is playing or paused and seeks only in that file. It is hidden during sentence or word playback. With the progress bar focused, Left and Right seek backward and forward by 0.3 seconds per step; the keyboard focus outline is hidden.
+The bottom play/pause and stop buttons control only the first MP3 directly beside the passage. Stop is disabled during sentence or word playback and does not interrupt either. Right-click text for sentence playback; use the word's pronunciation buttons for word playback. The bottom progress bar appears only while the sibling MP3 is playing or paused and seeks only in that file. It is hidden during sentence or word playback. With the progress bar focused, Left and Right seek backward and forward by 0.5 seconds per step; the keyboard focus outline is hidden.
 
 Successful ordinary actions are quiet. Warning/error status appears for six seconds and then disappears with its layout row. A new warning restarts that interval. Missing physical audio does not prevent passage reading.
 
