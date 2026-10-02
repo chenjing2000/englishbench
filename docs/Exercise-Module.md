@@ -11,6 +11,7 @@
 | `ExerciseAnswers.cs` | Derive the mirrored answer path and read/write the new answer format |
 | `ExerciseSession.cs` | Current answers, saved baseline, reset, and explicit save |
 | `ExerciseView.cs` | WPF question controls and two action buttons |
+| `UnsavedAnswersDialog.xaml` / `.xaml.cs` | Rounded modal confirmation with explicit save, discard, and cancel actions |
 | `MainWindow.Exercises.cs` | Application integration: companion lookup, book context, restoration, warnings, and leave confirmation |
 
 The shared passage models live in their own files: `Models/Article.cs` validates complete text with declared segment audio; `Models/ArticleBlank.cs` extends the common structure and validates blanks without segment audio. Choice/free-response exercises require Article; the three cloze types require ArticleBlank. Exercise data composes with these passage models rather than duplicating their validation or creating five mostly empty subclasses.
@@ -42,7 +43,7 @@ Buttons appear after all questions in this order: Save Answers, Reset Answers. T
 - **Save Answers:** explicitly writes all current answers. There is no automatic saving. Each question has one current answer; a later save replaces the previous file without history.
 - **Reset Answers:** clears every current response. This changes the interface only; click Save Answers to replace the previously saved responses with empty answers.
 
-Switching article/library or closing with changed responses prompts to save, discard changes, or cancel leaving. A failed save retains the responses and cancels leaving. The module records responses without evaluating their correctness. Unused extra fields in existing source exercise files are ignored; loading never rewrites the source file.
+Switching article/library or closing with changed responses opens a rounded confirmation centered on the reader window. Save and Continue writes responses before leaving; Discard Changes leaves without saving; Cancel, Escape, and the close icon return to the current exercise. Enter activates the default save action. A failed save retains the responses and cancels leaving. The module records responses without evaluating their correctness. Unused extra fields in existing source exercise files are ignored; loading never rewrites the source file.
 
 Space and Left/Right keys inside exercise text inputs retain their normal editing role. Outside those inputs, the existing article-audio shortcuts remain in effect. Exercise input never controls either audio player.
 
@@ -82,6 +83,6 @@ Empty strings represent unanswered questions. Saved question numbers must belong
 
 ## Verification
 
-Run `dotnet run --project EnglishBench.Tests -c Release -- --exercise-only`. Cases cover the five question-only schemas, manual save/reset/restore, mirrored paths and rejection of invalid data, independent WPF controls with exactly two action buttons, the Week 5 Monday sample, and keyboard separation.
+Run `dotnet run --project EnglishBench.Tests -c Release -- --exercise-only`. Cases cover the five question-only schemas, manual save/reset/restore, mirrored paths and rejection of invalid data, independent WPF controls with exactly two action buttons, the actual confirmation's save/discard/cancel/close and save-failure branches, the Week 5 Monday sample, and keyboard separation.
 
 The test runner uses temporary library copies for saving, verifies source hashes, and never writes answers into the original sample library. Default checks always use the checked-in fixture, so edits to the real textbook folder cannot affect the regression suite.

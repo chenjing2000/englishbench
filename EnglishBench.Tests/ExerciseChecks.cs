@@ -2,6 +2,8 @@ using System.IO;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Windows;
+using System.Windows.Automation.Peers;
+using System.Windows.Automation.Provider;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -17,6 +19,56 @@ internal static class ExerciseChecks
 
     internal static void Run()
     {
+        RunCase("unsaved-answer dialog saves, discards, cancels and preserves input on save failure", root =>
+        {
+            string article = CopySample(root);
+            var window = new EnglishBench.MainWindow(false) { Left = -10000, Top = -10000, ShowActivated = false };
+            try
+            {
+                window.Show();
+                Program.Check(window.ViewModel.OpenLibrary(root) && window.SelectPassage(article));
+                var view = (ExerciseView)window.FindName("ExercisePanel");
+                view.Session!.SetAnswer(1, "A");
+                string path = view.Session.AnswerPath!;
+                Choose("CancelButton");
+                Program.Check(!window.ViewModel.OpenLibrary(root) && view.Session.Answer(1) == "A" && !File.Exists(path));
+                Choose("SaveButton");
+                Program.Check(window.ViewModel.OpenLibrary(root) && File.Exists(path));
+                Program.Check(window.SelectPassage(article) && view.Session!.Answer(1) == "A");
+                view.Session.SetAnswer(1, "B");
+                Choose("DiscardButton");
+                Program.Check(window.ViewModel.OpenLibrary(root));
+                Program.Check(window.SelectPassage(article) && view.Session!.Answer(1) == "A");
+                view.Session.SetAnswer(1, "B");
+                CloseDialog();
+                Program.Check(!window.ViewModel.OpenLibrary(root) && view.Session.Answer(1) == "B");
+                string blocked = Path.Combine(root, "blocked");
+                File.WriteAllText(blocked, "not a directory");
+                var unsaved = new ExerciseSession(view.Session.Content, Path.Combine(blocked, "answers.json"));
+                unsaved.SetAnswer(1, "B");
+                view.ShowExercise(unsaved);
+                Choose("SaveButton");
+                Program.Check(!window.ViewModel.OpenLibrary(root) && unsaved.IsDirty && unsaved.Answer(1) == "B" && window.ViewModel.Status.Contains("回答无法保存"));
+            }
+            finally { ((ExerciseView)window.FindName("ExercisePanel")).ShowExercise(null); window.Close(); WpfTestHelpers.Pump(); }
+
+            void Choose(string buttonName)
+            {
+                window.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.ApplicationIdle, new Action(() =>
+                {
+                    var dialog = Application.Current.Windows.OfType<UnsavedAnswersDialog>().Single();
+                    Program.Check(dialog.Owner == window && dialog.WindowStyle == WindowStyle.None);
+                    Program.Check(((Button)dialog.FindName("SaveButton")).IsDefault && ((Button)dialog.FindName("CancelButton")).IsCancel);
+                    if (buttonName == "CancelButton") CaptureDialog(dialog);
+                    var button = (Button)dialog.FindName(buttonName);
+                    var peer = new ButtonAutomationPeer(button);
+                    var action = (IInvokeProvider)peer.GetPattern(PatternInterface.Invoke);
+                    action.Invoke();
+                }));
+            }
+            void CloseDialog() => window.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.ApplicationIdle,
+                new Action(() => Application.Current.Windows.OfType<UnsavedAnswersDialog>().Single().Close()));
+        });
         RunCase("exercise schemas validate all five types, blanks and duplicate numbers/options", root =>
         {
             foreach (string type in Types)
@@ -230,5 +282,15 @@ internal static class ExerciseChecks
         throw new Exception("Invalid exercise data accepted.");
     }
     private static void Click(Button button) => button.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+    private static void CaptureDialog(UnsavedAnswersDialog dialog)
+    {
+        dialog.UpdateLayout();
+        var bitmap = new System.Windows.Media.Imaging.RenderTargetBitmap((int)Math.Ceiling(dialog.ActualWidth), (int)Math.Ceiling(dialog.ActualHeight), 96, 96, PixelFormats.Pbgra32);
+        bitmap.Render(dialog);
+        var encoder = new System.Windows.Media.Imaging.PngBitmapEncoder();
+        encoder.Frames.Add(System.Windows.Media.Imaging.BitmapFrame.Create(bitmap));
+        using var image = File.Create(Path.GetFullPath("artifacts/unsaved-answers-dialog.png"));
+        encoder.Save(image);
+    }
     private static void SendKey(UIElement target, Key key) => target.RaiseEvent(new KeyEventArgs(Keyboard.PrimaryDevice, PresentationSource.FromVisual(target), 0, key) { RoutedEvent = Keyboard.PreviewKeyDownEvent });
 }

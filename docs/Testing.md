@@ -26,7 +26,7 @@ No test-only prototype application, paragraph playlist, or historical source-has
 | `--controls-only` | Library-only startup, settings, keyboard shortcuts, progress/time, and sibling MP3 controls |
 | `--icons-only` | Embedded icons, circle-plus movement, footer alignment, startup size, and highlighting |
 | `--editing-only` | Vocabulary move/delete UI and matching persisted order |
-| `--exercise-only` | Five question-only schemas, save/reset actions, manual persistence, container integration, and keyboard isolation |
+| `--exercise-only` | Five question-only schemas, save/reset, manual persistence, confirmation dialog branches, container integration, and keyboard isolation |
 | `--source-only` | Optional read-only integration against the local Economist article; excluded from default tests |
 
 Example:
@@ -48,7 +48,7 @@ Automated checks cover services, real controls, and event routing. They do not r
 3. Play the sibling MP3, then word/segment audio. Confirm the article pauses and preserves its position. Resume the article and confirm pronunciation stops. Stop/seek must affect only the article MP3.
 4. Exercise the five question types. In text inputs, type spaces, edit with arrows, and enter a multiline answer where supported. Confirm playback is unaffected.
 5. Save and reopen responses. Reset without saving and verify the previous save restores. Save the reset and verify empty responses restore.
-6. Change an answer and switch articles or close. Test each Save/Discard/Cancel dialog branch. On save failure, responses must remain and leaving must be cancelled.
+6. Change an answer and switch articles or close. Inspect the rounded confirmation and use Save and Continue, Discard Changes, and Cancel. Check Enter, Escape, and the close icon with the physical keyboard/mouse. On save failure, responses must remain and leaving must be cancelled.
 
 Use copies for write checks. Do not manually edit the checked-in fixtures. A screenshot is supporting evidence, not a passing test by itself.
 

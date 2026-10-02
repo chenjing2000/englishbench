@@ -61,8 +61,9 @@ public partial class MainWindow
     private bool ConfirmExerciseLeave()
     {
         if (ExercisePanel.Session?.IsDirty != true) return true;
-        var result = MessageBox.Show(this, "当前练习回答尚未保存。是否保存后离开？\n选择“否”将放弃未保存的修改。",
-            "保存回答", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+        var dialog = new UnsavedAnswersDialog(this);
+        dialog.ShowDialog();
+        var result = dialog.Result;
         if (result == MessageBoxResult.Cancel) return false;
         return result == MessageBoxResult.No || ExercisePanel.SaveAnswers();
     }
