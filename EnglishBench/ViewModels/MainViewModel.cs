@@ -61,9 +61,9 @@ public sealed partial class MainViewModel : INotifyPropertyChanged
             VocabularyChanged?.Invoke();
         }
     }
-    public MainViewModel(PlaybackController controller)
+    public MainViewModel(PlaybackController articlePlayer, PlaybackController pronunciationPlayer)
     {
-        playback = new ReaderPlayback(controller);
+        playback = new ReaderPlayback(articlePlayer, pronunciationPlayer);
         playback.Message += message => Status = message;
         playback.Changed += () =>
         {

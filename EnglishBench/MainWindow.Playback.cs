@@ -9,6 +9,7 @@ namespace EnglishBench;
 public partial class MainWindow
 {
     private readonly WpfAudioPlayer player = new WpfAudioPlayer();
+    private readonly WpfAudioPlayer pronunciationPlayer = new WpfAudioPlayer();
     private readonly DispatcherTimer progressTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(100) };
     private bool updatingProgress;
     private bool draggingProgress;
@@ -25,6 +26,7 @@ public partial class MainWindow
         progressTimer.Tick -= ProgressTimerTick;
         ViewModel.Stop();
         player.Dispose();
+        pronunciationPlayer.Dispose();
     }
 
     private void ProgressTimerTick(object? sender, EventArgs e) => UpdateProgress();

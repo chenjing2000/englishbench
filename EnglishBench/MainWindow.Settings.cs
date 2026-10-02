@@ -39,6 +39,7 @@ public partial class MainWindow
         }
         ApplyReadingFont(fontPoints);
         player.Volume = double.IsFinite(settings.Volume) ? Math.Clamp(settings.Volume, 0, 1) : 0.65;
+        pronunciationPlayer.Volume = player.Volume;
         ViewModel.Accent = settings.Accent;
         if (settings.ForwardStep != 1.0 && settings.ForwardStep != 2.0 && settings.ForwardStep != 3.0) settings.ForwardStep = 1.0;
         if (settings.BackwardStep != 2.0 && settings.BackwardStep != 3.0 && settings.BackwardStep != 5.0) settings.BackwardStep = 2.0;

@@ -13,7 +13,7 @@ public partial class MainWindow : Window
     {
         this.persistSettings = persistSettings;
         settings = persistSettings ? ReaderSettings.Load() : new ReaderSettings();
-        ViewModel = new MainViewModel(new PlaybackController(player));
+        ViewModel = new MainViewModel(new PlaybackController(player), new PlaybackController(pronunciationPlayer));
 
         InitializeComponent();
         DataContext = ViewModel;

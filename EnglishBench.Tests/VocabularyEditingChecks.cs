@@ -3,6 +3,7 @@ using System.Text.Json.Nodes;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Input;
 using EnglishBench.Services;
 
 internal static class VocabularyEditingChecks
@@ -35,6 +36,17 @@ internal static class VocabularyEditingChecks
                 Program.Check(new[] { up, down, delete }.All(button => ((Image)button.Content).Source is DrawingImage));
                 string[] expected = window.ViewModel.Words.Select(w => w.Word).ToArray();
                 list.SelectedIndex = 0;
+                Program.Check(list.ContextMenu == null);
+                WpfTestHelpers.Pump(30);
+                var otherRow = (ListBoxItem)list.ItemContainerGenerator.ContainerFromIndex(1);
+                string beforeRightClick = File.ReadAllText(vocabulary);
+                foreach (var routedEvent in new[] { Mouse.PreviewMouseDownEvent, Mouse.PreviewMouseUpEvent })
+                {
+                    var rightClick = new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Right) { RoutedEvent = routedEvent };
+                    otherRow.RaiseEvent(rightClick);
+                    Program.Check(rightClick.Handled && list.SelectedIndex == 0);
+                }
+                Program.Check(File.ReadAllText(vocabulary) == beforeRightClick && window.ViewModel.PlaybackState == PlaybackState.Stopped);
                 Program.Check(actions.Visibility == Visibility.Visible && !up.IsEnabled && down.IsEnabled && delete.IsEnabled);
                 Click(down);
                 (expected[0], expected[1]) = (expected[1], expected[0]);

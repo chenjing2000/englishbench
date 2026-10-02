@@ -127,7 +127,8 @@ internal static class ContentChecks
             Directory.CreateDirectory(user);
             File.WriteAllText(Path.Combine(user, "answer_sheet.json"), "null");
             using var player = new EnglishBench.Infrastructure.WpfAudioPlayer();
-            var model = new EnglishBench.ViewModels.MainViewModel(new PlaybackController(player));
+            using var pronunciationPlayer = new WpfAudioPlayer();
+            var model = new EnglishBench.ViewModels.MainViewModel(new PlaybackController(player), new PlaybackController(pronunciationPlayer));
             Program.Check(model.OpenLibrary(Path.GetDirectoryName(book)!));
             Program.Check(model.OpenArticle(TestData.ArticlePath));
             int notifications = 0;
@@ -138,7 +139,8 @@ internal static class ContentChecks
         RunCopyTest("normal operations stay quiet while warnings and errors remain visible", (root, passage) =>
         {
             using var player = new WpfAudioPlayer();
-            var model = new MainViewModel(new PlaybackController(player));
+            using var pronunciationPlayer = new WpfAudioPlayer();
+            var model = new MainViewModel(new PlaybackController(player), new PlaybackController(pronunciationPlayer));
             Program.Check(model.Status == "");
             Program.Check(model.OpenLibrary(TestData.LibraryRoot) && model.Status == "");
             File.WriteAllText(passage, "{\"filetype\":\"passage\",\"next_sid\":2,\"paragraphs\":[{\"paragraph\":[{\"sid\":\"s001\",\"text\":\"Character [[1]] matters.\"}]}]}");
@@ -173,7 +175,8 @@ internal static class ContentChecks
             json["provider"] = "imported metadata";
             File.WriteAllText(incoming, json.ToJsonString());
             using var player = new WpfAudioPlayer();
-            var model = new MainViewModel(new PlaybackController(player));
+            using var pronunciationPlayer = new WpfAudioPlayer();
+            var model = new MainViewModel(new PlaybackController(player), new PlaybackController(pronunciationPlayer));
             Program.Check(model.OpenArticle(passage));
             int notifications = 0;
             model.VocabularyChanged += () => notifications++;

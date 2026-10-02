@@ -155,7 +155,7 @@
       </Border>
     </Grid>
     <GridSplitter Grid.Column="3" Width="5" HorizontalAlignment="Center" Background="Transparent"/>
-    <DockPanel Grid.Column="4" Margin="7,0,0,0">
+    <DockPanel Grid.Column="4" Margin="7,0,0,0" PreviewMouseDown="IgnoreVocabularyRightClick" PreviewMouseUp="IgnoreVocabularyRightClick">
       <StackPanel DockPanel.Dock="Bottom" Height="48" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">
         <StackPanel x:Name="VocabularyActions" Orientation="Horizontal" VerticalAlignment="Center" Visibility="Collapsed">
           <Button x:Name="MoveUpButton" Style="{StaticResource FooterButton}" Width="32" Height="32" Padding="2" ToolTip="上移" AutomationProperties.Name="上移" Click="MoveUpClicked"><Image Source="{x:Static icons:UiIcons.MoveUp}" Width="24" Height="24"/></Button>
@@ -204,9 +204,6 @@
             </StackPanel>
           </DataTemplate>
         </ListBox.ItemTemplate>
-        <ListBox.ContextMenu>
-          <ContextMenu FontSize="11pt" PreviewKeyDown="PlaybackKeyDown"><MenuItem Header="上移" Click="MoveUpClicked"/><MenuItem Header="下移" Click="MoveDownClicked"/><Separator/><MenuItem Header="删除词条" Click="DeleteWordClicked"/></ContextMenu>
-        </ListBox.ContextMenu>
       </ListBox>
     </DockPanel>
     <TextBlock Grid.Row="1" Grid.ColumnSpan="5" Text="{Binding Status}" Foreground="#666666"

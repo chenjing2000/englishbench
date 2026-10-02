@@ -1,6 +1,7 @@
 using EnglishBench.Infrastructure;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using Microsoft.Win32;
 using EnglishBench.ViewModels;
 
@@ -8,6 +9,11 @@ namespace EnglishBench;
 
 public partial class MainWindow
 {
+    private void IgnoreVocabularyRightClick(object sender, MouseButtonEventArgs e)
+    {
+        if (e.ChangedButton == MouseButton.Right) e.Handled = true;
+    }
+
     private void RefreshVocabularyHighlights()
     {
         var words = ViewModel.Words.Select(w => w.Word).ToArray();

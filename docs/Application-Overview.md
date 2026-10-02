@@ -18,7 +18,7 @@ JSON handling uses `System.Text.Json`; files remain the storage layer. The Pytho
 | --- | --- |
 | `App.xaml` / `App.xaml.cs` | Shared brushes and button styles; startup, command-line library selection, and main-window creation |
 | `MainWindow.xaml` | Three-pane layout, controls, templates, bindings, and conditional status-row visibility |
-| `MainWindow.xaml.cs` | Construct the state model and media player; initialize modules and coordinate shutdown |
+| `MainWindow.xaml.cs` | Construct the state model and two independent media players; initialize modules and coordinate shutdown |
 | `MainWindow.Library.cs` | Folder selection, tree selection, library restoration, and passage-control assembly |
 | `MainWindow.Vocabulary.cs` | Import confirmation, list selection, highlighting, and move/delete UI actions |
 | `MainWindow.Playback.cs` | Playback controls and icons, progress timer, drag interaction, and media cleanup |
@@ -82,13 +82,13 @@ UI request -> ReaderPlayback -> audio resource lookup -> PlaybackController -> I
 Media event -> request-token check -> ReaderPlayback state/progress -> UI update
 ```
 
-The bottom play/pause and stop actions own only the selected sibling MP3. Stop is enabled only while that file is playing or paused; it does not interrupt sentence or word playback. Sentence and word requests have separate owners. Only one target plays at a time. Old completion/failure callbacks cannot advance or stop a newer target. The bottom progress bar is shown and accepts seeking only for the sibling MP3 while playing or paused. Switching to a sentence or word hides and resets the bar, clears its drag state, and stops its refresh timer.
+The bottom play/pause and stop actions own only the selected sibling MP3. Stop is enabled only while that file is playing or paused; it does not interrupt sentence or word playback. The sibling MP3 has a dedicated player and controller; sentence and word requests share a second independent player and controller. ReaderPlayback coordinates them: starting or resuming the sibling MP3 stops pronunciation, while starting pronunciation pauses the sibling MP3 without losing its position. Finishing pronunciation leaves the sibling MP3 paused. Only one target plays at a time. Old completion/failure callbacks cannot advance or stop a newer target. The bottom progress bar is shown and accepts seeking only for the sibling MP3 while playing or paused. Starting a sentence or word keeps the paused sibling MP3 progress and time label visible. Seeking and stopping affect only the sibling MP3, even while pronunciation is playing. When the sibling MP3 is stopped or has not been started, its progress bar stays hidden.
 
 ### Status and lifecycle
 
 Normal startup, loading, and successful vocabulary edits produce no routine status message. Missing resources, invalid content, duplicate additions, and failed saves remain visible for six seconds. Empty status collapses the entire status row, returning its height to all three panes. A new message restarts expiry.
 
-On close, timers stop, playback stops, and the media player is disposed. Normal application windows persist settings; test windows can disable persistence.
+On close, timers stop, playback stops, and both media players are disposed. Normal application windows persist settings; test windows can disable persistence.
 
 ## Display and settings
 
