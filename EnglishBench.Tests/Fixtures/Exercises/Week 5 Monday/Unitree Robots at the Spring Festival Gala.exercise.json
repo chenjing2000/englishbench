@@ -1,0 +1,94 @@
+{
+  "filetype": "exercise",
+  "type": "article_choice",
+  "questions": [
+    {
+      "number": 1,
+      "prompt": "How does the passage begin?",
+      "options": [
+        {
+          "key": "A",
+          "text": "With robots’ daily life."
+        },
+        {
+          "key": "B",
+          "text": "With a great robot show."
+        },
+        {
+          "key": "C",
+          "text": "With a full story of Unitree."
+        },
+        {
+          "key": "D",
+          "text": "With the history of the Spring Festival Gala."
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "prompt": "What can we know from Paragraph 3?",
+      "options": [
+        {
+          "key": "A",
+          "text": "More Monkey King robots will be made."
+        },
+        {
+          "key": "B",
+          "text": "Robots will help make movies."
+        },
+        {
+          "key": "C",
+          "text": "Robot technology will be used more widely."
+        },
+        {
+          "key": "D",
+          "text": "Robots will do kung fu shows often."
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "prompt": "Which word best describes the robot show in Paragraph 4?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Wonderful."
+        },
+        {
+          "key": "B",
+          "text": "Careful."
+        },
+        {
+          "key": "C",
+          "text": "Beautiful."
+        },
+        {
+          "key": "D",
+          "text": "Peaceful."
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "prompt": "What is the last paragraph mainly about?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The special skills of the H2 robot."
+        },
+        {
+          "key": "B",
+          "text": "The future of smart robots."
+        },
+        {
+          "key": "C",
+          "text": "The fast development of robot tech."
+        },
+        {
+          "key": "D",
+          "text": "People’s ideas about the robot show online."
+        }
+      ]
+    }
+  ]
+}

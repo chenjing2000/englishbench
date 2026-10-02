@@ -60,6 +60,7 @@ public partial class MainWindow
         EmptyMessage.Visibility = article is null ? Visibility.Visible : Visibility.Collapsed;
         ArticleTitleText.Visibility = article is null ? Visibility.Collapsed : Visibility.Visible;
         RefreshVocabularyHighlights();
+        LoadExercise();
         if (article is null)
         {
             RefreshPlayback();
@@ -85,7 +86,14 @@ public partial class MainWindow
 
     private void TreeSelectionChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
     {
-        if (e.NewValue is NavigationNode { PassagePath: not null } node && node.PassagePath != ViewModel.Article?.FilePath) ViewModel.OpenArticle(node.PassagePath);
+        if (e.NewValue is NavigationNode { PassagePath: not null } node && node.PassagePath != ViewModel.Article?.FilePath)
+        {
+            if (!ViewModel.OpenArticle(node.PassagePath) && ViewModel.Article != null)
+            {
+                var previous = MainViewModel.AllLeaves(ViewModel.Books).FirstOrDefault(item => item.PassagePath == ViewModel.Article.FilePath);
+                if (previous != null) Dispatcher.BeginInvoke(() => SelectTreeNode(LibraryTree, previous));
+            }
+        }
     }
 
     private void LibraryClicked(object sender, RoutedEventArgs e)

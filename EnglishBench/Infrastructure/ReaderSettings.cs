@@ -4,8 +4,6 @@ namespace EnglishBench.Infrastructure;
 
 public sealed class ReaderSettings
 {
-    public double Width { get; set; } = 1500;
-    public double Height { get; set; } = 920;
     public double LeftWidth { get; set; } = 310;
     public double RightWidth { get; set; } = 390;
     public double FontSize { get; set; } = 11.0 * 96 / 72;
@@ -13,9 +11,7 @@ public sealed class ReaderSettings
     public string Accent { get; set; } = "uk";
     public double ForwardStep { get; set; } = 1.0;
     public double BackwardStep { get; set; } = 2.0;
-    public bool HighlightsVisible { get; set; }
     public string? Library { get; set; }
-    public string? Passage { get; set; }
     public static string PathName => Path.Combine(AppContext.BaseDirectory, "reader-settings.json");
     public static ReaderSettings Load()
     {

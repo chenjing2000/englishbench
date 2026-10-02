@@ -1,22 +1,22 @@
 # EnglishBench Documentation
 
-These documents describe the current C# / WPF application. The running code is the compatibility authority; the archived Python application supplies historical workflow guidance.
-
 | Document | Purpose |
 | --- | --- |
-| [Library Layout](Library-Layout.md) | Library discovery, required and optional files, exact filenames, placement, and audio lookup |
-| [Application Overview](Application-Overview.md) | Design goals, framework, modules, responsibilities, state transitions, and current limitations |
-| [Image to Passage Skill](skills/image-to-passage/SKILL.md) | Convert page images into passage JSON; includes the complete passage authoring contract |
-| [Vocabulary Enrichment Skill](skills/vocabulary-enrichment/SKILL.md) | Convert structured vocabulary JSON or an unstructured word list into compatible vocabulary JSON |
-| [Getting Started and Testing](Getting-Started.md) | Run the application, use its controls, build, test, publish, and troubleshoot content |
+| [Library Layout](Library-Layout.md) | Required/optional files, filenames, placement, and audio lookup |
+| [Application Overview](Application-Overview.md) | Design goals, modules, ownership, and data flows |
+| [Exercise Module](Exercise-Module.md) | Passage families, five exercise types, manual answers, and host integration |
+| [Getting Started](Getting-Started.md) | Launch, controls, publishing, and troubleshooting |
+| [Testing](Testing.md) | Functional categories, fixture ownership, and manual acceptance checks |
+| [Vocabulary Preparation](Vocabulary-Preparation.md) | Plain-list conversion and reader-specific validation before enrichment |
 
-The two `SKILL.md` files are reusable instructions stored with this project. They can be given to an assistant with the source images or vocabulary input. They are not installed globally and do not add an in-application OCR, translation, or speech-generation feature.
+## Supplied content skills
 
-## Content preparation sequence
+The following three supplied skills are the primary preparation instructions. Image to Passage follows the current question-only exercise format; the other two retain their original content:
 
-1. Convert the source images into `<title>.json` using the passage skill.
-2. Build or enrich `<title>.vocabulary.json` using the vocabulary skill. A matching passage is optional context.
-3. Place both files in a marked book directory, optionally adding the audio files described in the library guide.
-4. Open the parent library directory in EnglishBench, then select the passage.
+1. [Image to Passage](skills/skills-python/image_to_passage/SKILL.md): extract passage and exercise JSON from page images.
+2. [Passage Segment](skills/skills-python/passage_segment/SKILL.md): organize paragraphs, stable SIDs, blanks, and segment audio declarations.
+3. [Vocabulary Enrichment](skills/skills-python/vocabulary_enrichment/SKILL.md): enrich structured vocabulary using optional passage context.
 
-JSON examples demonstrate structure. Audio paths are declarations, not generated MP3 files. The vocabulary skill's default translation language is Simplified Chinese, following the original workflow; all documentation and examples here are written in English.
+Their StudyBench name refers to the Python origin; their content formats are read by EnglishBench. Current WPF runtime behavior and the new answer format are documented separately. These skills run externally and do not provide built-in OCR, dictionary lookup, or audio generation.
+
+For an unstructured word list, first create a compatible structured file using Vocabulary Preparation, then apply the supplied enrichment skill. The source passage must remain unchanged. Audio paths are declarations; physical MP3 files must be supplied separately.

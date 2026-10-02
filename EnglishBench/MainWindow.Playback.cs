@@ -72,6 +72,7 @@ public partial class MainWindow
 
     private void PlaybackKeyDown(object sender, KeyEventArgs e)
     {
+        if (e.OriginalSource is System.Windows.Controls.Primitives.TextBoxBase input && ExercisePanel.IsAncestorOf(input)) return;
         Key key = e.Key == Key.System ? e.SystemKey : e.Key;
         if (key != Key.Left && key != Key.Right && key != Key.Space) return;
         e.Handled = true;

@@ -8,6 +8,9 @@
 # Machine-specific application settings
 reader-settings.json
 
+# Local exercise responses when a library lives in this workspace
+**/userdata/
+
 # IDE and local tool files
 .vs/
 .idea/

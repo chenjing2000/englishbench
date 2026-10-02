@@ -2,7 +2,6 @@ using EnglishBench.Models;
 using EnglishBench.Infrastructure;
 using System.IO;
 using System.Text.Json;
-using System.Text.RegularExpressions;
 namespace EnglishBench.Services;
 public sealed class ArticleRepository
 {
@@ -17,22 +16,12 @@ public sealed class ArticleRepository
         if (!root.TryGetProperty("next_sid", out var next) || next.ValueKind != JsonValueKind.Number || !next.TryGetInt32(out int nextSid) || nextSid < 1 || nextSid > 1000)
             throw new InvalidDataException("next_sid 必须是 1–1000 的整数。");
         var paragraphs = new List<Segment[]>();
-        var ids = new HashSet<string>();
-        var placeholders = new List<int>();
         foreach (var paragraph in JsonFiles.Array(root, "paragraphs", true).EnumerateArray())
         {
             var segments = new List<Segment>();
             foreach (var item in JsonFiles.Array(paragraph, "paragraph", true).EnumerateArray())
             {
                 string sid = JsonFiles.Text(item, "sid"), text = JsonFiles.Text(item, "text");
-                if (!Regex.IsMatch(sid, @"^s[0-9]{3}$") || int.Parse(sid[1..]) == 0 || !ids.Add(sid))
-                    throw new InvalidDataException($"非法或重复 SID：{sid}");
-                if (string.IsNullOrEmpty(text) || text != text.Trim()) throw new InvalidDataException($"{sid} 正文为空或含首尾空白。");
-                foreach (Match match in Regex.Matches(text, @"\[\[([0-9]+)\]\]"))
-                {
-                    if (!int.TryParse(match.Groups[1].Value, out int number)) throw new InvalidDataException("占位符编号超出有效范围。");
-                    placeholders.Add(number);
-                }
                 AudioPaths? audio = null;
                 if (item.TryGetProperty("audio", out var rawAudio))
                     audio = new AudioPaths(JsonFiles.Text(rawAudio, "uk"), JsonFiles.Text(rawAudio, "us"));
@@ -40,20 +29,8 @@ public sealed class ArticleRepository
             }
             paragraphs.Add(segments.ToArray());
         }
-        var all = paragraphs.SelectMany(p => p).ToArray();
-        if (nextSid <= all.Max(s => int.Parse(s.Sid[1..]))) throw new InvalidDataException("next_sid 不大于已有 SID。");
-        bool blank = placeholders.Any(n => n >= 1);
-        foreach (var segment in all)
-        {
-            if (blank)
-            {
-                string scrubbed = Regex.Replace(segment.Text, @"\[\[([0-9]+)\]\]", "");
-                if (segment.Audio is not null || scrubbed.Contains("[[") || scrubbed.Contains("]]")) throw new InvalidDataException("ArticleBlank 结构无效。");
-            }
-            else if (segment.Text.Contains("[[") || segment.Text.Contains("]]") || segment.Audio?.Uk != $"audio_segments/{segment.Sid}_uk.mp3" || segment.Audio?.Us != $"audio_segments/{segment.Sid}_us.mp3")
-                throw new InvalidDataException($"{segment.Sid} 完整文章音频路径或正文结构无效。");
-        }
-        if (blank && !placeholders.Order().SequenceEqual(Enumerable.Range(1, placeholders.Count))) throw new InvalidDataException("占位符编号必须唯一、从 1 连续。");
+        bool blank = paragraphs.Any(paragraph => paragraph.Any(segment => segment.Text.Contains("[[")));
+        Article content = blank ? new ArticleBlank(paragraphs, nextSid) : new Article(paragraphs, nextSid);
         string vocabularyPath = Path.ChangeExtension(absolute, ".vocabulary.json");
         var warnings = new List<string>();
         VocabularySnapshot vocabulary;
@@ -65,13 +42,13 @@ public sealed class ArticleRepository
         }
         var resources = new AudioResources();
         int missing = 0;
-        foreach (var segment in all.Where(s => s.Audio is not null))
+        foreach (var segment in content.Segments.Where(s => s.Audio is not null))
             foreach (string accent in new[] { "uk", "us" })
             {
                 var asset = resources.Segment(Path.GetDirectoryName(absolute)!, segment, accent);
                 if (!AudioResources.IsAvailable(asset)) missing++;
             }
         if (missing > 0) warnings.Add($"缺失 {missing} 个正文音频；正文仍可阅读。");
-        return new LoadedArticle(absolute, title, paragraphs, vocabularyPath, vocabulary, warnings);
+        return new LoadedArticle(absolute, title, content, vocabularyPath, vocabulary, warnings);
     }
 }

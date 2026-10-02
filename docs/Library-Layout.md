@@ -14,6 +14,7 @@ Library/                              <- select this directory
       When America walks away/        <- optional article directory
         When America walks away.json
         When America walks away.vocabulary.json
+        When America walks away.exercise.json
         article.mp3
         audio_segments/
           s001_uk.mp3
@@ -21,9 +22,9 @@ Library/                              <- select this directory
         audio_vocabulary/
           be_stuck_in_uk.mp3
           be_stuck_in_us.mp3
-    userdata/                         <- optional; excluded from navigation
-      xiaoxin/
-        answer_sheet.json
+  userdata/                           <- created only by Save Answers
+    xiaoxin/
+      The Economist/2026-09-26/When America walks away/When America walks away.exercise.json
 ```
 
 Date and article directories are conventions, not requirements. A passage may sit directly in the book directory or deeper within it. Separate article directories are useful because all passages sharing a directory also share its whole-article MP3 selection and relative audio locations.
@@ -41,8 +42,9 @@ Opening a library reads directory names and discovers potential passage filename
 | `audio_segments/` and its MP3 files | Optional physical files | Passage directory | Complete passages must declare these paths even when the files do not exist; missing files produce a warning without blocking reading |
 | `audio_vocabulary/` and its MP3 files | Optional physical files | Passage directory | Vocabulary entries must declare the correct paths; missing or empty files disable the corresponding pronunciation buttons |
 | One whole-article `.mp3` | Optional | Directly beside the passage JSON | Used only by the central bottom play/pause button |
-| `userdata/xiaoxin/answer_sheet.json` | Optional | Relative to the book directory | Only `username` is read for the account label; authentication and exercise answering are not implemented |
-| `<title>.exercise.json` | Optional stored legacy companion | Beside the passage | Excluded from navigation and not read by the current WPF exercise UI, which has not been implemented |
+| Old book-local user files | Ignored | Any excluded `userdata` branch | No old account labels or Python answers are read; the sole account is xiaoxin |
+| `<title>.exercise.json` | Optional exercise companion | Beside the passage | Excluded from navigation; loaded below the selected passage by the exercise module |
+| `userdata/xiaoxin/<book>/<relative-exercise-path>` | Created by explicit Save Answers | Relative to the library root | New-format responses mirror the book and exercise path; restored on reopening; no history |
 | Images, PDFs, text, and other non-JSON source files | Optional stored material | Any convenient location | Not opened by the reader and not shown as passage leaves |
 
 A minimal marker can contain:
@@ -63,7 +65,7 @@ A standalone file named `vocabulary.json` can be selected through the vocabulary
 
 Import replaces the active article's word list and saves the result to its matching companion file; it is not a merge operation. Moving or deleting words also saves that companion. If the file has changed externally since loading, the save is rejected: reopen the article before editing again. Malformed vocabulary does not block passage reading, but overwriting that malformed companion is disabled until it is repaired and reopened.
 
-See the [passage skill](skills/image-to-passage/SKILL.md) and [vocabulary skill](skills/vocabulary-enrichment/SKILL.md) for the exact JSON structures.
+See the [passage skill](skills/skills-python/image_to_passage/SKILL.md) and [vocabulary skill](Vocabulary-Preparation.md) for the exact JSON structures.
 
 ## 4. Three independent audio lookups
 

@@ -18,6 +18,7 @@ public partial class MainWindow : Window
         InitializeComponent();
         DataContext = ViewModel;
         InitializeWindowSettings();
+        InitializeExercises();
         ViewModel.HighlightsVisible = false;
 
         ViewModel.ArticleChanged += RenderArticle;

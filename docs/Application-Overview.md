@@ -25,20 +25,21 @@ JSON handling uses `System.Text.Json`; files remain the storage layer. The Pytho
 | `MainWindow.Settings.cs` | Startup size, column widths, font/accent/progress-step menus, and preference persistence |
 | `MainWindow.Status.cs` | Conditional warning/error status and six-second expiry |
 | `ViewModels/MainViewModel.cs` | Shared state, notifications, and operation errors |
-| `ViewModels/MainViewModel.Library.cs` | Prepare and commit library/article changes; resolve account-display context |
+| `ViewModels/MainViewModel.Library.cs` | Prepare and commit library/article changes; honor the exercise leave guard |
 | `ViewModels/MainViewModel.Vocabulary.cs` | Prepare word commands and coordinate vocabulary edits and commits |
 | `ViewModels/MainViewModel.Playback.cs` | Forward reader commands with the current article and accent |
 | `ViewModels/VocabularyEntryViewModel.cs` | A word's display fields, available pronunciation actions, and move/delete commands |
-| `Models/` | Passage segments, SIDs, selection ranges, vocabulary entries, navigation nodes, and loaded snapshots |
+| `Exercises/` / `MainWindow.Exercises.cs` | Independent exercise parsing, session state, WPF inputs, manual answer storage, and host integration |
+| `Models/` | Passage families, segments, SIDs, selection ranges, vocabulary entries, navigation nodes, and loaded snapshots |
 | `Services/LibraryRepository.cs` | Discover marked book directories and recursively build the directory tree without parsing content |
 | `Services/ArticleRepository.cs` | Parse and validate passages; load the matching vocabulary; report missing sentence audio |
 | `Services/VocabularyRepository.cs` | Validate vocabulary, derive audio stems, and save with external-change detection |
-| `Services/UserRepository.cs` | Read the limited account-display data from the book's existing answer sheet |
+| `Models/Article.cs` / `Models/ArticleBlank.cs` | Independent source files for the two passage families; own SID/text/audio and placeholder contracts |
 | `Services/ReaderWorkspace.cs` | Commit prepared library/article state and replace vocabulary after successful persistence |
 | `Services/VocabularyMatcher.cs` | Find non-overlapping literal vocabulary matches with explicit English-word boundaries |
 | `Services/AudioResources.cs` | Resolve sentence/word audio and select the first sibling MP3 for whole-article playback |
 | `Services/ReaderPlayback.cs` | Select audio targets, enforce article-only controls/progress, cancel pronunciation, and report audio errors |
-| `Services/PlaybackController.cs` / `IAudioPlayer.cs` | Playback state, pause/resume, completion, progress access, and stale-event rejection; player boundary |
+| `Services/PlaybackController.cs` / `IAudioPlayer.cs` | Single-file playback state, pause/resume, completion, progress access, and stale-event rejection; player boundary |
 | `Rendering/ParagraphReader.cs` | Build paragraph documents; maintain SID-to-text ranges, selections, styles, and playback requests |
 | `Rendering/SelectionAddAdorner.cs` | Position and show/hide the native circle-plus selection action |
 | `Infrastructure/JsonFiles.cs` | JSON helpers, SHA256 fingerprints, and temporary-file replacement |
@@ -47,7 +48,7 @@ JSON handling uses `System.Text.Json`; files remain the storage layer. The Pytho
 | `Infrastructure/UiIcons.cs` | Load embedded icons and create vector drawings, including disabled variants |
 | `Infrastructure/WpfAudioPlayer.cs` / `RelayCommand.cs` | Native media adapter and small WPF command implementation |
 
-The window and main view model each use partial files to group responsibilities while sharing their existing state. `ReaderPlayback` is a concrete service with no window or view-model dependency. `PlaybackController` operates through `IAudioPlayer`, which includes media-open events and progress. The window reads article progress and sends seek requests through `ReaderPlayback`; native media objects remain behind the player boundary. Repositories own file validation and persistence, the workspace owns committed content, and renderers own text/selection display. No additional service interfaces or generic frameworks are introduced.
+The window and main view model each use partial files to group responsibilities while sharing their existing state. `ReaderPlayback` is a concrete service with no window or view-model dependency. `PlaybackController` operates through `IAudioPlayer`, which includes media-open events and progress. The window reads article progress and sends seek requests through `ReaderPlayback`; native media objects remain behind the player boundary. Repositories own file parsing and persistence, the two passage classes own passage validation, the workspace owns committed content, and renderers own text/selection display. Exercises use the validated passage family and its placeholder numbers; they do not parse passage text again. No additional service interfaces or generic frameworks are introduced.
 
 ## Important data flows
 
@@ -98,12 +99,12 @@ On close, timers stop, playback stops, and both media players are disposed. Norm
 - The three bottom toolbars share their height and alignment. Playback controls remain present when disabled.
 - Highlighting starts off. The selection-add action is a 14 by 14 DIP native vector circle-plus; it follows selection scrolling and layout and hides outside the viewport or when selection is cleared.
 - Progress settings provide independent Forward (1.0/2.0/3.0 seconds) and Backward (2.0/3.0/5.0 seconds) selections, defaulting to their first options. Left uses the Backward value to move backward; Right uses the Forward value to move forward. Each option displays seconds explicitly. All Settings menus fit their text and share a light background; selected font, accent, and step options use #87c0ca instead of a checkmark. Space has priority across the window and popup menus and toggles only the sibling MP3 playback/pause.
-- Font size, accent, progress steps, library, column widths, and player volume are retained as applicable. Saved passage/highlight fields do not cause article restoration or initial highlighting.
+- Font size, accent, progress steps, library, column widths, and player volume are retained. Passage selection, highlighting, and window dimensions are not saved. Older settings may contain these unused fields; they are ignored.
 
 ## Current boundaries
 
-The application reads passages and vocabulary and plays existing audio. OCR, vocabulary enrichment, dictionary lookup, and audio generation are external preparation workflows. There is no paragraph-play button, vocabulary-export UI, account registration/login workflow, or exercise-answering interface.
+The application reads passages and vocabulary and plays existing audio. OCR, vocabulary enrichment, dictionary lookup, and audio generation are external preparation workflows. There is no paragraph-play button, vocabulary-export UI, or account registration/login workflow. Five exercise types are supported in a separate module; answers are manually saved for the fixed xiaoxin account. See [Exercise Module](Exercise-Module.md).
 
 Matching is literal and case-insensitive, not morphological: `convict` does not automatically match `convicted`, and straight/curly apostrophes are not normalized. ASCII letters, apostrophes, and hyphens participate in word boundaries; digits deliberately do not. Among matches starting at the same position, the longest wins. These details matter when authoring canonical vocabulary entries.
 
-`EnglishBench.Tests/Prototype/` contains old rendering contract fixtures only and is not included in the published application. See [Getting Started and Testing](Getting-Started.md) for current test categories.
+There is no test-only application prototype or multi-file playback queue. Regression checks target current production services and controls. See [Testing](Testing.md) for categories, test ownership, and manual checks.

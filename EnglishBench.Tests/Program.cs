@@ -26,6 +26,7 @@ internal static class Program
                 ReaderControlsChecks.Run();
                 IconChecks.Run();
                 VocabularyEditingChecks.Run();
+                ExerciseChecks.Run();
                 break;
             case "--rendering-only": MatchingChecks.Run(); RenderingChecks.Run(); break;
             case "--audio-only": AudioChecks.Run(); RealMediaChecks.Run(); break;
@@ -35,6 +36,7 @@ internal static class Program
             case "--icons-only": IconChecks.Run(); break;
             case "--controls-only": ReaderControlsChecks.Run(); break;
             case "--tree-only": TreeNavigationChecks.Run(); break;
+            case "--exercise-only": ExerciseChecks.Run(); break;
             case "--source-only": SourceLibraryChecks.Run(); break;
             default:
                 Console.Error.WriteLine("Unknown test category: " + category);

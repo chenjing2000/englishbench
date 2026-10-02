@@ -18,6 +18,7 @@ public sealed partial class MainViewModel : INotifyPropertyChanged
     private bool highlightsVisible;
     public event PropertyChangedEventHandler? PropertyChanged;
     public event Action? ArticleChanged;
+    public Func<bool>? CanLeaveArticle { get; set; }
     public event Action? VocabularyChanged;
     public event Action? PlaybackChanged;
     public ObservableCollection<NavigationNode> Books { get; } = new ObservableCollection<NavigationNode>();
@@ -30,7 +31,7 @@ public sealed partial class MainViewModel : INotifyPropertyChanged
     public string Owner => playback.Owner;
     public PlaybackState PlaybackState => playback.State;
     public bool CanWriteVocabulary => Article?.Vocabulary.CanWrite == true;
-    public string CurrentUser { get; private set; } = "User: —";
+    public string CurrentUser => "User: xiaoxin";
     public string Status
     {
         get => status;

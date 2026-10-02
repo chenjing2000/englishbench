@@ -1,15 +1,10 @@
----
-name: vocabulary-enrichment
-description: Convert structured vocabulary JSON or an unstructured word and phrase list into complete EnglishBench vocabulary JSON, optionally using a matching passage for contextual meanings and ordering.
----
-
-# Vocabulary Enrichment
+# Vocabulary Preparation
 
 ## Purpose and scope
 
 Produce a complete EnglishBench vocabulary file from either an existing structured vocabulary document or a plain list of words/phrases. Improve useful meanings, normalize lexical forms where justified, remove duplicates, and generate compatible audio-path declarations.
 
-This adapts the original Python `vocabulary_enrichment` skill to two input modes. It does not modify the source passage, generate speech files, look for arbitrary files without a supplied context, or install anything in the application.
+Use the supplied [Vocabulary Enrichment skill](skills/skills-python/vocabulary_enrichment/SKILL.md) for structured input. This guide supplies the plain-list preparation step and the reader-specific compatibility checks. It does not modify the source passage, generate speech files, look for arbitrary files without a supplied context, or install anything in the application.
 
 ## Inputs
 
@@ -25,7 +20,7 @@ The default gloss language is Simplified Chinese, matching the original learning
 
 Return or write the complete UTF-8 JSON document, not a diff, list of changes, or partial entry array. The data file contains raw JSON only, with no Markdown fences, comments, reasoning, or confidence fields.
 
-When pairing with a passage, use its exact filename stem: `Example.json` pairs with `Example.vocabulary.json` in the same directory. A file named `vocabulary.json` is valid as an explicit import input but is not automatically loaded as a companion. Without a passage or requested title, use `vocabulary.json` as a standalone deliverable and explain its placement/import role outside the data file. See [Library Layout](../../Library-Layout.md).
+When pairing with a passage, use its exact filename stem: `Example.json` pairs with `Example.vocabulary.json` in the same directory. A file named `vocabulary.json` is valid as an explicit import input but is not automatically loaded as a companion. Without a passage or requested title, use `vocabulary.json` as a standalone deliverable and explain its placement/import role outside the data file. See [Library Layout](Library-Layout.md).
 
 ## Reader-compatible schema
 

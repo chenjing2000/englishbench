@@ -2,19 +2,11 @@ using System.IO;
 
 namespace EnglishBench.Models;
 
-public sealed record LoadedArticle(string FilePath, string Title, IReadOnlyList<Segment[]> Paragraphs,
+public sealed record LoadedArticle(string FilePath, string Title, Article Content,
     string VocabularyPath, VocabularySnapshot Vocabulary, IReadOnlyList<string> Warnings)
 {
     public string Directory => Path.GetDirectoryName(FilePath)!;
-    public IEnumerable<Segment> Segments
-    {
-        get
-        {
-            foreach (var paragraph in Paragraphs)
-            {
-                foreach (var segment in paragraph) yield return segment;
-            }
-        }
-    }
-    public bool IsBlank => Segments.All(s => s.Audio is null);
+    public IReadOnlyList<Segment[]> Paragraphs => Content.Paragraphs;
+    public IEnumerable<Segment> Segments => Content.Segments;
+    public bool IsBlank => Content is ArticleBlank;
 }

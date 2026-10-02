@@ -48,9 +48,8 @@ public partial class MainWindow
 
     private void WindowClosing(object? sender, CancelEventArgs e)
     {
+        if (!ConfirmExerciseLeave()) { e.Cancel = true; return; }
         if (!persistSettings) return;
-        settings.Width = RestoreBounds.Width;
-        settings.Height = RestoreBounds.Height;
         settings.LeftWidth = LeftColumn.ActualWidth;
         settings.RightWidth = RightColumn.ActualWidth;
     }
@@ -61,9 +60,7 @@ public partial class MainWindow
 
         settings.Volume = volume;
         settings.Accent = ViewModel.Accent;
-        settings.HighlightsVisible = ViewModel.HighlightsVisible;
         settings.Library = ViewModel.LibraryRoot;
-        settings.Passage = ViewModel.Article?.FilePath;
         try
         {
             settings.Save();
@@ -96,6 +93,7 @@ public partial class MainWindow
         settings.FontSize = points * 96.0 / 72;
         foreach (var reader in readers) reader.FontSize = settings.FontSize;
         VocabularyList.FontSize = settings.FontSize;
+        ExercisePanel.FontSize = settings.FontSize;
         RefreshSettingsChecks();
     }
 

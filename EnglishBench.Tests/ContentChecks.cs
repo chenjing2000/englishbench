@@ -9,6 +9,26 @@ internal static class ContentChecks
 {
     internal static void Run()
     {
+        Program.Run("Article owns complete-passage SID, text and audio contracts", () =>
+        {
+            var paragraphs = new[] { new[] { new Segment("s001", "Complete text.", TestData.Paths("s001")) } };
+            var content = new Article(paragraphs, 2);
+            Program.Check(content.NextSid == 2 && content.Segments.Single().Sid == "s001");
+            ExpectInvalid(() => new Article(paragraphs, 1));
+            ExpectInvalid(() => new Article(Array.Empty<Segment[]>(), 1));
+            ExpectInvalid(() => new Article(new[] { new[] { new Segment("s000", "Text.", TestData.Paths("s000")) } }, 2));
+            ExpectInvalid(() => new Article(new[] { new[] { paragraphs[0][0], paragraphs[0][0] } }, 2));
+            ExpectInvalid(() => new Article(new[] { new[] { new Segment("s001", "No audio.") } }, 2));
+            ExpectInvalid(() => new Article(new[] { new[] { new Segment("s001", "[[1]]", TestData.Paths("s001")) } }, 2));
+        });
+        Program.Run("ArticleBlank owns continuous placeholders and rejects segment audio", () =>
+        {
+            var content = new ArticleBlank(new[] { new[] { new Segment("s001", "Text [[1]] and [[2]].") } }, 2);
+            Program.Check(content.Placeholders.SequenceEqual(new[] { 1, 2 }) && content.NextSid == 2);
+            foreach (string text in new[] { "No blanks.", "[[0]]", "[[1]] [[1]]", "[[1]] [[3]]", "[[2147483648]]", "[[x]]", "[[1]] ]]" })
+                ExpectInvalid(() => new ArticleBlank(new[] { new[] { new Segment("s001", text) } }, 2));
+            ExpectInvalid(() => new ArticleBlank(new[] { new[] { new Segment("s001", "[[1]]", TestData.Paths("s001")) } }, 2));
+        });
         Program.Run("real magazine: 13 paragraphs, 62 stable SID and 120 complete words", () =>
         {
             var article = new ArticleRepository().Load(TestData.ArticlePath);
@@ -114,7 +134,7 @@ internal static class ContentChecks
             Directory.CreateDirectory(book);
             File.WriteAllText(Path.Combine(book, "book.json"), "not-json");
             File.Copy(passage, Path.Combine(book, "Reading.json"));
-            foreach (string ignored in new[] { "userdata", ".hidden", "__pycache__" })
+            foreach (string ignored in new[] { "UserData", ".hidden", "__pycache__" })
             {
                 Directory.CreateDirectory(Path.Combine(book, ignored));
                 File.Copy(passage, Path.Combine(book, ignored, "Ignored.json"));
@@ -134,7 +154,7 @@ internal static class ContentChecks
             int notifications = 0;
             model.ArticleChanged += () => notifications++;
             Program.Check(model.OpenArticle(Path.Combine(book, "Reading.json")));
-            Program.Check(model.ArticleTitle == "Reading" && notifications == 1 && model.CurrentUser.Contains("无法读取"));
+            Program.Check(model.ArticleTitle == "Reading" && notifications == 1 && model.CurrentUser == "User: xiaoxin");
         });
         RunCopyTest("normal operations stay quiet while warnings and errors remain visible", (root, passage) =>
         {

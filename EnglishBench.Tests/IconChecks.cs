@@ -186,8 +186,8 @@ internal static class IconChecks
             EnglishBench.MainWindow? session = null;
             try
             {
-                new EnglishBench.Infrastructure.ReaderSettings { HighlightsVisible = true,
-                    Library = TestData.LibraryRoot, Passage = TestData.ArticlePath }.Save();
+                EnglishBench.Infrastructure.JsonFiles.WriteAtomic(EnglishBench.Infrastructure.ReaderSettings.PathName,
+                    new { HighlightsVisible = true, Library = TestData.LibraryRoot, Passage = TestData.ArticlePath });
                 session = new EnglishBench.MainWindow { Left = -10000, Top = -10000, ShowActivated = false };
                 session.Show();
                 WpfTestHelpers.Pump();

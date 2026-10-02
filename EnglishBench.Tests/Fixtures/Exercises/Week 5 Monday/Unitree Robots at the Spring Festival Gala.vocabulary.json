@@ -1,0 +1,55 @@
+{
+  "filetype": "vocabulary",
+  "words": [
+    {
+      "word": "tech",
+      "phonetic_uk": "",
+      "phonetic_us": "",
+      "meanings": [],
+      "audio": {
+        "uk": "audio_vocabulary/tech_uk.mp3",
+        "us": "audio_vocabulary/tech_us.mp3"
+      }
+    },
+    {
+      "word": "company",
+      "phonetic_uk": "",
+      "phonetic_us": "",
+      "meanings": [],
+      "audio": {
+        "uk": "audio_vocabulary/company_uk.mp3",
+        "us": "audio_vocabulary/company_us.mp3"
+      }
+    },
+    {
+      "word": "brought",
+      "phonetic_uk": "",
+      "phonetic_us": "",
+      "meanings": [],
+      "audio": {
+        "uk": "audio_vocabulary/brought_uk.mp3",
+        "us": "audio_vocabulary/brought_us.mp3"
+      }
+    },
+    {
+      "word": "robots",
+      "phonetic_uk": "",
+      "phonetic_us": "",
+      "meanings": [],
+      "audio": {
+        "uk": "audio_vocabulary/robots_uk.mp3",
+        "us": "audio_vocabulary/robots_us.mp3"
+      }
+    },
+    {
+      "word": "show",
+      "phonetic_uk": "",
+      "phonetic_us": "",
+      "meanings": [],
+      "audio": {
+        "uk": "audio_vocabulary/show_uk.mp3",
+        "us": "audio_vocabulary/show_us.mp3"
+      }
+    }
+  ]
+}

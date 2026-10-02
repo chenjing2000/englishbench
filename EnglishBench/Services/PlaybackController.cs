@@ -4,8 +4,6 @@ using System.IO;
 public sealed class PlaybackController
 {
     private readonly IAudioPlayer player;
-    private AudioItem[] playlist = Array.Empty<AudioItem>();
-    private int index;
     private long request;
     public PlaybackController(IAudioPlayer player)
     {
@@ -22,11 +20,6 @@ public sealed class PlaybackController
     public TimeSpan Position => player.Position;
     public event Action? Changed;
     public event Action<string>? Message;
-    public void Toggle(IReadOnlyList<AudioItem> items, string owner)
-    {
-        if (!ToggleCurrent(owner)) Play(items, owner);
-    }
-
     public bool ToggleCurrent(string owner)
     {
         if (Owner != owner || State == PlaybackState.Stopped) return false;
@@ -41,37 +34,21 @@ public sealed class PlaybackController
         player.Position = TimeSpan.FromSeconds(Math.Clamp(seconds, 0, Duration.TotalSeconds));
     }
 
-    public void Play(IReadOnlyList<AudioItem> items, string owner)
+    public void Play(AudioItem item, string owner)
     {
         Stop();
-        if (items.Count == 0)
+        try
         {
-            Message?.Invoke("没有可播放的音频文件。");
-            return;
-        }
-        foreach (var item in items)
-        {
-            try
+            if (!Path.IsPathFullyQualified(item.Path) || !string.Equals(Path.GetExtension(item.Path), ".mp3", StringComparison.OrdinalIgnoreCase) ||
+                !File.Exists(item.Path) || new FileInfo(item.Path).Length == 0)
             {
-                if (!Path.IsPathFullyQualified(item.Path) || !string.Equals(Path.GetExtension(item.Path), ".mp3", StringComparison.OrdinalIgnoreCase) ||
-                    !File.Exists(item.Path) || new FileInfo(item.Path).Length == 0)
-                {
-                    Message?.Invoke($"{(items.Count > 1 ? "无法完整朗读，缺少或无效" : "缺少或无效")} MP3：{item.Path}");
-                    return;
-                }
+                Message?.Invoke("缺少或无效 MP3：" + item.Path);
+                return;
             }
-            catch (IOException error) { Message?.Invoke(error.Message); return; }
-            catch (UnauthorizedAccessException error) { Message?.Invoke(error.Message); return; }
         }
-        playlist = items.ToArray();
-        index = 0;
+        catch (IOException error) { Message?.Invoke(error.Message); return; }
+        catch (UnauthorizedAccessException error) { Message?.Invoke(error.Message); return; }
         Owner = owner;
-        PlayCurrent();
-    }
-
-    private void PlayCurrent()
-    {
-        var item = playlist[index];
         CurrentSid = item.Sid;
         State = PlaybackState.Playing;
         long token = ++request;
@@ -94,9 +71,7 @@ public sealed class PlaybackController
     private void OnEnded(long token)
     {
         if (token != request || State == PlaybackState.Stopped) return;
-        index++;
-        if (index >= playlist.Length) Stop();
-        else PlayCurrent();
+        Stop();
     }
 
     private void OnFailed(long token, string error)
@@ -126,7 +101,6 @@ public sealed class PlaybackController
     {
         request++;
         player.Stop();
-        playlist = Array.Empty<AudioItem>();
         CurrentSid = null;
         Owner = "";
         State = PlaybackState.Stopped;
