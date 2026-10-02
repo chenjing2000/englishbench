@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 using EnglishBench.Infrastructure;
 using EnglishBench.Services;
 
@@ -10,6 +11,187 @@ internal static class ReaderControlsChecks
 {
     internal static void Run()
     {
+        Program.Run("playback time uses minutes through one hour and hours beyond it", () =>
+        {
+            var format = typeof(EnglishBench.MainWindow).GetMethod("FormatPlaybackTime", BindingFlags.NonPublic | BindingFlags.Static)!;
+            foreach (var sample in new[] { (0.0, "00:00"), (190.0, "03:10"), (3599.0, "59:59"),
+                (3600.0, "60:00"), (3601.0, "01:00:01"), (3790.0, "01:03:10"), (90061.0, "25:01:01") })
+                Program.Check((string)format.Invoke(null, new object[] { sample.Item1 })! == sample.Item2);
+        });
+        Program.Run("progress menus select independent steps and preserve them across restart", () =>
+        {
+            string path = ReaderSettings.PathName;
+            byte[]? previous = File.Exists(path) ? File.ReadAllBytes(path) : null;
+            EnglishBench.MainWindow? window = null;
+            try
+            {
+                new ReaderSettings().Save();
+                window = new EnglishBench.MainWindow { ShowActivated = false, Left = -10000, Top = -10000 };
+                window.Show();
+                PressArrow(window, (Button)window.FindName("SettingsButton"), Key.Space);
+                Program.Check(window.ViewModel.Article == null && !((Button)window.FindName("SettingsButton")).ContextMenu.IsOpen);
+                var menu = (MenuItem)((Button)window.FindName("SettingsButton")).ContextMenu.Items[2];
+                Program.Check((string)menu.Header == "进度条" && menu.Items.Count == 2);
+                var forward = (MenuItem)menu.Items[0];
+                var backward = (MenuItem)menu.Items[1];
+                Program.Check((string)forward.Header == "前进" && (string)backward.Header == "后退");
+                Program.Check(forward.Items.Cast<MenuItem>().Select(i => (string)i.Header).SequenceEqual(new[] { "1.0 秒", "2.0 秒", "3.0 秒" }));
+                Program.Check(backward.Items.Cast<MenuItem>().Select(i => (string)i.Header).SequenceEqual(new[] { "2.0 秒", "3.0 秒", "5.0 秒" }));
+                foreach (var branch in new[] { forward, backward })
+                {
+                    Program.Check(((MenuItem)branch.Items[0]).IsChecked);
+                    foreach (MenuItem item in branch.Items)
+                    {
+                        ClickStep(item);
+                        Program.Check(item.IsChecked && branch.Items.Cast<MenuItem>().Count(i => i.IsChecked) == 1);
+                        Program.Check(Math.Abs(item.FontSize - 10.0 * 96 / 72) < 0.001);
+                        foreach (MenuItem option in branch.Items)
+                        {
+                            option.ApplyTemplate();
+                            Program.Check(option.Template.FindName("Check", option) == null);
+                            var surface = (Border)option.Template.FindName("ItemSurface", option);
+                            var color = ((System.Windows.Media.SolidColorBrush)surface.Background).Color;
+                            if (option.IsChecked) Program.Check(color == System.Windows.Media.Color.FromRgb(135, 192, 202));
+                            else Program.Check(color == System.Windows.Media.Color.FromRgb(252, 252, 253));
+                        }
+                    }
+                }
+                var context = ((Button)window.FindName("SettingsButton")).ContextMenu;
+                context.IsOpen = true;
+                menu.IsSubmenuOpen = true;
+                forward.IsSubmenuOpen = true;
+                WpfTestHelpers.Pump(30);
+                var valuesPopup = (Popup)forward.Template.FindName("PART_Popup", forward);
+                Program.Check(valuesPopup.IsOpen && ((Border)valuesPopup.Child).ActualWidth >= 60 && ((Border)valuesPopup.Child).ActualWidth <= 80);
+                var directionPopup = (Popup)menu.Template.FindName("PART_Popup", menu);
+                Program.Check(((Border)directionPopup.Child).ActualWidth >= 60 && ((Border)directionPopup.Child).ActualWidth <= 80);
+                var valuesSurface = (Border)valuesPopup.Child;
+                var bitmap = new System.Windows.Media.Imaging.RenderTargetBitmap((int)(valuesSurface.ActualWidth + 16), (int)(valuesSurface.ActualHeight + 16), 96, 96, System.Windows.Media.PixelFormats.Pbgra32);
+                bitmap.Render(valuesSurface);
+                var encoder = new System.Windows.Media.Imaging.PngBitmapEncoder();
+                encoder.Frames.Add(System.Windows.Media.Imaging.BitmapFrame.Create(bitmap));
+                Directory.CreateDirectory(Path.GetFullPath("artifacts"));
+                using (var file = File.Create(Path.GetFullPath("artifacts/progress-options.png"))) encoder.Save(file);
+                context.IsOpen = false;
+                window.Close();
+                window = new EnglishBench.MainWindow { ShowActivated = false, Left = -10000, Top = -10000 };
+                window.Show();
+                menu = (MenuItem)((Button)window.FindName("SettingsButton")).ContextMenu.Items[2];
+                Program.Check(((MenuItem)((MenuItem)menu.Items[0]).Items[2]).IsChecked);
+                Program.Check(((MenuItem)((MenuItem)menu.Items[1]).Items[2]).IsChecked);
+            }
+            finally
+            {
+                try { window?.Close(); WpfTestHelpers.Pump(); }
+                finally { if (previous == null) File.Delete(path); else File.WriteAllBytes(path, previous); }
+            }
+        });
+        Program.Run("left and right arrows control article progress from every pane and popup", () =>
+        {
+            var window = CreateWindow();
+            string root = Path.GetFullPath(Path.Combine("artifacts", "controls-tests", Guid.NewGuid().ToString("N")));
+            try
+            {
+                Directory.CreateDirectory(root);
+                string path = Path.Combine(root, "Reading.json");
+                File.Copy(TestData.ArticlePath, path);
+                File.Copy(Path.Combine(Path.GetDirectoryName(TestData.ArticlePath)!, "audio_segments", "s001_uk.mp3"), Path.Combine(root, "Reading.mp3"));
+                window.Show();
+                LoadArticle(window);
+                Program.Check(window.ViewModel.OpenArticle(path));
+                var player = (WpfAudioPlayer)typeof(EnglishBench.MainWindow).GetField("player", BindingFlags.NonPublic | BindingFlags.Instance)!.GetValue(window)!;
+                player.Volume = 0;
+                window.ViewModel.ToggleArticleAudio();
+                WpfTestHelpers.Wait(() => window.ViewModel.Playback.CanSeekArticle);
+                window.ViewModel.ToggleArticleAudio();
+                var slider = (Slider)window.FindName("PlaybackProgress");
+                var time = (TextBlock)window.FindName("PlaybackTime");
+                Program.Check(time.Visibility == Visibility.Visible);
+                UIElement[] targets = { (UIElement)window.FindName("LibraryTree"), window.Readers[0],
+                    (UIElement)window.FindName("VocabularyList"), (UIElement)window.FindName("SettingsButton"), slider };
+                foreach (var target in targets.Concat(WpfTestHelpers.Descendants(window).OfType<GridSplitter>()).Concat(WpfTestHelpers.Descendants(window).OfType<ScrollBar>()))
+                {
+                    slider.Value = 1;
+                    PressArrow(window, target, Key.Left);
+                    Program.Check(Math.Abs(player.Position.TotalSeconds) < 0.05);
+                    PressArrow(window, target, Key.Right);
+                    Program.Check(Math.Abs(player.Position.TotalSeconds - 1.0) < 0.05);
+                    PressArrow(window, target, Key.Space);
+                    Program.Check(window.ViewModel.Playback.IsArticlePlaying);
+                    PressArrow(window, target, Key.Space);
+                    Program.Check(window.ViewModel.Playback.IsArticlePaused);
+                }
+                var settings = ((Button)window.FindName("SettingsButton")).ContextMenu;
+                settings.IsOpen = true;
+                WpfTestHelpers.Pump(30);
+                slider.Value = 1;
+                PressArrow(window, (UIElement)settings.Items[0], Key.Left);
+                Program.Check(Math.Abs(player.Position.TotalSeconds) < 0.05);
+                var font = (MenuItem)settings.Items[0];
+                font.IsSubmenuOpen = true;
+                WpfTestHelpers.Pump(30);
+                PressArrow(window, (UIElement)font.Items[0], Key.Right);
+                Program.Check(Math.Abs(player.Position.TotalSeconds - 1.0) < 0.05);
+                settings.IsOpen = false;
+                var vocabulary = ((ListBox)window.FindName("VocabularyList")).ContextMenu;
+                vocabulary.IsOpen = true;
+                WpfTestHelpers.Pump(30);
+                PressArrow(window, (UIElement)vocabulary.Items[0], Key.Left);
+                Program.Check(Math.Abs(player.Position.TotalSeconds) < 0.05);
+                vocabulary.IsOpen = false;
+                PressArrow(window, targets[0], Key.Space);
+                Program.Check(window.ViewModel.PlaybackState == PlaybackState.Playing);
+                PressArrow(window, targets[0], Key.Space);
+                Program.Check(window.ViewModel.PlaybackState == PlaybackState.Paused);
+                var progress = (MenuItem)settings.Items[2];
+                var forward = (MenuItem)progress.Items[0];
+                var backward = (MenuItem)progress.Items[1];
+                double[] forwardSteps = { 1.0, 2.0, 3.0 };
+                double[] backwardSteps = { 2.0, 3.0, 5.0 };
+                for (int i = 0; i < forwardSteps.Length; i++)
+                {
+                    ClickStep((MenuItem)forward.Items[i]);
+                    slider.Value = 0;
+                    PressArrow(window, targets[0], Key.Right);
+                    Program.Check(Math.Abs(player.Position.TotalSeconds - forwardSteps[i]) < 0.05);
+                    ClickStep((MenuItem)backward.Items[i]);
+                    slider.Value = 3;
+                    PressArrow(window, targets[0], Key.Left);
+                    Program.Check(Math.Abs(player.Position.TotalSeconds - Math.Max(0, 3 - backwardSteps[i])) < 0.05);
+                }
+                window.ViewModel.Stop();
+                PressArrow(window, targets[0], Key.Left);
+                Program.Check(window.ViewModel.PlaybackState == PlaybackState.Stopped);
+                Program.Check(time.Visibility == Visibility.Collapsed);
+                PressArrow(window, targets[0], Key.Space);
+                WpfTestHelpers.Wait(() => window.ViewModel.Playback.CanSeekArticle);
+                Program.Check(window.ViewModel.Playback.IsArticlePlaying);
+                PressArrow(window, targets[0], Key.Space);
+                Program.Check(window.ViewModel.Playback.IsArticlePaused);
+                Program.Check(window.ViewModel.OpenArticle(TestData.ArticlePath));
+                window.ViewModel.PlaySegment("s001");
+                WpfTestHelpers.Wait(() => player.IsOpen);
+                player.Pause();
+                double segmentPosition = player.Position.TotalSeconds;
+                Program.Check(time.Visibility == Visibility.Collapsed);
+                PressArrow(window, targets[0], Key.Right);
+                Program.Check(window.ViewModel.Owner == "segment:s001" && Math.Abs(player.Position.TotalSeconds - segmentPosition) < 0.05);
+                window.ViewModel.PlayWord(window.ViewModel.Words[0].Entry, "uk");
+                WpfTestHelpers.Wait(() => player.IsOpen);
+                player.Pause();
+                double wordPosition = player.Position.TotalSeconds;
+                Program.Check(time.Visibility == Visibility.Collapsed);
+                PressArrow(window, targets[0], Key.Left);
+                Program.Check(window.ViewModel.Owner.StartsWith("word:") && Math.Abs(player.Position.TotalSeconds - wordPosition) < 0.05);
+                PressArrow(window, targets[0], Key.Space);
+                Program.Check(window.ViewModel.Owner.StartsWith("word:") && window.ViewModel.Status.Contains("MP3"));
+            }
+            finally
+            {
+                window.Close(); WpfTestHelpers.Pump();
+                if (Directory.Exists(root)) Directory.Delete(root, true);
+            }
+        });
         Program.Run("folder selection discovers names without opening any JSON or content", () =>
         {
             var window = CreateWindow();
@@ -47,7 +229,7 @@ internal static class ReaderControlsChecks
                 window.Top = SystemParameters.WorkArea.Top + 40;
                 Program.Check(button.ContextMenu.Placement == PlacementMode.Top);
                 Program.Check(Math.Abs(button.ContextMenu.FontSize - 10.0 * 96 / 72) < 0.001);
-                Program.Check(button.ContextMenu.Items.Count == 2 && window.FindName("AccentSelector") is null);
+                Program.Check(button.ContextMenu.Items.Count == 3 && window.FindName("AccentSelector") is null);
                 button.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                 Program.Check(button.ContextMenu.IsOpen); WpfTestHelpers.Pump(30);
                 var surface = System.Windows.Media.VisualTreeHelper.GetChild(button.ContextMenu, 0) as Border;
@@ -61,8 +243,8 @@ internal static class ReaderControlsChecks
                 var buttonEdge = button.PointToScreen(new Point(button.ActualWidth, 0));
                 var scale = System.Windows.PresentationSource.FromVisual(button)!.CompositionTarget!.TransformToDevice;
                 Console.WriteLine($"  Settings panels: {surface.ActualWidth}, {((Border)popup.Child).ActualWidth}; gaps: {(origin.X - buttonEdge.X) / scale.M11}, {(buttonEdge.Y - origin.Y) / scale.M22}");
-                Program.Check(Math.Abs(surface.ActualWidth / 134 - 0.6) < 0.02);
-                Program.Check(Math.Abs(((Border)popup.Child).ActualWidth / 134 - 0.6) < 0.02);
+                Program.Check(surface.ActualWidth >= 75 && surface.ActualWidth <= 95);
+                Program.Check(((Border)popup.Child).ActualWidth >= 35 && ((Border)popup.Child).ActualWidth <= 55);
                 Program.Check(Math.Abs((origin.X - buttonEdge.X) / scale.M11 - 7) < 1);
                 Program.Check(Math.Abs((buttonEdge.Y - origin.Y) / scale.M22 - 4) < 1);
                 foreach (var item in button.ContextMenu.Items.Cast<MenuItem>().Concat(button.ContextMenu.Items.Cast<MenuItem>().SelectMany(item => item.Items.Cast<MenuItem>())))
@@ -88,12 +270,15 @@ internal static class ReaderControlsChecks
                     Program.Check(window.Readers.All(r => Math.Abs(r.FontSize - expected) < 0.001));
                     Program.Check(Math.Abs(((ListBox)window.FindName("VocabularyList")).FontSize - expected) < 0.001);
                     CheckIndentedParagraphs(window);
+                    CheckSettingsSelection(button.ContextMenu);
                 }
                 var accents = (MenuItem)button.ContextMenu.Items[1];
                 ((MenuItem)accents.Items[1]).RaiseEvent(new RoutedEventArgs(MenuItem.ClickEvent));
                 Program.Check(window.ViewModel.Accent == "us");
+                CheckSettingsSelection(button.ContextMenu);
                 ((MenuItem)accents.Items[0]).RaiseEvent(new RoutedEventArgs(MenuItem.ClickEvent));
                 Program.Check(window.ViewModel.Accent == "uk");
+                CheckSettingsSelection(button.ContextMenu);
             }
             finally
             {
@@ -187,6 +372,10 @@ internal static class ReaderControlsChecks
                 playButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                 WpfTestHelpers.Wait(() => slider.IsEnabled);
                 Program.Check(window.ViewModel.Owner == "passage" && window.ViewModel.PlayingSid is null);
+                var time = (TextBlock)window.FindName("PlaybackTime");
+                Program.Check(time.Visibility == Visibility.Visible && time.Text.Contains('/'));
+                Program.Check(time.Text.EndsWith("/" + player.Duration.ToString(@"mm\:ss")));
+                Program.Check(Grid.GetColumn(slider) < Grid.GetColumn(time) && Grid.GetColumn(time) < Grid.GetColumn(playButton));
                 var media = (System.Windows.Media.MediaPlayer)typeof(WpfAudioPlayer).GetField("media", BindingFlags.NonPublic | BindingFlags.Instance)!.GetValue(player)!;
                 Program.Check(media.Source.LocalPath == Path.Combine(root, "a-first.MP3"));
                 Program.Check(WpfTestHelpers.IsIcon(((Image)playButton.Content).Source, UiIcons.Pause));
@@ -200,6 +389,10 @@ internal static class ReaderControlsChecks
                 playButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                 slider.Value = slider.Maximum / 2; WpfTestHelpers.Pump(100);
                 Program.Check(window.ViewModel.PlaybackState == PlaybackState.Paused && Math.Abs(player.Position.TotalSeconds - slider.Maximum / 2) < 0.2);
+                slider.Value = 0;
+                Program.Check(time.Text.StartsWith("00:00/"));
+                slider.Value = 1;
+                Program.Check(time.Text.StartsWith("00:01/") && time.Visibility == Visibility.Visible);
                 Program.Check(slider.Focusable && slider.FocusVisualStyle == null);
                 double position = slider.Value;
                 Slider.DecreaseSmall.Execute(null, slider);
@@ -255,6 +448,34 @@ internal static class ReaderControlsChecks
     {
         ShowActivated = false, Left = -10000, Top = -10000
     };
+    private static void PressArrow(EnglishBench.MainWindow window, UIElement target, Key key)
+    {
+        var source = PresentationSource.FromVisual(target) ?? PresentationSource.FromVisual(window)!;
+        var args = new KeyEventArgs(Keyboard.PrimaryDevice, source, 0, key) { RoutedEvent = Keyboard.PreviewKeyDownEvent };
+        target.RaiseEvent(args);
+        Program.Check(args.Handled);
+    }
+    private static void CheckSettingsSelection(ItemsControl menu)
+    {
+        foreach (MenuItem item in menu.Items)
+        {
+            item.ApplyTemplate();
+            Program.Check(item.Template.FindName("Check", item) == null);
+            var surface = (Border)item.Template.FindName("ItemSurface", item);
+            var color = ((System.Windows.Media.SolidColorBrush)surface.Background).Color;
+            if (item.IsCheckable)
+                Program.Check(color == (item.IsChecked
+                    ? System.Windows.Media.Color.FromRgb(135, 192, 202)
+                    : System.Windows.Media.Color.FromRgb(252, 252, 253)));
+            CheckSettingsSelection(item);
+        }
+    }
+
+    private static void ClickStep(MenuItem item)
+    {
+        typeof(MenuItem).GetMethod("OnClick", BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(item, null);
+        WpfTestHelpers.Pump(30);
+    }
     private static void LoadArticle(EnglishBench.MainWindow window)
     {
         Program.Check(window.ViewModel.OpenLibrary(TestData.LibraryRoot));

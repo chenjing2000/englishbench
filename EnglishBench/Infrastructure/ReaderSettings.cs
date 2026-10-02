@@ -11,6 +11,8 @@ public sealed class ReaderSettings
     public double FontSize { get; set; } = 11.0 * 96 / 72;
     public double Volume { get; set; } = 0.65;
     public string Accent { get; set; } = "uk";
+    public double ForwardStep { get; set; } = 1.0;
+    public double BackwardStep { get; set; } = 2.0;
     public bool HighlightsVisible { get; set; }
     public string? Library { get; set; }
     public string? Passage { get; set; }

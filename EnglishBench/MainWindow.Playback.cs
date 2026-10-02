@@ -1,5 +1,6 @@
 using System.Windows;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 using System.Windows.Threading;
 using EnglishBench.Infrastructure;
 
@@ -67,13 +68,34 @@ public partial class MainWindow
 
     private void StopClicked(object sender, RoutedEventArgs e) => ViewModel.StopArticleAudio();
 
+    private void PlaybackKeyDown(object sender, KeyEventArgs e)
+    {
+        Key key = e.Key == Key.System ? e.SystemKey : e.Key;
+        if (key != Key.Left && key != Key.Right && key != Key.Space) return;
+        e.Handled = true;
+        if (key == Key.Space)
+        {
+            if (!e.IsRepeat && ViewModel.Article != null) ViewModel.ToggleArticleAudio();
+            return;
+        }
+        var playback = ViewModel.Playback;
+        if (!playback.CanSeekArticle) return;
+        double step = key == Key.Left ? -settings.BackwardStep : settings.ForwardStep;
+        playback.SeekArticle(playback.ArticlePosition + step);
+        UpdateProgress();
+    }
+
     private void UpdateProgress()
     {
         var playback = ViewModel.Playback;
         bool active = playback.IsArticleActive;
         PlaybackProgress.Visibility = active ? Visibility.Visible : Visibility.Collapsed;
         PlaybackProgress.IsEnabled = playback.CanSeekArticle;
-        if (draggingProgress && active) return;
+        if (draggingProgress && active)
+        {
+            UpdatePlaybackTime();
+            return;
+        }
         updatingProgress = true;
         try
         {
@@ -84,11 +106,26 @@ public partial class MainWindow
         {
             updatingProgress = false;
         }
+        UpdatePlaybackTime();
     }
 
     private void ProgressChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
-        if (!updatingProgress) ViewModel.Playback.SeekArticle(e.NewValue);
+        if (!updatingProgress)
+        {
+            ViewModel.Playback.SeekArticle(e.NewValue);
+            UpdatePlaybackTime();
+        }
+    }
+
+    private void UpdatePlaybackTime() => PlaybackTime.Text =
+        FormatPlaybackTime(PlaybackProgress.Value) + "/" + FormatPlaybackTime(ViewModel.Playback.ArticleDuration);
+
+    private static string FormatPlaybackTime(double seconds)
+    {
+        var time = TimeSpan.FromSeconds(seconds);
+        if (time.TotalHours > 1) return $"{(int)time.TotalHours:00}:{time.Minutes:00}:{time.Seconds:00}";
+        return $"{(int)time.TotalMinutes:00}:{time.Seconds:00}";
     }
 
     private void ProgressDragStarted(object sender, DragStartedEventArgs e) => draggingProgress = ViewModel.Playback.CanSeekArticle;

@@ -22,7 +22,7 @@ JSON handling uses `System.Text.Json`; files remain the storage layer. The Pytho
 | `MainWindow.Library.cs` | Folder selection, tree selection, library restoration, and passage-control assembly |
 | `MainWindow.Vocabulary.cs` | Import confirmation, list selection, highlighting, and move/delete UI actions |
 | `MainWindow.Playback.cs` | Playback controls and icons, progress timer, drag interaction, and media cleanup |
-| `MainWindow.Settings.cs` | Startup size, column widths, font/accent menus, and preference persistence |
+| `MainWindow.Settings.cs` | Startup size, column widths, font/accent/progress-step menus, and preference persistence |
 | `MainWindow.Status.cs` | Conditional warning/error status and six-second expiry |
 | `ViewModels/MainViewModel.cs` | Shared state, notifications, and operation errors |
 | `ViewModels/MainViewModel.Library.cs` | Prepare and commit library/article changes; resolve account-display context |
@@ -97,7 +97,8 @@ On close, timers stop, playback stops, and the media player is disposed. Normal 
 - Each paragraph has a two-em first-line indent. All panes scroll independently and column splitters allow resizing.
 - The three bottom toolbars share their height and alignment. Playback controls remain present when disabled.
 - Highlighting starts off. The selection-add action is a 14 by 14 DIP native vector circle-plus; it follows selection scrolling and layout and hides outside the viewport or when selection is cleared.
-- Font size, accent, library, column widths, and player volume are retained as applicable. Saved passage/highlight fields do not cause article restoration or initial highlighting.
+- Progress settings provide independent Forward (1.0/2.0/3.0 seconds) and Backward (2.0/3.0/5.0 seconds) selections, defaulting to their first options. Left uses the Backward value to move backward; Right uses the Forward value to move forward. Each option displays seconds explicitly. All Settings menus fit their text and share a light background; selected font, accent, and step options use #87c0ca instead of a checkmark. Space has priority across the window and popup menus and toggles only the sibling MP3 playback/pause.
+- Font size, accent, progress steps, library, column widths, and player volume are retained as applicable. Saved passage/highlight fields do not cause article restoration or initial highlighting.
 
 ## Current boundaries
 

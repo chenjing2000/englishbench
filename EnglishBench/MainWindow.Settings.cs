@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Globalization;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -39,6 +40,8 @@ public partial class MainWindow
         ApplyReadingFont(fontPoints);
         player.Volume = double.IsFinite(settings.Volume) ? Math.Clamp(settings.Volume, 0, 1) : 0.65;
         ViewModel.Accent = settings.Accent;
+        if (settings.ForwardStep != 1.0 && settings.ForwardStep != 2.0 && settings.ForwardStep != 3.0) settings.ForwardStep = 1.0;
+        if (settings.BackwardStep != 2.0 && settings.BackwardStep != 3.0 && settings.BackwardStep != 5.0) settings.BackwardStep = 2.0;
         RefreshSettingsChecks();
     }
 
@@ -102,6 +105,23 @@ public partial class MainWindow
         Font13Option.IsChecked = Math.Abs(settings.FontSize - 13.0 * 96 / 72) < 0.01;
         AccentUkOption.IsChecked = ViewModel.Accent == "uk";
         AccentUsOption.IsChecked = ViewModel.Accent == "us";
+        RefreshStepChecks(ForwardStepMenu, settings.ForwardStep);
+        RefreshStepChecks(BackwardStepMenu, settings.BackwardStep);
+    }
+
+    private void ProgressStepClicked(object sender, RoutedEventArgs e)
+    {
+        var item = (MenuItem)sender;
+        double step = double.Parse((string)item.Tag, CultureInfo.InvariantCulture);
+        if (ReferenceEquals(item.Parent, ForwardStepMenu)) settings.ForwardStep = step;
+        else settings.BackwardStep = step;
+        RefreshSettingsChecks();
+    }
+
+    private static void RefreshStepChecks(MenuItem menu, double step)
+    {
+        foreach (MenuItem item in menu.Items)
+            item.IsChecked = double.Parse((string)item.Tag, CultureInfo.InvariantCulture) == step;
     }
 
     private static double Finite(double value, double fallback, double min, double max) => double.IsFinite(value) ? Math.Clamp(value, min, Math.Max(min, max)) : fallback;

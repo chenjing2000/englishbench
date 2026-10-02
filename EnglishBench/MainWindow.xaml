@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:models="clr-namespace:EnglishBench.Models"
         xmlns:icons="clr-namespace:EnglishBench.Infrastructure"
-        Title="EnglishBench" Width="1500" Height="920" MinWidth="1050" MinHeight="620"
+        Title="EnglishBench" Width="1500" Height="920" MinWidth="1050" MinHeight="620" PreviewKeyDown="PlaybackKeyDown"
         Background="#F3F3F3" FontFamily="Segoe UI" FontSize="11pt" Icon="{x:Static icons:UiIcons.AppIcon}">
   <Window.Resources>
     <Style x:Key="FooterButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
@@ -23,12 +23,11 @@
         <Setter.Value>
           <ControlTemplate TargetType="MenuItem">
             <Grid>
-              <Border x:Name="ItemSurface" Background="Transparent" CornerRadius="6" Padding="{TemplateBinding Padding}">
-                <Grid MinWidth="54">
-                  <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="18"/></Grid.ColumnDefinitions>
+              <Border x:Name="ItemSurface" Background="#FCFCFD" CornerRadius="6" Padding="{TemplateBinding Padding}">
+                <Grid>
+                  <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
                   <ContentPresenter ContentSource="Header" RecognizesAccessKey="True" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                  <TextBlock x:Name="Check" Grid.Column="1" Text="✓" Foreground="#2C78B9" Visibility="Collapsed" VerticalAlignment="Center"/>
-                  <TextBlock x:Name="Arrow" Grid.Column="1" Text="›" Visibility="Collapsed" VerticalAlignment="Center"/>
+                  <TextBlock x:Name="Arrow" Grid.Column="1" Margin="8,0,0,0" Text="›" Visibility="Collapsed" VerticalAlignment="Center"/>
                 </Grid>
               </Border>
               <Popup x:Name="PART_Popup" Placement="Right" PlacementTarget="{Binding ElementName=ItemSurface}" HorizontalOffset="2" VerticalOffset="-8" AllowsTransparency="True" Focusable="False" IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}">
@@ -38,7 +37,7 @@
             <ControlTemplate.Triggers>
               <Trigger Property="IsHighlighted" Value="True"><Setter TargetName="ItemSurface" Property="Background" Value="#EDF3F9"/></Trigger>
               <Trigger Property="IsSubmenuOpen" Value="True"><Setter TargetName="ItemSurface" Property="Background" Value="#EDF3F9"/></Trigger>
-              <Trigger Property="IsChecked" Value="True"><Setter TargetName="Check" Property="Visibility" Value="Visible"/></Trigger>
+              <Trigger Property="IsChecked" Value="True"><Setter TargetName="ItemSurface" Property="Background" Value="#87C0CA"/></Trigger>
               <Trigger Property="HasItems" Value="True"><Setter TargetName="Arrow" Property="Visibility" Value="Visible"/></Trigger>
             </ControlTemplate.Triggers>
           </ControlTemplate>
@@ -74,7 +73,7 @@
         <Button x:Name="SettingsButton" DockPanel.Dock="Left" Width="26" Height="26" VerticalAlignment="Center" Padding="0" Margin="0,0,10,0" ToolTip="设置" Click="SettingsClicked">
           <Button.Template><ControlTemplate TargetType="Button"><Ellipse Fill="#2C78B9"/></ControlTemplate></Button.Template>
           <Button.ContextMenu>
-            <ContextMenu Placement="Top" HorizontalOffset="25" VerticalOffset="4" FontSize="10pt" Background="Transparent">
+            <ContextMenu Placement="Top" HorizontalOffset="25" VerticalOffset="4" FontSize="10pt" Background="Transparent" PreviewKeyDown="PlaybackKeyDown">
               <ContextMenu.Resources><Style TargetType="MenuItem" BasedOn="{StaticResource SettingsMenuItem}"/></ContextMenu.Resources>
               <ContextMenu.Template><ControlTemplate TargetType="ContextMenu"><Border Style="{StaticResource SettingsSurface}"><StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle"/></Border></ControlTemplate></ContextMenu.Template>
               <MenuItem Header="字号">
@@ -85,6 +84,18 @@
               <MenuItem Header="读音">
                 <MenuItem x:Name="AccentUkOption" Header="英音" Tag="uk" IsCheckable="True" Click="AccentClicked"/>
                 <MenuItem x:Name="AccentUsOption" Header="美音" Tag="us" IsCheckable="True" Click="AccentClicked"/>
+              </MenuItem>
+              <MenuItem Header="进度条">
+                <MenuItem x:Name="ForwardStepMenu" Header="前进">
+                  <MenuItem Header="1.0 秒" Tag="1.0" IsCheckable="True" Click="ProgressStepClicked"/>
+                  <MenuItem Header="2.0 秒" Tag="2.0" IsCheckable="True" Click="ProgressStepClicked"/>
+                  <MenuItem Header="3.0 秒" Tag="3.0" IsCheckable="True" Click="ProgressStepClicked"/>
+                </MenuItem>
+                <MenuItem x:Name="BackwardStepMenu" Header="后退">
+                  <MenuItem Header="2.0 秒" Tag="2.0" IsCheckable="True" Click="ProgressStepClicked"/>
+                  <MenuItem Header="3.0 秒" Tag="3.0" IsCheckable="True" Click="ProgressStepClicked"/>
+                  <MenuItem Header="5.0 秒" Tag="5.0" IsCheckable="True" Click="ProgressStepClicked"/>
+                </MenuItem>
               </MenuItem>
             </ContextMenu>
           </Button.ContextMenu>
@@ -135,10 +146,11 @@
       </ScrollViewer>
       <Border x:Name="PassageToolbar" Grid.Row="1" Height="48" Margin="0,8,0,0" Background="{Binding Background, RelativeSource={RelativeSource AncestorType=Window}}">
         <Grid x:Name="PassageControls">
-          <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+          <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
           <Slider x:Name="PlaybackProgress" Visibility="Collapsed" Minimum="0" Maximum="1" SmallChange="0.5" FocusVisualStyle="{x:Null}" IsEnabled="False" Margin="8,0,10,0" VerticalAlignment="Center" IsMoveToPointEnabled="True" ToolTip="拖动调整当前音频的播放位置" ValueChanged="ProgressChanged" Thumb.DragStarted="ProgressDragStarted" Thumb.DragCompleted="ProgressDragCompleted"/>
-          <Button Grid.Column="1" x:Name="ReadAllButton" Style="{StaticResource FooterButton}" Width="32" Height="32" Padding="1" ToolTip="播放文章音频" AutomationProperties.Name="播放文章音频" Click="ArticleAudioClicked"><Image x:Name="ReadAllImage" Source="{x:Static icons:UiIcons.Play}" Width="26" Height="26"/></Button>
-          <Button Grid.Column="2" x:Name="StopButton" Style="{StaticResource FooterButton}" Width="32" Height="32" Padding="1" ToolTip="停止正文音频" AutomationProperties.Name="停止正文音频" Click="StopClicked"><Image x:Name="StopImage" Source="{x:Static icons:UiIcons.Stop}" Width="26" Height="26"/></Button>
+          <TextBlock Grid.Column="1" x:Name="PlaybackTime" Text="00:00/00:00" VerticalAlignment="Center" Margin="0,0,6,0" Visibility="{Binding Visibility, ElementName=PlaybackProgress}" ToolTip="当前播放时长/总时长"/>
+          <Button Grid.Column="2" x:Name="ReadAllButton" Style="{StaticResource FooterButton}" Width="32" Height="32" Padding="1" ToolTip="播放文章音频" AutomationProperties.Name="播放文章音频" Click="ArticleAudioClicked"><Image x:Name="ReadAllImage" Source="{x:Static icons:UiIcons.Play}" Width="26" Height="26"/></Button>
+          <Button Grid.Column="3" x:Name="StopButton" Style="{StaticResource FooterButton}" Width="32" Height="32" Padding="1" ToolTip="停止正文音频" AutomationProperties.Name="停止正文音频" Click="StopClicked"><Image x:Name="StopImage" Source="{x:Static icons:UiIcons.Stop}" Width="26" Height="26"/></Button>
         </Grid>
       </Border>
     </Grid>
@@ -193,7 +205,7 @@
           </DataTemplate>
         </ListBox.ItemTemplate>
         <ListBox.ContextMenu>
-          <ContextMenu FontSize="11pt"><MenuItem Header="上移" Click="MoveUpClicked"/><MenuItem Header="下移" Click="MoveDownClicked"/><Separator/><MenuItem Header="删除词条" Click="DeleteWordClicked"/></ContextMenu>
+          <ContextMenu FontSize="11pt" PreviewKeyDown="PlaybackKeyDown"><MenuItem Header="上移" Click="MoveUpClicked"/><MenuItem Header="下移" Click="MoveDownClicked"/><Separator/><MenuItem Header="删除词条" Click="DeleteWordClicked"/></ContextMenu>
         </ListBox.ContextMenu>
       </ListBox>
     </DockPanel>
