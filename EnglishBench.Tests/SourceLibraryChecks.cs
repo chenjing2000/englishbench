@@ -22,7 +22,6 @@ internal static class SourceLibraryChecks
             Program.Check(article.Vocabulary.Data.Words.Count == vocabulary.RootElement.GetProperty("words").GetArrayLength());
             Program.Check(Path.GetFileName(Path.GetDirectoryName(new AudioResources().Segment(article.Directory, article.Segments.First(), "uk"))) == "audio_segments");
             CheckUnchanged(before);
-            ReportHistoricalDifferences();
         });
         Program.Run("current source library renders its current article and vocabulary without writes", () =>
         {
@@ -57,16 +56,4 @@ internal static class SourceLibraryChecks
         Program.Check(before.Count == after.Count && before.All(pair => after.TryGetValue(pair.Key, out string? hash) && hash == pair.Value));
     }
 
-    private static void ReportHistoricalDifferences()
-    {
-        using var historical = JsonDocument.Parse(File.ReadAllText("EnglishBench.Tests/Fixtures/source-hashes-before.json"));
-        int changed = 0;
-        foreach (var entry in historical.RootElement.EnumerateArray())
-        {
-            string path = entry.GetProperty("Path").GetString()!;
-            if (!File.Exists(path)) path = path.Replace(@"\audio\", @"\audio_segments\");
-            if (JsonFiles.Fingerprint(path) != entry.GetProperty("Hash").GetString()) changed++;
-        }
-        Console.WriteLine($"  Historical baseline differences: {changed}; baseline retained, current read-only checks use before/after hashes.");
-    }
 }

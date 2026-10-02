@@ -1,73 +1,40 @@
-using System.IO;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Documents;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 internal static class WindowChecks
 {
     internal static void Run()
     {
-        RunPrototype("prototype P01/P02/P04 actual WPF point hit-testing preserves SID", window =>
+        Program.Run("loaded paragraph hit-testing preserves each owning SID", () =>
         {
-            var reader = window.Readers[0];
-            foreach (var range in reader.Ranges)
+            WithReader(reader =>
             {
-                var character = reader.PositionAt(range, 3);
-                Rect rect = character.GetCharacterRect(LogicalDirection.Forward);
-                Program.Check(!rect.IsEmpty && rect.Height > 0);
-                var pointer = reader.GetPositionFromPoint(new Point(rect.Left + 1, rect.Top + rect.Height / 2), false);
-                Program.Check(pointer is not null && reader.FindSegment(pointer)?.Segment.Sid == range.Segment.Sid);
-            }
+                foreach (var range in reader.Ranges)
+                {
+                    var character = reader.PositionAt(range, 3);
+                    Rect rect = character.GetCharacterRect(LogicalDirection.Forward);
+                    Program.Check(!rect.IsEmpty && rect.Height > 0);
+                    var pointer = reader.GetPositionFromPoint(new Point(rect.Left + 1, rect.Top + rect.Height / 2), false);
+                    Program.Check(pointer != null && reader.FindSegment(pointer)?.Segment.Sid == range.Segment.Sid);
+                }
+            });
         });
-        RunPrototype("prototype P09/P10 loaded valid selection shows plus and adds word", window =>
+        Program.Run("loaded selection action emits text and hides on invalid selection", () =>
         {
-            var reader = window.Readers[0];
-            var range = reader.Ranges[0];
-            reader.Selection.Select(reader.PositionAt(range, 10), reader.PositionAt(range, 17));
-            WpfTestHelpers.Pump();
-            Program.Check(reader.IsSelectionAddVisible && reader.GetSelection()?.Text == "matters");
-            Program.Check(reader.RequestSelectionAdd());
-            Program.Check(window.ViewModel.Words.Contains("matters") && !reader.IsSelectionAddVisible);
-        });
-        RunPrototype("prototype P07 invalid loaded selection hides add button", window =>
-        {
-            var reader = window.Readers[0];
-            reader.Selection.Select(reader.Ranges[0].Start, reader.Ranges[1].End);
-            WpfTestHelpers.Pump();
-            Program.Check(!reader.IsSelectionAddVisible);
-        });
-        RunPrototype("prototype vocabulary updates preserve multi-Segment selection and SID mapping", window =>
-        {
-            var reader = window.Readers[0];
-            reader.Selection.Select(reader.Ranges[0].Start, reader.Ranges[1].End);
-            string selected = reader.Selection.Text;
-            reader.SetVocabulary(["character", "public life", "words", "matters"], true);
-            Program.Check(reader.Selection.Text == selected && reader.GetSelection() is null);
-            Program.Check(reader.FindSegment(reader.Ranges[1].Start)?.Segment.Sid == "s002");
-        });
-        RunPrototype("prototype native renderer layout and snapshot", window =>
-        {
-            Program.Check(window.Readers.Count == 4 && window.Readers.All(r => r.ActualHeight > 0 && r.ActualWidth > 0));
-            Capture("prototype.png");
-            ((System.Windows.Controls.ScrollViewer)window.FindName("PassageScroll")).ScrollToEnd();
-            window.UpdateLayout();
-            WpfTestHelpers.Pump();
-            Capture("prototype-blank.png");
-
-            void Capture(string filename)
+            WithReader(reader =>
             {
-                var bitmap = new RenderTargetBitmap((int)Math.Ceiling(window.ActualWidth), (int)Math.Ceiling(window.ActualHeight), 96, 96, PixelFormats.Pbgra32);
-                bitmap.Render(window);
-                var encoder = new PngBitmapEncoder();
-                encoder.Frames.Add(BitmapFrame.Create(bitmap));
-                string output = Path.Combine(Directory.GetCurrentDirectory(), "artifacts", filename);
-                Directory.CreateDirectory(Path.GetDirectoryName(output)!);
-                using var stream = File.Create(output);
-                encoder.Save(stream);
-                Console.WriteLine("  Screenshot: " + output);
-            }
+                var range = reader.Ranges[0];
+                reader.Selection.Select(reader.PositionAt(range, 0), reader.PositionAt(range, 6));
+                WpfTestHelpers.Pump();
+                Program.Check(reader.IsSelectionAddVisible);
+                EnglishBench.Models.PassageSelection? received = null;
+                reader.SelectionRequested += selection => received = selection;
+                Program.Check(reader.RequestSelectionAdd() && received?.Text == "public");
+                reader.Selection.Select(reader.Ranges[0].Start, reader.Ranges[1].End);
+                WpfTestHelpers.Pump();
+                Program.Check(!reader.IsSelectionAddVisible);
+            });
         });
         Program.Run("reader status occupies space only while a message is present and expires at six seconds", () =>
         {
@@ -110,30 +77,21 @@ internal static class WindowChecks
         });
     }
 
-    private static void RunPrototype(string name, Action<EnglishBench.PrototypeWindow> check)
+    private static void WithReader(Action<EnglishBench.Rendering.ParagraphReader> check)
     {
-        Program.Run(name, () =>
+        var reader = TestData.Reader();
+        var window = new Window
         {
-            var window = new EnglishBench.PrototypeWindow
-            {
-                Left = -10000,
-                Top = -10000,
-                ShowActivated = false,
-                WindowStyle = WindowStyle.None,
-                ResizeMode = ResizeMode.NoResize
-            };
-            try
-            {
-                window.Show();
-                window.UpdateLayout();
-                WpfTestHelpers.Pump();
-                check(window);
-            }
-            finally
-            {
-                window.Close();
-                WpfTestHelpers.Pump();
-            }
-        });
+            Content = reader, Width = 600, Height = 300,
+            Left = -10000, Top = -10000, ShowActivated = false
+        };
+        try
+        {
+            window.Show();
+            window.UpdateLayout();
+            WpfTestHelpers.Pump();
+            check(reader);
+        }
+        finally { window.Close(); WpfTestHelpers.Pump(); }
     }
 }

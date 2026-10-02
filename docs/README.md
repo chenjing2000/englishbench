@@ -1,22 +1,25 @@
 # EnglishBench Documentation
 
-These documents describe the current C# / WPF application. The running code is the compatibility authority; the archived Python application supplies historical workflow guidance.
+These documents describe the current main-branch C# / WPF reader. This branch has no exercise display or answer storage. Exercise companions produced by the authoring skills can remain beside passages and are ignored by the reader.
 
 | Document | Purpose |
 | --- | --- |
-| [Library Layout](Library-Layout.md) | Library discovery, required and optional files, exact filenames, placement, and audio lookup |
-| [Application Overview](Application-Overview.md) | Design goals, framework, modules, responsibilities, state transitions, and current limitations |
-| [Image to Passage Skill](skills/image-to-passage/SKILL.md) | Convert page images into passage JSON; includes the complete passage authoring contract |
-| [Vocabulary Enrichment Skill](skills/vocabulary-enrichment/SKILL.md) | Convert structured vocabulary JSON or an unstructured word list into compatible vocabulary JSON |
-| [Getting Started and Testing](Getting-Started.md) | Run the application, use its controls, build, test, publish, and troubleshoot content |
+| [Library Layout](Library-Layout.md) | Required and optional files, names, placement, discovery, and audio lookup |
+| [Application Overview](Application-Overview.md) | Design goals, framework, module responsibilities, lifecycle, and limitations |
+| [Getting Started](Getting-Started.md) | Launch, controls, build, publishing, and troubleshooting |
+| [Testing](Testing.md) | Functional categories, fixture ownership, and manual acceptance |
+| [Vocabulary Preparation](Vocabulary-Preparation.md) | Structured input, plain word lists, and reader compatibility checks |
+| [Image to Passage Skill](skills/skills-python/image_to_passage/SKILL.md) | Convert page images into passage JSON and optional exercise companions |
+| [Passage Segmentation Skill](skills/skills-python/passage_segment/SKILL.md) | Organize complete or blank passages into paragraphs and stable sentence IDs |
+| [Vocabulary Enrichment Skill](skills/skills-python/vocabulary_enrichment/SKILL.md) | Enrich structured vocabulary with contextual meanings and audio declarations |
 
-The two `SKILL.md` files are reusable instructions stored with this project. They can be given to an assistant with the source images or vocabulary input. They are not installed globally and do not add an in-application OCR, translation, or speech-generation feature.
+The three supplied skills are retained without changes. Some historical StudyBench wording and exercise instructions remain intentionally. They prepare content externally; they do not install OCR, dictionaries, speech generation, or an exercise interface in this reader. Vocabulary Preparation provides the plain-list input step without expanding or replacing the supplied enrichment skill.
 
 ## Content preparation sequence
 
-1. Convert the source images into `<title>.json` using the passage skill.
-2. Build or enrich `<title>.vocabulary.json` using the vocabulary skill. A matching passage is optional context.
-3. Place both files in a marked book directory, optionally adding the audio files described in the library guide.
-4. Open the parent library directory in EnglishBench, then select the passage.
+1. Use Image to Passage for images and Passage Segmentation for text organization. Keep exercises out of the passage body.
+2. Prepare `<title>.vocabulary.json` from structured JSON or a plain list, using the enrichment skill and compatibility guide.
+3. Place the passage and its matching vocabulary inside a marked book directory. Add physical MP3 files if available.
+4. Open the parent library directory, expand the tree, and select the passage. See Library Layout for exact filenames and audio paths.
 
-JSON examples demonstrate structure. Audio paths are declarations, not generated MP3 files. The vocabulary skill's default translation language is Simplified Chinese, following the original workflow; all documentation and examples here are written in English.
+Declared audio paths do not generate MP3 files. Documentation is written in English; the vocabulary workflow can produce glosses in the requested language.

@@ -20,26 +20,21 @@ internal static class RealMediaChecks
                 Verify(path, false);
             });
         }
-        Program.Run("real MP3 playlist advances SID and stops after final audio", () =>
+        Program.Run("real MP3 controller clears SID and ownership after completion", () =>
         {
             var article = new ArticleRepository().Load(TestData.ArticlePath);
-            var resources = new AudioResources();
+            var segment = article.Segments.First();
+            string path = new AudioResources().Segment(article.Directory, segment, "uk");
             using var player = new WpfAudioPlayer { Volume = 0 };
             var controller = new PlaybackController(player);
             string? error = null;
-            int opened = 0;
-            player.Opened += _ => opened++;
             controller.Message += message => error = message;
-            var segments = article.Segments.Take(2).ToArray();
-            controller.Play(segments.Select(s => new AudioItem(resources.Segment(article.Directory, s, "uk"), s.Sid)).ToArray(), "paragraph:0");
-            WpfTestHelpers.Wait(() => opened == 1 || error is not null);
-            Program.Check(error is null && controller.CurrentSid == "s001");
+            controller.Play(new AudioItem(path, segment.Sid), "segment:" + segment.Sid);
+            WpfTestHelpers.Wait(() => player.IsOpen || error != null);
+            Program.Check(error == null && controller.CurrentSid == segment.Sid);
             player.Position = player.Duration - TimeSpan.FromMilliseconds(100);
-            WpfTestHelpers.Wait(() => opened == 2 || error is not null);
-            Program.Check(error is null && controller.CurrentSid == "s002");
-            player.Position = player.Duration - TimeSpan.FromMilliseconds(100);
-            WpfTestHelpers.Wait(() => controller.State == PlaybackState.Stopped || error is not null);
-            Program.Check(error is null && controller.CurrentSid is null);
+            WpfTestHelpers.Wait(() => controller.State == PlaybackState.Stopped || error != null);
+            Program.Check(error == null && controller.CurrentSid == null && controller.Owner == "");
         });
     }
     private static void Verify(string path, bool pause)

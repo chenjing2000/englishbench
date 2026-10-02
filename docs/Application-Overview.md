@@ -10,7 +10,7 @@ The design favors explicit responsibilities, concrete services, and small functi
 
 The application uses C# and WPF, targeting `net10.0-windows` with runtime version `10.0.11` or a later compatible patch. The build SDK is selected by `global.json`, currently `10.0.400`. WPF XAML defines the window, templates, and bindings. Native `RichTextBox`, `FlowDocument`, and `TextPointer` APIs implement passage rendering and selection. A WPF `Adorner` hosts the selection-add button in the same visual tree as the passage. WPF media playback supplies MP3 decoding and progress.
 
-JSON handling uses `System.Text.Json`; files remain the storage layer. The Python application is an archived migration reference, not a runtime dependency. The WPF reader does not use an embedded browser to render the passage.
+JSON handling uses `System.Text.Json`; files remain the storage layer. The original Python application is a migration reference, not a runtime dependency or required repository file. The WPF reader does not use an embedded browser to render the passage.
 
 ## Module responsibilities
 
@@ -98,7 +98,7 @@ On close, timers stop, playback stops, and both media players are disposed. Norm
 - The three bottom toolbars share their height and alignment. Playback controls remain present when disabled.
 - Highlighting starts off. The selection-add action is a 14 by 14 DIP native vector circle-plus; it follows selection scrolling and layout and hides outside the viewport or when selection is cleared.
 - Progress settings provide independent Forward (1.0/2.0/3.0 seconds) and Backward (2.0/3.0/5.0 seconds) selections, defaulting to their first options. Left uses the Backward value to move backward; Right uses the Forward value to move forward. Each option displays seconds explicitly. All Settings menus fit their text and share a light background; selected font, accent, and step options use #87c0ca instead of a checkmark. Space has priority across the window and popup menus and toggles only the sibling MP3 playback/pause.
-- Font size, accent, progress steps, library, column widths, and player volume are retained as applicable. Saved passage/highlight fields do not cause article restoration or initial highlighting.
+- Font size, accent, progress steps, library, column widths, and player volume are retained as applicable. Window dimensions, active passage, and highlighting are not saved. Old settings containing these fields remain readable; the unused fields are ignored.
 
 ## Current boundaries
 
@@ -106,4 +106,6 @@ The application reads passages and vocabulary and plays existing audio. OCR, voc
 
 Matching is literal and case-insensitive, not morphological: `convict` does not automatically match `convicted`, and straight/curly apostrophes are not normalized. ASCII letters, apostrophes, and hyphens participate in word boundaries; digits deliberately do not. Among matches starting at the same position, the longest wins. These details matter when authoring canonical vocabulary entries.
 
-`EnglishBench.Tests/Prototype/` contains old rendering contract fixtures only and is not included in the published application. See [Getting Started and Testing](Getting-Started.md) for current test categories.
+Each playback controller owns one audio file at a time. It has no paragraph queue or multi-file playlist. Playback state belongs to the controller, coordination between the two players belongs to ReaderPlayback, and timers and controls belong to MainWindow.Playback. The existing concrete repositories and window partial classes remain together; small repeated UI operations do not require another abstraction layer.
+
+Tests exercise these production modules directly; the obsolete prototype application has been removed. See [Testing](Testing.md) for categories and their data ownership. Exercise authoring remains in the supplied skills, but there is no exercise runtime module on main.

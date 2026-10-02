@@ -49,8 +49,6 @@ public partial class MainWindow
     private void WindowClosing(object? sender, CancelEventArgs e)
     {
         if (!persistSettings) return;
-        settings.Width = RestoreBounds.Width;
-        settings.Height = RestoreBounds.Height;
         settings.LeftWidth = LeftColumn.ActualWidth;
         settings.RightWidth = RightColumn.ActualWidth;
     }
@@ -61,9 +59,7 @@ public partial class MainWindow
 
         settings.Volume = volume;
         settings.Accent = ViewModel.Accent;
-        settings.HighlightsVisible = ViewModel.HighlightsVisible;
         settings.Library = ViewModel.LibraryRoot;
-        settings.Passage = ViewModel.Article?.FilePath;
         try
         {
             settings.Save();

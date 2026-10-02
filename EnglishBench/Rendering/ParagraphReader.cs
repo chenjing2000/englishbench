@@ -27,7 +27,6 @@ public sealed class ParagraphReader : RichTextBox
     public bool IsSelectionAddVisible => selectionAdd.IsShown;
     public event Action<PassageSelection>? SelectionRequested;
     public event Action<string>? SegmentPlaybackRequested;
-    public event Action<string?>? HoverChanged;
 
     public ParagraphReader(IEnumerable<Segment> segments, IEnumerable<string> words, bool highlightsVisible = true)
     {
@@ -89,7 +88,6 @@ public sealed class ParagraphReader : RichTextBox
         if (next == HoveredSid) return;
         HoveredSid = next;
         ApplyStyles();
-        HoverChanged?.Invoke(next);
     }
 
     public void SetPlayingSegment(string? sid)

@@ -52,7 +52,7 @@ public sealed class ReaderPlayback
         {
             if (articlePlayer.ToggleCurrent(ArticleOwner)) return;
             string path = resources.ArticleFile(RequireArticle(article).Directory);
-            articlePlayer.Play(new[] { new AudioItem(path) }, ArticleOwner);
+            articlePlayer.Play(new AudioItem(path), ArticleOwner);
         }, false);
     }
 
@@ -73,7 +73,7 @@ public sealed class ReaderPlayback
             var current = RequireArticle(article);
             var segment = current.Segments.Single(s => s.Sid == sid);
             string path = resources.Segment(current.Directory, segment, accent);
-            pronunciationPlayer.Play(new[] { new AudioItem(path, sid) }, "segment:" + sid);
+            pronunciationPlayer.Play(new AudioItem(path, sid), "segment:" + sid);
         });
     }
 
@@ -88,7 +88,7 @@ public sealed class ReaderPlayback
         Handle(() =>
         {
             string path = resources.Vocabulary(RequireArticle(article).Directory, entry, accent);
-            pronunciationPlayer.Play(new[] { new AudioItem(path) }, "word:" + accent + ":" + entry.Word);
+            pronunciationPlayer.Play(new AudioItem(path), "word:" + accent + ":" + entry.Word);
         });
     }
 

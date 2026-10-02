@@ -42,7 +42,7 @@ Opening a library reads directory names and discovers potential passage filename
 | `audio_vocabulary/` and its MP3 files | Optional physical files | Passage directory | Vocabulary entries must declare the correct paths; missing or empty files disable the corresponding pronunciation buttons |
 | One whole-article `.mp3` | Optional | Directly beside the passage JSON | Used only by the central bottom play/pause button |
 | `userdata/xiaoxin/answer_sheet.json` | Optional | Relative to the book directory | Only `username` is read for the account label; authentication and exercise answering are not implemented |
-| `<title>.exercise.json` | Optional stored legacy companion | Beside the passage | Excluded from navigation and not read by the current WPF exercise UI, which has not been implemented |
+| `<title>.exercise.json` | Optional authoring companion | Beside the passage | Excluded from navigation and not read or displayed by the main-branch reader |
 | Images, PDFs, text, and other non-JSON source files | Optional stored material | Any convenient location | Not opened by the reader and not shown as passage leaves |
 
 A minimal marker can contain:
@@ -63,7 +63,7 @@ A standalone file named `vocabulary.json` can be selected through the vocabulary
 
 Import replaces the active article's word list and saves the result to its matching companion file; it is not a merge operation. Moving or deleting words also saves that companion. If the file has changed externally since loading, the save is rejected: reopen the article before editing again. Malformed vocabulary does not block passage reading, but overwriting that malformed companion is disabled until it is repaired and reopened.
 
-See the [passage skill](skills/image-to-passage/SKILL.md) and [vocabulary skill](skills/vocabulary-enrichment/SKILL.md) for the exact JSON structures.
+See the [passage skill](skills/skills-python/passage_segment/SKILL.md) and [vocabulary skill](Vocabulary-Preparation.md) for the exact JSON structures.
 
 ## 4. Three independent audio lookups
 
@@ -99,7 +99,7 @@ The exact stem algorithm is defined in the vocabulary skill. Whole-article, sent
 
 ## 5. Excluded branches and safe paths
 
-The scanner excludes hidden files/directories, names beginning with `.`, directories named `userdata` or `__pycache__`, and reparse points such as junctions or symbolic links. Inside a book, it excludes `book.json`, `*.vocabulary.json`, and `*.exercise.json` from passage leaves.
+The scanner excludes hidden files/directories, names beginning with `.`, directories named `userdata` or `__pycache__` regardless of letter case, and reparse points such as junctions or symbolic links. Inside a book, it excludes `book.json`, `*.vocabulary.json`, and `*.exercise.json` from passage leaves.
 
 Other JSON files are treated as potential passages without inspecting their contents. Keep unrelated JSON outside scanned book branches.
 

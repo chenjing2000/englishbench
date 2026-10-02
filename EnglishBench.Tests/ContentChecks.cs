@@ -114,7 +114,7 @@ internal static class ContentChecks
             Directory.CreateDirectory(book);
             File.WriteAllText(Path.Combine(book, "book.json"), "not-json");
             File.Copy(passage, Path.Combine(book, "Reading.json"));
-            foreach (string ignored in new[] { "userdata", ".hidden", "__pycache__" })
+            foreach (string ignored in new[] { "UserData", ".hidden", "__PYCACHE__" })
             {
                 Directory.CreateDirectory(Path.Combine(book, ignored));
                 File.Copy(passage, Path.Combine(book, ignored, "Ignored.json"));

@@ -1,4 +1,4 @@
-# Getting Started and Testing
+# Getting Started
 
 ## Requirements and launch
 
@@ -7,7 +7,6 @@ Run EnglishBench on Windows with the .NET 10 Windows Desktop Runtime, version `1
 The published application lives in `artifacts/app/`. Keep `EnglishBench.exe`, `EnglishBench.dll`, `EnglishBench.deps.json`, and `EnglishBench.runtimeconfig.json` together. The optional `reader-settings.json` is created beside them on normal exit.
 
 - Launch `artifacts/app/EnglishBench.exe` to restore the last selected library, if one has been saved.
-- `Start-EnglishBench.cmd` currently launches with the machine-specific library `C:\MyDocs\magazines`.
 - For another library, use the folder-selection button or pass a library explicitly:
 
 ```powershell
@@ -38,39 +37,14 @@ Use a separate working copy of a library for interactive editing experiments. Do
 
 ## Build and regression checks
 
-Run commands from the repository root:
+Run from the repository root:
 
 ```powershell
 dotnet build EnglishBench -c Release
 dotnet run --project EnglishBench.Tests -c Release
 ```
 
-The tests are a small STA console runner using real WPF controls, temporary data copies, and both a fake player and real MP3 decoding. No additional test framework is required. Exit code 0 means all selected checks passed; code 1 means a test failed; an unknown category returns code 2.
-
-| Category | Checks |
-| --- | --- |
-| `--rendering-only` | Vocabulary boundaries, SID mapping, selections, and document styles |
-| `--content-only` | JSON contracts, navigation discovery, persistence, metadata, and quiet normal operations |
-| `--audio-only` | Playback state, path validation, stale callbacks, and real fixture MP3 decoding |
-| `--window-only` | Explicitly named prototype contracts, final-reader interactions, scrolling, and timed status layout |
-| `--tree-only` | One-level expansion, recursive collapse, and navigation/display checks |
-| `--controls-only` | Folder-only loading, settings, progress, and sibling-MP3 playback behavior |
-| `--icons-only` | Native add action, SVG controls, startup size, footer alignment, and highlight state |
-| `--editing-only` | Vocabulary reorder/delete UI and persisted JSON order on temporary copies |
-| `--source-only` | Explicit local integration with the original magazine directory; current JSON consistency and before/after hashes |
-
-For example:
-
-```powershell
-dotnet run --project EnglishBench.Tests -c Release -- --content-only
-dotnet run --project EnglishBench.Tests -c Release -- --icons-only
-```
-
-Default tests use fixed content and real MP3 copies in `Fixtures/Library`; they do not require the editable original magazine directory. `--source-only` explicitly uses the local path in `SourceLibraryChecks.cs`, currently the article under `C:\MyDocs\magazines\The Economist\2026-09-26\When America walks away`. It is not portable without adjusting that test path.
-
-The original source-hash file is a historical baseline, not an assertion that user-edited vocabulary never changes. Source checks report historical differences and verify that the current reading operation changes no source files. Write tests use temporary copies and clean them up. Window tests disable normal preference persistence; a settings-restoration test saves and restores settings in its own test-output directory.
-
-Tests generate build outputs and diagnostic screenshots under `artifacts/`. Those screenshots are verification artifacts, not runtime dependencies. Do not remove `artifacts/app/` as part of cleaning test outputs.
+See [Testing](Testing.md) for functional categories, fixture ownership, manual checks, and optional source-library integration. The main-branch checks cover passage reading, vocabulary editing, and audio; they do not test exercise answering.
 
 ## Publish
 
@@ -94,8 +68,8 @@ After successful verification, copy only the four runtime files named above from
 | Bottom play reports no MP3 | Place a real whole-article MP3 directly beside the passage JSON; sentence audio is not a fallback |
 | A different whole-article file plays | The first case-insensitively sorted sibling MP3 wins; keep one intended file or rename deliberately |
 | A sentence or word cannot play | Check the exact declared file, nonzero size, valid MP3 encoding, and safe relative path |
-| A canonical word is not highlighted | Matching is literal, not inflection-aware; see the vocabulary skill's surface-form discussion |
+| A canonical word is not highlighted | Matching is literal, not inflection-aware; see the vocabulary preparation guide's surface-form discussion |
 | Blank text has no right-click audio | Blank passages intentionally omit sentence audio; exercise answering is not implemented |
 | Settings do not restore a passage or old window size | This is intentional: library-only startup and 70% centered window size are the current behavior |
 
-For content authoring, use [Image to Passage](skills/image-to-passage/SKILL.md) and [Vocabulary Enrichment](skills/vocabulary-enrichment/SKILL.md), then follow [Library Layout](Library-Layout.md).
+For content authoring, use [Image to Passage](skills/skills-python/image_to_passage/SKILL.md), [Passage Segmentation](skills/skills-python/passage_segment/SKILL.md), and [Vocabulary Preparation](Vocabulary-Preparation.md), then follow [Library Layout](Library-Layout.md).

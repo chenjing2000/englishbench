@@ -45,6 +45,8 @@ public sealed class LibraryRepository
     {
         string name = Path.GetFileName(path);
         var attributes = File.GetAttributes(path);
-        return name.StartsWith('.') || name == "userdata" || name == "__pycache__" || (attributes & (FileAttributes.ReparsePoint | FileAttributes.Hidden)) != 0;
+        return name.StartsWith('.') || name.Equals("userdata", StringComparison.OrdinalIgnoreCase) ||
+            name.Equals("__pycache__", StringComparison.OrdinalIgnoreCase) ||
+            (attributes & (FileAttributes.ReparsePoint | FileAttributes.Hidden)) != 0;
     }
 }

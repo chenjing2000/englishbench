@@ -10,6 +10,6 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="ui/**/*.png;ui/**/*.svg"/>
-    <Resource Include="ui/**/*.png;ui/**/*.svg" Exclude="ui/center/append_word.svg"/>
+    <Resource Include="ui/**/*.png;ui/**/*.svg"/>
   </ItemGroup>
 </Project>
