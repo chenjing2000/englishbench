@@ -11,6 +11,28 @@ internal static class ReaderControlsChecks
 {
     internal static void Run()
     {
+        Program.Run("global keyboard focus visual is empty for controls and popup menus", () =>
+        {
+            var style = (Style)Application.Current.FindResource(SystemParameters.FocusVisualStyleKey);
+            var focusVisual = new Control { Style = style };
+            focusVisual.ApplyTemplate();
+            Program.Check(System.Windows.Media.VisualTreeHelper.GetChildrenCount(focusVisual) == 0);
+            var window = CreateWindow();
+            try
+            {
+                window.Show();
+                LoadArticle(window);
+                foreach (var control in WpfTestHelpers.Descendants(window).OfType<Control>())
+                    Program.Check(ReferenceEquals(control.FindResource(SystemParameters.FocusVisualStyleKey), style));
+                var menu = ((Button)window.FindName("SettingsButton")).ContextMenu;
+                menu.IsOpen = true;
+                WpfTestHelpers.Pump(30);
+                foreach (MenuItem item in menu.Items)
+                    Program.Check(ReferenceEquals(item.FindResource(SystemParameters.FocusVisualStyleKey), style));
+                menu.IsOpen = false;
+            }
+            finally { window.Close(); WpfTestHelpers.Pump(); }
+        });
         Program.Run("playback time uses minutes through one hour and hours beyond it", () =>
         {
             var format = typeof(EnglishBench.MainWindow).GetMethod("FormatPlaybackTime", BindingFlags.NonPublic | BindingFlags.Static)!;
@@ -35,8 +57,8 @@ internal static class ReaderControlsChecks
                 var forward = (MenuItem)menu.Items[0];
                 var backward = (MenuItem)menu.Items[1];
                 Program.Check((string)forward.Header == "前进" && (string)backward.Header == "后退");
-                Program.Check(forward.Items.Cast<MenuItem>().Select(i => (string)i.Header).SequenceEqual(new[] { "1.0 秒", "2.0 秒", "3.0 秒" }));
-                Program.Check(backward.Items.Cast<MenuItem>().Select(i => (string)i.Header).SequenceEqual(new[] { "2.0 秒", "3.0 秒", "5.0 秒" }));
+                Program.Check(forward.Items.Cast<MenuItem>().Select(i => (string)i.Header).SequenceEqual(new[] { "4 秒", "7 秒", "10 秒" }));
+                Program.Check(backward.Items.Cast<MenuItem>().Select(i => (string)i.Header).SequenceEqual(new[] { "5 秒", "8 秒", "15 秒" }));
                 foreach (var branch in new[] { forward, backward })
                 {
                     Program.Check(((MenuItem)branch.Items[0]).IsChecked);
@@ -62,7 +84,7 @@ internal static class ReaderControlsChecks
                 forward.IsSubmenuOpen = true;
                 WpfTestHelpers.Pump(30);
                 var valuesPopup = (Popup)forward.Template.FindName("PART_Popup", forward);
-                Program.Check(valuesPopup.IsOpen && ((Border)valuesPopup.Child).ActualWidth >= 60 && ((Border)valuesPopup.Child).ActualWidth <= 80);
+                Program.Check(valuesPopup.IsOpen && ((Border)valuesPopup.Child).ActualWidth >= 45 && ((Border)valuesPopup.Child).ActualWidth <= 80);
                 var directionPopup = (Popup)menu.Template.FindName("PART_Popup", menu);
                 Program.Check(((Border)directionPopup.Child).ActualWidth >= 60 && ((Border)directionPopup.Child).ActualWidth <= 80);
                 var valuesSurface = (Border)valuesPopup.Child;
@@ -95,7 +117,8 @@ internal static class ReaderControlsChecks
                 Directory.CreateDirectory(root);
                 string path = Path.Combine(root, "Reading.json");
                 File.Copy(TestData.ArticlePath, path);
-                File.Copy(Path.Combine(Path.GetDirectoryName(TestData.ArticlePath)!, "audio_segments", "s001_uk.mp3"), Path.Combine(root, "Reading.mp3"));
+                var longest = new ArticleRepository().Load(TestData.ArticlePath).Segments.OrderByDescending(segment => segment.Text.Length).First();
+                File.Copy(Path.Combine(Path.GetDirectoryName(TestData.ArticlePath)!, longest.Audio!.Uk), Path.Combine(root, "Reading.mp3"));
                 window.Show();
                 LoadArticle(window);
                 Program.Check(window.ViewModel.OpenArticle(path));
@@ -117,7 +140,7 @@ internal static class ReaderControlsChecks
                     PressArrow(window, target, Key.Left);
                     Program.Check(Math.Abs(player.Position.TotalSeconds) < 0.05);
                     PressArrow(window, target, Key.Right);
-                    Program.Check(Math.Abs(player.Position.TotalSeconds - 1.0) < 0.05);
+                    Program.Check(Math.Abs(player.Position.TotalSeconds - Math.Min(4.0, player.Duration.TotalSeconds)) < 0.05);
                     PressArrow(window, target, Key.Space);
                     Program.Check(window.ViewModel.Playback.IsArticlePlaying);
                     PressArrow(window, target, Key.Space);
@@ -133,7 +156,7 @@ internal static class ReaderControlsChecks
                 font.IsSubmenuOpen = true;
                 WpfTestHelpers.Pump(30);
                 PressArrow(window, (UIElement)font.Items[0], Key.Right);
-                Program.Check(Math.Abs(player.Position.TotalSeconds - 1.0) < 0.05);
+                Program.Check(Math.Abs(player.Position.TotalSeconds - Math.Min(4.0, player.Duration.TotalSeconds)) < 0.05);
                 settings.IsOpen = false;
                 var vocabulary = (ListBox)window.FindName("VocabularyList");
                 Program.Check(vocabulary.ContextMenu == null);
@@ -146,18 +169,19 @@ internal static class ReaderControlsChecks
                 var progress = (MenuItem)settings.Items[2];
                 var forward = (MenuItem)progress.Items[0];
                 var backward = (MenuItem)progress.Items[1];
-                double[] forwardSteps = { 1.0, 2.0, 3.0 };
-                double[] backwardSteps = { 2.0, 3.0, 5.0 };
+                double[] forwardSteps = { 4.0, 7.0, 10.0 };
+                double[] backwardSteps = { 5.0, 8.0, 15.0 };
                 for (int i = 0; i < forwardSteps.Length; i++)
                 {
                     ClickStep((MenuItem)forward.Items[i]);
                     slider.Value = 0;
                     PressArrow(window, targets[0], Key.Right);
-                    Program.Check(Math.Abs(player.Position.TotalSeconds - forwardSteps[i]) < 0.05);
+                    Program.Check(Math.Abs(player.Position.TotalSeconds - Math.Min(forwardSteps[i], player.Duration.TotalSeconds)) < 0.05);
                     ClickStep((MenuItem)backward.Items[i]);
-                    slider.Value = 3;
+                    double start = Math.Min(20, player.Duration.TotalSeconds - 0.1);
+                    slider.Value = start;
                     PressArrow(window, targets[0], Key.Left);
-                    Program.Check(Math.Abs(player.Position.TotalSeconds - Math.Max(0, 3 - backwardSteps[i])) < 0.05);
+                    Program.Check(Math.Abs(player.Position.TotalSeconds - Math.Max(0, start - backwardSteps[i])) < 0.05);
                 }
                 window.ViewModel.Stop();
                 PressArrow(window, targets[0], Key.Left);

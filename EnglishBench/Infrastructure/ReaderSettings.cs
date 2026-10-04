@@ -9,8 +9,8 @@ public sealed class ReaderSettings
     public double FontSize { get; set; } = 11.0 * 96 / 72;
     public double Volume { get; set; } = 0.65;
     public string Accent { get; set; } = "uk";
-    public double ForwardStep { get; set; } = 1.0;
-    public double BackwardStep { get; set; } = 2.0;
+    public double ForwardStep { get; set; } = 4.0;
+    public double BackwardStep { get; set; } = 5.0;
     public string? Library { get; set; }
     public static string PathName => Path.Combine(AppContext.BaseDirectory, "reader-settings.json");
     public static ReaderSettings Load()

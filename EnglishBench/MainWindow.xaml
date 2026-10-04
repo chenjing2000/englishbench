@@ -87,14 +87,14 @@
               </MenuItem>
               <MenuItem Header="进度条">
                 <MenuItem x:Name="ForwardStepMenu" Header="前进">
-                  <MenuItem Header="1.0 秒" Tag="1.0" IsCheckable="True" Click="ProgressStepClicked"/>
-                  <MenuItem Header="2.0 秒" Tag="2.0" IsCheckable="True" Click="ProgressStepClicked"/>
-                  <MenuItem Header="3.0 秒" Tag="3.0" IsCheckable="True" Click="ProgressStepClicked"/>
+                  <MenuItem Header="4 秒" Tag="4.0" IsCheckable="True" Click="ProgressStepClicked"/>
+                  <MenuItem Header="7 秒" Tag="7.0" IsCheckable="True" Click="ProgressStepClicked"/>
+                  <MenuItem Header="10 秒" Tag="10.0" IsCheckable="True" Click="ProgressStepClicked"/>
                 </MenuItem>
                 <MenuItem x:Name="BackwardStepMenu" Header="后退">
-                  <MenuItem Header="2.0 秒" Tag="2.0" IsCheckable="True" Click="ProgressStepClicked"/>
-                  <MenuItem Header="3.0 秒" Tag="3.0" IsCheckable="True" Click="ProgressStepClicked"/>
-                  <MenuItem Header="5.0 秒" Tag="5.0" IsCheckable="True" Click="ProgressStepClicked"/>
+                  <MenuItem Header="5 秒" Tag="5.0" IsCheckable="True" Click="ProgressStepClicked"/>
+                  <MenuItem Header="8 秒" Tag="8.0" IsCheckable="True" Click="ProgressStepClicked"/>
+                  <MenuItem Header="15 秒" Tag="15.0" IsCheckable="True" Click="ProgressStepClicked"/>
                 </MenuItem>
               </MenuItem>
             </ContextMenu>

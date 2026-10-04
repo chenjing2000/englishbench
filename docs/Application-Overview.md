@@ -97,7 +97,7 @@ On close, timers stop, playback stops, and both media players are disposed. Norm
 - Each paragraph has a two-em first-line indent. All panes scroll independently and column splitters allow resizing.
 - The three bottom toolbars share their height and alignment. Playback controls remain present when disabled.
 - Highlighting starts off. The selection-add action is a 14 by 14 DIP native vector circle-plus; it follows selection scrolling and layout and hides outside the viewport or when selection is cleared.
-- Progress settings provide independent Forward (1.0/2.0/3.0 seconds) and Backward (2.0/3.0/5.0 seconds) selections, defaulting to their first options. Left uses the Backward value to move backward; Right uses the Forward value to move forward. Each option displays seconds explicitly. All Settings menus fit their text and share a light background; selected font, accent, and step options use #87c0ca instead of a checkmark. Space has priority across the window and popup menus and toggles only the sibling MP3 playback/pause.
+- Progress settings provide independent Forward (4/7/10 seconds) and Backward (5/8/15 seconds) selections, defaulting to their first options. Left uses the Backward value to move backward; Right uses the Forward value to move forward. Each option displays seconds explicitly. All Settings menus fit their text and share a light background; selected font, accent, and step options use #87c0ca instead of a checkmark. Space has priority across the window and popup menus and toggles only the sibling MP3 playback/pause.
 - Font size, accent, progress steps, library, column widths, and player volume are retained as applicable. Window dimensions, active passage, and highlighting are not saved. Old settings containing these fields remain readable; the unused fields are ignored.
 
 ## Current boundaries
@@ -109,3 +109,5 @@ Matching is literal and case-insensitive, not morphological: `convict` does not 
 Each playback controller owns one audio file at a time. It has no paragraph queue or multi-file playlist. Playback state belongs to the controller, coordination between the two players belongs to ReaderPlayback, and timers and controls belong to MainWindow.Playback. The existing concrete repositories and window partial classes remain together; small repeated UI operations do not require another abstraction layer.
 
 Tests exercise these production modules directly; the obsolete prototype application has been removed. See [Testing](Testing.md) for categories and their data ownership. Exercise authoring remains in the supplied skills, but there is no exercise runtime module on main.
+
+Keyboard focus remains available, but the global focus visual uses an empty template so no control displays a dotted focus outline.
