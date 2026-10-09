@@ -1,16 +1,16 @@
-# Testing EnglishBench
+# Testing ReadArticles
 
 ## Runner and data ownership
 
 Run from the repository root on Windows with the SDK specified by `global.json`:
 
 ```powershell
-dotnet run --project EnglishBench.Tests -c Release
+dotnet run --project ReadArticles.Tests -c Release
 ```
 
-The STA console runner tests production services and real WPF controls. A fake audio adapter makes state transitions deterministic; checked-in MP3 files exercise actual decoding. Exit code 0 means all selected checks passed, 1 means failure, and 2 means an unknown category.
+The STA console runner tests production services and real WPF controls. A fake audio adapter makes state transitions deterministic; local fixture MP3 files exercise actual decoding. Exit code 0 means all selected checks passed, 1 means failure, and 2 means an unknown category.
 
-Default checks use fixed fixtures under `EnglishBench.Tests/Fixtures/`. Write tests create temporary copies and clean them afterward. Test windows normally disable preference persistence; settings-restoration checks back up and restore settings beside the test executable. Tests share immutable fixture definitions and small WPF helpers rather than a separate prototype application. Run categories sequentially: generated test directories are shared by the runner.
+Default checks use fixed fixtures under `ReadArticles.Tests/Fixtures/`. Write tests create temporary copies and clean them afterward. Test windows normally disable preference persistence; settings-restoration checks back up and restore settings beside the test executable. Tests share immutable fixture definitions and small WPF helpers rather than a separate prototype application. Run categories sequentially: generated test directories are shared by the runner.
 
 The main branch has no exercise module or exercise test category. No test restores exercise behavior from another branch. Case-insensitive exclusion of UserData and cache directories is part of navigation regression coverage.
 
@@ -31,7 +31,7 @@ The main branch has no exercise module or exercise test category. No test restor
 Example:
 
 ```powershell
-dotnet run --project EnglishBench.Tests -c Release -- --audio-only
+dotnet run --project ReadArticles.Tests -c Release -- --audio-only
 ```
 
 Each category has a clear behavioral purpose. Write cases own their data, and separate cases do not depend on previous answers or edits. A small amount of setup repetition keeps that ownership explicit.
@@ -51,5 +51,7 @@ Automated checks cover state, controls, layout, and event routing. Native dialog
 Do not manually edit checked-in fixtures. Screenshots support inspection but do not themselves prove a test passed.
 
 ## Generated files
+
+MP3 files are local resources and are ignored by Git. Keep the local fixture audio when cleaning generated files. A fresh checkout needs the corresponding MP3 files restored under the fixture library before running audio and playback integration checks; these checks intentionally verify real decoding rather than silently skipping missing resources.
 
 Build outputs and screenshots are ignored by Git and can be removed after review. Keep the formal `artifacts/app/` release and its settings. See [Getting Started](Getting-Started.md) for publishing and settings-preserving replacement.

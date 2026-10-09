@@ -1,13 +1,13 @@
 ---
 name: image-to-passage
-description: Convert one or more English textbook/page images into EnglishBench <title>.json and, when supported exercises are present, <title>.exercise.json.
+description: Convert one or more English textbook/page images into ReadArticles <title>.json and, when supported exercises are present, <title>.exercise.json.
 ---
 
 # Image to Passage
 
 ## 1. Purpose
 
-Convert English reading images into current EnglishBench files:
+Convert English reading images into current ReadArticles files:
 
 - required `<title>.json` with `filetype: "passage"`;
 - optional `<title>.exercise.json` with `filetype: "exercise"`.
@@ -92,7 +92,7 @@ audio_segments/<sid>_us.mp3
 
 Inspect the same images for an Exercise belonging to the Passage. If none of the supported types is present, create only `<title>.json`.
 
-EnglishBench supports exactly:
+ReadArticles supports exactly:
 
 | `type` | Use | Main payload |
 |---|---|---|

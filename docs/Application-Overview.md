@@ -1,8 +1,8 @@
-# EnglishBench Application Overview
+# ReadArticles Application Overview
 
 ## Design goals
 
-EnglishBench is a local Windows reading and vocabulary application. It displays a directory tree, a rendered English passage, and an editable vocabulary list in three separate panes. Content remains in ordinary JSON and MP3 files so it can be prepared outside the application and inspected without a database.
+ReadArticles is a local Windows reading and vocabulary application. It displays a directory tree, a rendered English passage, and an editable vocabulary list in three separate panes. Content remains in ordinary JSON and MP3 files so it can be prepared outside the application and inspected without a database.
 
 The design favors explicit responsibilities, concrete services, and small functions. It avoids a dependency-injection container, generic repository framework, event bus, and plugin architecture. A single audio-player interface is retained because it separates native media playback from deterministic playback tests.
 
@@ -111,3 +111,5 @@ Each playback controller owns one audio file at a time. It has no paragraph queu
 Tests exercise these production modules directly; the obsolete prototype application has been removed. See [Testing](Testing.md) for categories and their data ownership. Exercise authoring remains in the supplied skills, but there is no exercise runtime module on main.
 
 Keyboard focus remains available, but the global focus visual uses an empty template so no control displays a dotted focus outline.
+
+Focusable buttons use a pale teal (#D7EFEB) background while they have keyboard focus, including the settings circle. Focus outlines remain hidden. Local MP3s and personal resource directories are excluded from Git; embedded UI icons remain source dependencies.

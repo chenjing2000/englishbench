@@ -2,7 +2,7 @@
 
 ## Purpose and scope
 
-Produce a complete EnglishBench vocabulary file from either an existing structured vocabulary document or a plain list of words/phrases. Improve useful meanings, normalize lexical forms where justified, remove duplicates, and generate compatible audio-path declarations.
+Produce a complete ReadArticles vocabulary file from either an existing structured vocabulary document or a plain list of words/phrases. Improve useful meanings, normalize lexical forms where justified, remove duplicates, and generate compatible audio-path declarations.
 
 Use the supplied [Vocabulary Enrichment skill](skills/skills-python/vocabulary_enrichment/SKILL.md) for structured input. This guide supplies the plain-list preparation step and the reader-specific compatibility checks. It does not modify the source passage, generate speech files, look for arbitrary files without a supplied context, or install anything in the application.
 
@@ -129,7 +129,7 @@ With a passage, sort the complete final list by first meaningful occurrence of t
 
 Without a passage, preserve surviving input order. When entries merge, the survivor occupies the earliest original position of the merged group.
 
-EnglishBench highlights literal case-insensitive forms, not lemmas or inflections. Consequently `convict` need not highlight source `convicted`, and a canonical phrase with `one's` need not match `his` in the passage. Do not promise automatic highlighting of normalized forms. If the user explicitly prioritizes exact surface-form highlighting, preserve those forms rather than silently imposing lemma normalization, and still use the exact stem algorithm.
+ReadArticles highlights literal case-insensitive forms, not lemmas or inflections. Consequently `convict` need not highlight source `convicted`, and a canonical phrase with `one's` need not match `his` in the passage. Do not promise automatic highlighting of normalized forms. If the user explicitly prioritizes exact surface-form highlighting, preserve those forms rather than silently imposing lemma normalization, and still use the exact stem algorithm.
 
 ## Final checks
 

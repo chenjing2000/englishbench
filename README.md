@@ -1,10 +1,10 @@
-# EnglishBench
+# ReadArticles
 
-EnglishBench is a local C# / WPF application for English reading, vocabulary editing, and playback of existing MP3 files. It uses a directory tree, passage pane, and vocabulary pane backed by ordinary JSON files.
+ReadArticles is a local C# / WPF application for English reading, vocabulary editing, and playback of existing MP3 files. It uses a directory tree, passage pane, and vocabulary pane backed by ordinary JSON files.
 
 ## Run
 
-On Windows with the .NET 10 Windows Desktop Runtime (10.0.11 or a later compatible patch), launch `artifacts/app/EnglishBench.exe`. Use the folder-selection button to open a library, or pass `--library` on the command line. Publish first if the runtime folder is absent; generated binaries are not tracked by Git.
+On Windows with the .NET 10 Windows Desktop Runtime (10.0.11 or a later compatible patch), launch `artifacts/app/ReadArticles.exe`. Use the folder-selection button to open a library, or pass `--library` on the command line. Publish first if the runtime folder is absent; generated binaries are not tracked by Git.
 
 Startup loads only a collapsed library tree. It does not restore a passage or vocabulary. Routine successful actions are quiet; warnings and errors appear for six seconds, and the empty status row takes no space.
 
@@ -28,8 +28,8 @@ All maintained documentation is in English. The conversion skills prepare conten
 
 | Path | Purpose |
 | --- | --- |
-| `EnglishBench/` | Published application's source and embedded UI resources |
-| `EnglishBench.Tests/` | Categorized checks of production services and controls, with fixed fixtures |
+| `ReadArticles/` | Published application's source and embedded UI resources |
+| `ReadArticles.Tests/` | Categorized checks of production services and controls, with fixed fixtures |
 | `artifacts/app/` | Runtime files and user settings; keep these together |
 | `docs/` | Current documentation and conversion skills |
 
@@ -38,8 +38,8 @@ All maintained documentation is in English. The conversion skills prepare conten
 Run from the repository root with an SDK compatible with `global.json`:
 
 ```powershell
-dotnet build EnglishBench -c Release
-dotnet run --project EnglishBench.Tests -c Release
+dotnet build ReadArticles -c Release
+dotnet run --project ReadArticles.Tests -c Release
 ```
 
 See the testing guide for independent categories and optional machine-specific source checks. The current main branch does not implement account registration/login or exercise answering. The supplied authoring skills may still produce exercise companions; the reader excludes those files from navigation and does not render them.

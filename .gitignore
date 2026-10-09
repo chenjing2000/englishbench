@@ -30,7 +30,25 @@ Thumbs.db
 Desktop.ini
 .DS_Store
 
-# Local Python migration archive; not needed to build or run EnglishBench
+# Local Python migration archive; not needed to build or run ReadArticles
 /reference/*.zip
 
-# Keep source, docs, embedded icons, and regression fixtures (including MP3s).
+# Local media, source images, archives, and personal resource directories
+*.mp3
+*.wav
+*.m4a
+*.ogg
+*.mp4
+*.webm
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.zip
+/reference/
+/resources/
+/library/
+/userdata/
+
+# Embedded UI assets are required to build and run the application.
+!/ReadArticles/ui/**

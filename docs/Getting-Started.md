@@ -2,15 +2,15 @@
 
 ## Requirements and launch
 
-Run EnglishBench on Windows with the .NET 10 Windows Desktop Runtime, version `10.0.11` or a later compatible patch. Building also requires a .NET SDK compatible with `global.json`, currently SDK `10.0.400` with `latestPatch` roll-forward. Both the application and its tests target `net10.0-windows`.
+Run ReadArticles on Windows with the .NET 10 Windows Desktop Runtime, version `10.0.11` or a later compatible patch. Building also requires a .NET SDK compatible with `global.json`, currently SDK `10.0.400` with `latestPatch` roll-forward. Both the application and its tests target `net10.0-windows`.
 
-The published application lives in `artifacts/app/`. Keep `EnglishBench.exe`, `EnglishBench.dll`, `EnglishBench.deps.json`, and `EnglishBench.runtimeconfig.json` together. The optional `reader-settings.json` is created beside them on normal exit.
+The published application lives in `artifacts/app/`. Keep `ReadArticles.exe`, `ReadArticles.dll`, `ReadArticles.deps.json`, and `ReadArticles.runtimeconfig.json` together. The optional `reader-settings.json` is created beside them on normal exit.
 
-- Launch `artifacts/app/EnglishBench.exe` to restore the last selected library, if one has been saved.
+- Launch `artifacts/app/ReadArticles.exe` to restore the last selected library, if one has been saved.
 - For another library, use the folder-selection button or pass a library explicitly:
 
 ```powershell
-.\artifacts\app\EnglishBench.exe --library "C:\Libraries\English"
+.\artifacts\app\ReadArticles.exe --library "C:\Libraries\English"
 ```
 
 Select the parent directory of marked book directories. Startup and folder selection show only a collapsed tree, not a previous passage or vocabulary. The interface currently mixes Chinese and English labels; this guide names controls by their function in English.
@@ -33,15 +33,15 @@ A time label between the progress bar and play button displays current time/tota
 
 Successful ordinary actions are quiet. Warning/error status appears for six seconds and then disappears with its layout row. A new warning restarts that interval. Missing physical audio does not prevent passage reading.
 
-Use a separate working copy of a library for interactive editing experiments. Do not alter `EnglishBench.Tests/Fixtures/Library` directly; deterministic tests depend on that fixed data.
+Use a separate working copy of a library for interactive editing experiments. Do not alter `ReadArticles.Tests/Fixtures/Library` directly; deterministic tests depend on that fixed data.
 
 ## Build and regression checks
 
 Run from the repository root:
 
 ```powershell
-dotnet build EnglishBench -c Release
-dotnet run --project EnglishBench.Tests -c Release
+dotnet build ReadArticles -c Release
+dotnet run --project ReadArticles.Tests -c Release
 ```
 
 See [Testing](Testing.md) for functional categories, fixture ownership, manual checks, and optional source-library integration. The main-branch checks cover passage reading, vocabulary editing, and audio; they do not test exercise answering.
@@ -51,7 +51,7 @@ See [Testing](Testing.md) for functional categories, fixture ownership, manual c
 Close the running application before replacing its files. Publish into a staging directory:
 
 ```powershell
-dotnet publish EnglishBench -c Release -p:DebugType=None -p:DebugSymbols=false -o artifacts/app-update
+dotnet publish ReadArticles -c Release -p:DebugType=None -p:DebugSymbols=false -o artifacts/app-update
 ```
 
 After successful verification, copy only the four runtime files named above from `app-update` to `app`. Preserve `app/reader-settings.json`. Do not copy test data or diagnostic screenshots into the release folder. This framework-dependent release needs the installed Windows Desktop Runtime.

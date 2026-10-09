@@ -109,4 +109,4 @@ Audio references are relative to the passage directory. Absolute paths, drive-qu
 
 `artifacts/app/reader-settings.json` belongs beside the executable, not in a book. It stores application preferences and is created on normal exit. The executable, DLL, dependency manifest, and runtime configuration also belong together in `artifacts/app/`.
 
-Source images and the original Python ZIP are preparation/reference material. EnglishBench does not convert them when a library is opened.
+Source images and the original Python ZIP are preparation/reference material. ReadArticles does not convert them when a library is opened.
